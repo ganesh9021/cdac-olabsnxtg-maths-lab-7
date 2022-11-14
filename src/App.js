@@ -36,6 +36,8 @@ import Result from "./Components/Activities/ActFolder1/Result";
 import Res_3_copy from "./Components/Activities/ActFolder1/Res_3_copy";
 import Res_6_Copy from "./Components/Activities/ActFolder1/Res_6_Copy";
 import Res1_WithNumbers from "./Components/Activities/ActFolder1/Res1_WithNumbers";
+import Play from "./Components/quiz/Play";
+import QuizInstructions from "./Components/quiz/QuizInstructions";
 
 
 function App() {
@@ -91,6 +93,10 @@ function App() {
       <Route path="/activity7/letusverify/game" element={<Game />} />
       <Route path="/activity7/letusverify/help" element={<Help />} />
       
+      <Route path="/letusverify/sqtheory" element={<Theory />} />
+      <Route path="/letusverify/instructions" element={<QuizInstructions />} />
+      <Route path="/letusverify/quiz" element={<Play />} />
+      <Route path="/letusverify/help" element={<Help />} />
 
       <Route path="/activity2" element={<Activity2 />} />
 

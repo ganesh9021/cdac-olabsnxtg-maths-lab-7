@@ -103,8 +103,8 @@ const LHS_RHS = () => {
     <div style={{height : '100%',fontFamily:'arial'}}>
       <div className="container-fluid" style={{height : '90%'}}>
       <div className="row justify-content-center align-items-end" style={{fontSize:'1.2vw',height:'20%'}}>
-        <div className="d-flex justify-content-center"><b>To verify distributive law for three non-empty sets A, B and C:</b></div>
-        <div className="d-flex justify-content-center"><b>A ∪ (B ∩ C) = (A ∪ B) ∩ (A ∪ C)</b></div>
+        <div className="d-flex justify-content-center text-danger"><b>To verify the distributive law for three non-empty sets A, B, and C:</b></div>
+        <div className="d-flex justify-content-center text-danger"><b>A∪(B∩C) = (A∪B)∩(A∪C)</b></div>
       </div>
       <div className="row" style={{height : '20vh',fontSize:'1.2vw'}}>
         <div className="col-3 d-flex flex-column align-items-end justify-content-center">

@@ -4,7 +4,8 @@ import homeImg from "../../Img/homeimg.png";
 import * as expre from "../../Components/Superscript";
 import HomeQuitPopup from "../../Components/MajorComponents/HomeQuitPopup";
 import { useNavigate } from "react-router-dom";
-import Offcanvas from "./Offcanvas";
+//import Offcanvas from "./Offcanvas";
+import Offcanvas from "../Activities/Offcanvas";
 
 const Headcomp = ({ sidebarvisible }) => {
   const [showDialog, setShowDialog] = useState(false);

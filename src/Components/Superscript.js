@@ -22,7 +22,7 @@ function exp2() {
 function exp2() {
   return (
     <>
-      A ∪ (B ∩ C) = (A ∪ B) ∩ (A ∪ C)
+      A∪(B∩C) = (A∪B)∩(A∪C)
     </>
   );
 }

@@ -2,6 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import exp1 from "../../Superscript";
 import backg from "../../../Img/backg.jpg";
+import "bootstrap/dist/css/bootstrap.min.css";
 
 const Activity7 = () => {
   return (
@@ -33,7 +34,7 @@ const Activity7 = () => {
         </div>
         <div className="" style={{ height: "20vh" }}>
           <div
-            className="d-flex justify-content-center align-items-center fw-bolder"
+            className="d-flex justify-content-center align-items-end fw-bolder"
             style={{ height: "10vh", fontSize : '2vw' }}
           >
             Objective:
@@ -42,7 +43,9 @@ const Activity7 = () => {
             className="d-flex justify-content-center align-items-center fw-normal text-center"
             style={{ height: "10vh",fontSize : '1.8vw' }}
           >
-            To verify distributive law for three given non-empty sets A, B and C, that is,<br /> 
+            To verify distributive law for three
+given non-empty sets A, B and C, that
+is,<br /> 
             {exp1()}
           </div>
         </div>
@@ -54,7 +57,7 @@ const Activity7 = () => {
             Learning Outcome:
           </div>
           <div
-            className="d-flex justify-content-center align-items-center fw-normal text-center"
+            className="d-flex justify-content-center align-items-start fw-normal text-center"
             style={{ height: "20vh" ,fontSize : '1.5vw'}}
           >
             <ol>
@@ -64,16 +67,15 @@ const Activity7 = () => {
           </div>
         </div>
         <div
-          className="d-flex justify-content-center align-items-center"
-          style={{ height: "10vh" }}
+          className="d-flex justify-content-center "
+          style={{ height: "13vh" }}
         >
-          <Link to="/activity7/letusverify">
+          <Link to="/activity7/letusverify" style={{ textDecoration:"none"  }}>
             <div
-              className="btn px-5 mb-4"
+              className="btn px-5"
               style={{
-                fontFamily: "arial",
                 fontWeight: "700",
-                fontSize: "2vw",
+                fontSize: "2.0vw",
                 background: " #eeeee6",
                 color: "#5f5299",
                 borderRadius: "50px",

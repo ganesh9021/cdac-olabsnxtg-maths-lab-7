@@ -12,7 +12,7 @@ import DialogContent from "@mui/material/DialogContent";
 import DialogActions from "@mui/material/DialogActions";
 import IconButton from "@mui/material/IconButton";
 import Typography from "@mui/material/Typography";
-import letusverify from "../../Img/letusverify.png"
+import letusverify from "../../Img/letusverify.png";
 
 const BootstrapDialog = styled(Dialog)(({ theme }) => ({
   "& .MuiDialogContent-root": {
@@ -57,8 +57,11 @@ const Startact = () => {
   const navigate = useNavigate();
 
   const onForward = () => {
-    localStorage.setItem("A",1);
+    localStorage.setItem("A", 1);
     navigate("/activity7/letusverify/act1startpage/lhs_rhs");
+  };
+  const onBackward = () => {
+    navigate("/activity7");
   };
 
   const onNext = () => {
@@ -75,7 +78,10 @@ const Startact = () => {
         className=" d-flex justify-content-center align-items-center text-center"
         style={{ height: "50%", fontSize: "1.5vw" }}
       >
-        <span className=""><b>Objective:</b> To verify distributive law for three given non-empty sets A, B and C, that is, <br /> {exp1()}</span>
+        <span className="">
+          <b>Objective:</b> To verify distributive law for three given non-empty
+          sets A, B and C, that is, <br /> {exp1()}
+        </span>
       </div>
       <div
         className=" d-flex justify-content-center  "
@@ -113,44 +119,62 @@ const Startact = () => {
               id="customized-dialog-title"
               onClose={handleClose}
               className="fw-bold"
-              style={{fontSize:"1.2vw"}}
+              style={{ fontSize: "1.2vw" }}
             >
-              What we are going to learn?
+              What are we going to learn?
             </BootstrapDialogTitle>
             <DialogContent dividers>
               <Typography gutterBottom>
-                <ul style={{fontSize:"1.0vw"}}>
+                <ul style={{ fontSize: "1.2vw" }}>
                   <li>
                     {" "}
-                    We are going to verify distributive law of set theory with three non empty sets: A, B and C.<br/>
-                    <u>Distributive law is A ∪ (B ∩ C) = (A ∪ B) ∩ (A ∪ C).</u> 
+                    We are going to verify the distributive law of set theory
+                    with three non-empty sets: A, B, and C.
+                    <br />
+                    <u>Distributive law is A∪(B∩C) = (A∪B)∩(A∪C).</u>
                   </li>
                 </ul>
               </Typography>
               <Typography gutterBottom>
-              <ul style={{fontSize:"1.0vw"}}>
-                <li>To verify the distributive law of set theory, we need to verify the relations of LHS and RHS. <br/>For LHS the different relations are: </li>
+                <ul style={{ fontSize: "1.2vw" }}>
+                  <li>
+                    To verify the distributive law of set theory, we need to
+                    verify the relations of LHS and RHS. <br />
+                    For LHS the different relations are:{" "}
+                  </li>
                   <ol>
                     <li>Set A,</li>
-                    <li>B ∩ C </li>
-                    <li>A ∪ (B ∩ C)</li>
+                    <li>B∩C </li>
+                    <li>A∪(B∩C)</li>
                   </ol>
-              </ul>
-              </Typography>
-              <Typography gutterBottom>
-                <ul style={{fontSize:"1.0vw"}}>
-                  <li>For RHS the different relations are:</li>
-                    <ol>
-                      <li>(A ∪ B) </li>
-                      <li>(A ∪ C)</li>
-                      <li>(A ∪ B) ∩ (A ∪ C)</li>
-                    </ol>
+                  For RHS the different relations are:
+                  <ol>
+                    <li>(A∪B) </li>
+                    <li>(A∪C)</li>
+                    <li>(A∪B)∩(A∪C)</li>
+                  </ol>
                 </ul>
               </Typography>
             </DialogContent>
             <DialogActions>
-              <Button autoFocus variant="contained" onClick={onForward}>
+              {/* <Button autoFocus variant="contained" onClick={onForward}>
                 I am ready!
+              </Button> */}
+              <Button
+                variant="contained"
+                color="primary"
+                size="small"
+                onClick={onForward}
+              >
+                ok
+              </Button>
+              <Button
+                variant="contained"
+                color="secondary"
+                size="small"
+                onClick={onBackward}
+              >
+                Cancel
               </Button>
             </DialogActions>
           </BootstrapDialog>
@@ -161,6 +185,3 @@ const Startact = () => {
 };
 
 export default Startact;
-
-
-
