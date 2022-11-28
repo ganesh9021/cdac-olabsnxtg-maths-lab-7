@@ -5,6 +5,7 @@ import { rezContext } from "./Act1startpage";
 import "./App.css";
 import BackNextBar from "./BackNextBar";
 import Button from "@mui/material/Button";
+import { useTranslation } from "react-i18next";
 
 function Tool_2() {
   let [count, setCount] = useState(0);
@@ -12,6 +13,7 @@ function Tool_2() {
   const canvas = useRef();
   const { setArv } = useContext(rezContext);
   const { setToolvisible } = useOutletContext();
+  const { t, i18n } = useTranslation();
   let ctx = null;
 
 
@@ -30,7 +32,7 @@ function Tool_2() {
     }
     else 
     {
-      toast.error("Please generate the result..!", {
+      toast.error(`${t("toaster-5")}`, {
         position: "top-center",
         autoClose: 2000,
       });
@@ -168,7 +170,7 @@ useEffect(() => {
     <div style={{height : '100%'}}>
       <div className="container-fluid" style={{height : '90%'}}>
       <div className="row align-items-center" style={{height : '10vh',fontFamily:'arial',fontSize:'1.2vw'}}>
-        <div className="fs-1.2vw fw-bold">Set Theory Relations - LHS</div>
+        <div className="fs-1.2vw fw-bold">{t("line-2")}</div>
       </div>
       <div className="row">
         <div className="col-3">
@@ -207,12 +209,12 @@ useEffect(() => {
               </div> */}
               <div className="col d-flex justify-content-end">
                 <Button id="id1" autoFocus variant="contained" onClick={Draw_Circle_B}>
-                  Draw Set B
+                {t("btn-4")}
                 </Button>
               </div>
               <div className="col d-flex justify-content-start">
                 <Button id="id2" autoFocus variant="contained" onClick={Draw_Circle_C}>
-                  Draw Set C
+                {t("btn-5")}
                 </Button>
               </div>
               {/* <div

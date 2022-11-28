@@ -1,11 +1,13 @@
 
 import React, { useRef, useEffect, useContext, useState } from "react";
+import { useTranslation } from "react-i18next";
 import { useNavigate, useOutletContext } from "react-router-dom";
 import { toast } from "react-toastify";
 import { rezContext } from "./Act1startpage";
 import BackNextBar from "./BackNextBar";
 
 function Tool_3() {
+  const { t, i18n } = useTranslation();
   let navigate = useNavigate();
   const canvas = useRef();
   const { setArv } = useContext(rezContext);
@@ -28,7 +30,7 @@ function Tool_3() {
     }
     else
     {
-      toast.error("Wrong position of sets..!", {
+      toast.error(`${t("line-3")}`, {
         position: "top-center",
         autoClose: 2000,
       });
@@ -184,7 +186,7 @@ function Tool_3() {
     if((x === 220 && y === 125) || (x === 280 && y === 125))
     {
       //alert("Wrong position of sets as sets are coinciding....!");
-      toast.error("Wrong position of sets.....!", {
+      toast.error(`${t("line-3")}`, {
         position: "top-center",
         autoClose: 2000,
         });
@@ -249,7 +251,7 @@ function Tool_3() {
     <div style={{height : '100%'}}>
       <div className="container-fluid" style={{height : '90%'}}>
       <div className="row align-items-center" style={{height : '10vh', fontFamily:'arial', fontSize:'1.2vw'}}>
-      <div className=" fw-bold">Set Theory Relations - LHS</div>
+      <div className=" fw-bold">{t("line-2")}</div>
       </div>
       <div className="row">
         <div className="col-3">

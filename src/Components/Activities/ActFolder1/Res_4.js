@@ -5,10 +5,11 @@ import BackNextBar from "./BackNextBar";
 import { toast } from "react-toastify";
 import { rezContext } from "./Act1startpage";
 import { Button } from "@mui/material";
+import { useTranslation } from "react-i18next";
 
 
 function Res_4() {
-
+  const { t, i18n } = useTranslation();
   const navigate = useNavigate();
   const canvas = useRef();
   const { setArv } = useContext(rezContext);
@@ -38,7 +39,7 @@ function Res_4() {
   }
 
   useEffect(() => {
-    toast.success("Relation AUB created successfully...!", {
+    toast.success(`${t("toaster-9")}`, {
       position: "top-center",
       autoClose: 2000,
     });
@@ -131,7 +132,7 @@ function Res_4() {
     <div style={{height : '100%'}}>
       <div className="container-fluid" style={{height : '90%'}}>
       <div className="row align-items-center" style={{height : '10vh',fontFamily:'arial', fontSize:'1.2vw'}}>
-      <div className=" fw-bold">Set Theory Relations - RHS</div>
+      <div className=" fw-bold">{t("line-4")}</div>
       </div>
       <div className="row">
         <div className="col-3">
@@ -166,7 +167,7 @@ function Res_4() {
       <div className="row" style={{height:'40%'}}>
         <div className="d-flex justify-content-center align-items-end">
           <Button autoFocus variant="contained" onClick={res4_withno}>
-            Set With Numbers
+            {t("btn-3")}
           </Button>
         </div>
       </div>

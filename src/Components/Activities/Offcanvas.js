@@ -20,8 +20,10 @@ import mcq from "../../Img/mcq.png";
 import help from "../../Img/help.png";
 import game from "../../Img/game.png";
 import { Typography } from "@mui/material";
+import { useTranslation } from "react-i18next";
 
 const Offcanvas = () => {
+  const { t, i18n } = useTranslation();
   const LightTooltip = styled(({ className, ...props }) => (
     <Tooltip {...props} classes={{ popper: className }} />
   ))(({ theme }) => ({
@@ -50,39 +52,34 @@ const Offcanvas = () => {
   return (
     <>
       <Dialog open={showDialog}>
-        <DialogTitle>Instructions for quiz</DialogTitle>
+        <DialogTitle>{t("quiz-1")}</DialogTitle>
         <DialogContent dividers>
           <Typography>
             <ul className="broswer-default" id="main-list">
-              <li>Read all instructions given below.</li>
+              <li>{t("quiz-2")}</li>
               <li>
-                The quiz will start after clicking on the "OK" button, along
-                with a timer.
+              {t("quiz-3")}
               </li>
               <li>
-                To select an option as an answer to a given question click on
-                it.
+              {t("quiz-4")}
               </li>
               <li>
-                You will get two attempts to select the correct option to the
-                question.
+              {t("quiz-5")}
               </li>
-              <li>You may skip the question, if you want.</li> The score and
-              timing are displayed on the top of the screen throughout the quiz.
+              <li>{t("quiz-6")}</li> {t("quiz-7")}
               <li>
-                You will get +1 for each correct answer. There is no negative
-                marking.
+              {t("quiz-8")}
               </li>
-              <li>The scorecard will be generated at the end of the quiz.</li>
+              <li>{t("quiz-9")}</li>
             </ul>
           </Typography>
         </DialogContent>
         <DialogActions>
           <Button variant="contained" color="primary" onClick={onAgree}>
-            ok
+          {t("ok")}
           </Button>
           <Button variant="contained" color="secondary" onClick={closeDialog}>
-            Cancel
+          {t("cancel")}
           </Button>
         </DialogActions>
       </Dialog>

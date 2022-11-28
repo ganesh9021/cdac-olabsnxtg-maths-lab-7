@@ -5,6 +5,7 @@ import { useNavigate, useOutletContext } from "react-router-dom";
 import { rezContext } from "./Act1startpage";
 import BackNextBar from "./BackNextBar";
 import { toast } from "react-toastify";
+import { useTranslation } from "react-i18next";
 
 function DragnDrop_2() {
   let navigate = useNavigate();
@@ -12,6 +13,7 @@ function DragnDrop_2() {
   const { setArv } = useContext(rezContext);
   const { setToolvisible } = useOutletContext();
   var [count,setCount] = useState(0);
+  const { t, i18n } = useTranslation();
 
   const onBack = () => {
     navigate("/activity7/letusverify/act1startpage/tool_2");
@@ -32,7 +34,7 @@ function DragnDrop_2() {
     }
     else 
     {
-      toast.error("Wrong position of sets.....!", {
+      toast.error(`${t("line-3")}`, {
         position: "top-center",
         autoClose: 2000,
       });
@@ -147,7 +149,7 @@ function DragnDrop_2() {
     if(x === 268 && y === 100)
     {
       //alert("Wrong position of sets as sets are coinciding....!")
-      toast.error("wrong position of sets.....!", {
+      toast.error(`${t("line-3")}`, {
         position: "top-center",
         autoClose: 2000,
         });
@@ -217,7 +219,7 @@ function DragnDrop_2() {
     <div style={{height : '100%'}}>
       <div className="container-fluid" style={{height : '90%'}}>
       <div className="row align-items-center" style={{height : '10vh', fontFamily:'arial', fontSize:'1.2vw'}}>
-        <div className=" fw-bold">Set Theory Relations - LHS</div>
+        <div className=" fw-bold">{t("line-2")}</div>
       </div>
       <div className="row">
         <div className="col-3">

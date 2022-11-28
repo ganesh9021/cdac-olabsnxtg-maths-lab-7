@@ -1,5 +1,6 @@
 import Button from "@mui/material/Button";
 import React, { useContext, useEffect, useRef, useState } from "react";
+import { useTranslation } from "react-i18next";
 import { useNavigate, useOutletContext } from "react-router-dom";
 import { toast } from "react-toastify";
 import { rezContext } from "./Act1startpage";
@@ -15,6 +16,9 @@ function Tool_1() {
   let [count1, setCount1] = useState(0);
   let navigate = useNavigate();
   const canvas = useRef();
+  const { t, i18n } = useTranslation();
+
+
   let ctx = null;
 
 
@@ -34,7 +38,7 @@ function Tool_1() {
     }
     else 
     {
-      toast.error("Please generate the result..!", {
+      toast.error(`${t("toaster-5")}`, {
         position: "top-center",
         autoClose: 2000,
         });
@@ -52,7 +56,7 @@ function Tool_1() {
     }
     else 
     {
-      toast.error("Please generate the result..!", {
+      toast.error(`${t("toaster-5")}`, {
         position: "top-center",
         autoClose: 2000,
         });
@@ -60,6 +64,7 @@ function Tool_1() {
   }
 
   const Draw_Rectangle = () => {
+    
     if (count === 0) {
       count = count + 1;
       setCount(count);
@@ -118,7 +123,7 @@ function Tool_1() {
       ctx.strokeStyle = "black";
       ctx.stroke();
 
-      toast.success("Relation A created successfully..!", {
+      toast.success(`${t("toaster-4")}`, {
         position: "top-center",
         autoClose: 2000,
         
@@ -126,7 +131,7 @@ function Tool_1() {
     }
     else 
     {
-      toast.error("Please click on Draw Universal set..!", {
+      toast.error(`${t("toaster-3")}`, {
         position: "top-center",
         autoClose: 2000,
       });
@@ -182,7 +187,7 @@ function Tool_1() {
     <div style={{height : '100%'}}>
       <div className="container-fluid" style={{height : '90%'}}>
       <div className="row align-items-center" style={{height : '10vh',fontFamily:'arial',fontSize:'1.2vw'}}>
-        <div className="fs-1.2vw fw-bold">Set Theory Relations - LHS</div>
+        <div className="fs-1.2vw fw-bold">{t("line-2")}</div>
       </div>
       <div className="row">
         <div className="col-3">
@@ -214,12 +219,12 @@ function Tool_1() {
             <div className="row justify-content-center">
                 <div className="col d-flex justify-content-end">
                   <Button id="id1" autoFocus variant="contained" onClick={Draw_Rectangle}>
-                    Draw Universal Set
+                    {t("btn-1")}
                   </Button>
                 </div>
                 <div className="col d-flex justify-content-start ">
                   <Button id="id2" autoFocus variant="contained" onClick={Draw_Circle}>
-                    Draw Set A
+                  {t("btn-2")}
                   </Button>
                 </div>
             </div>
@@ -229,7 +234,7 @@ function Tool_1() {
       <div className="row" style={{height:'20%'}}>
         <div className="d-flex justify-content-center align-items-end" >
           <Button autoFocus variant="contained" onClick={res1_withno}>
-            Set With Numbers
+          {t("btn-3")}
           </Button>
         </div>
       </div>

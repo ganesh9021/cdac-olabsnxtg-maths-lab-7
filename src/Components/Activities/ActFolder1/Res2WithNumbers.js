@@ -2,12 +2,14 @@
 import React, { useRef, useEffect, useContext } from "react";
 import { useNavigate, useOutletContext } from "react-router-dom";
 import BackNextBar from "./BackNextBar";
-import { toast } from "react-toastify";
+
 import { rezContext } from "./Act1startpage";
-import { Button } from "@mui/material";
+import { useTranslation } from "react-i18next";
+
 
 
 function Res2WithNumbers() {
+  const { t, i18n } = useTranslation();
   const navigate = useNavigate();
   const canvas = useRef();
   const { setArv } = useContext(rezContext);
@@ -172,7 +174,7 @@ function Res2WithNumbers() {
     <div style={{height : '100%'}}>
       <div className="container-fluid" style={{height : '90%'}}>
       <div className="row align-items-center" style={{height : '10vh', fontFamily:'arial', fontSize:'1.2vw'}}>
-      <div className=" fw-bold">Set Theory Relations - LHS</div>
+      <div className=" fw-bold">{t("line-2")}</div>
       </div>
       <div className="row">
         <div className="col-3">

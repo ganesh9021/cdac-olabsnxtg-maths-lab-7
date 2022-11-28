@@ -5,9 +5,11 @@ import Res_6_Copy from './Res_6_Copy'
 import { useNavigate } from "react-router-dom";
 import { rezContext } from "./Act1startpage";
 import Button from "@mui/material/Button";
+import { useTranslation } from 'react-i18next';
 
 
 const Result = () => {
+  const { t, i18n } = useTranslation();
   const { setArv } = useContext(rezContext);
   // const { setToolvisible } = useOutletContext();
   const navigate = useNavigate();
@@ -44,12 +46,12 @@ const Result = () => {
             <div className="col d-flex justify-content-center">&#123;5, 7, 8, 9, 4, 6 &#125;</div>
           </div>
           <div className="row" style={{height:'10vh',fontSize:'1.2vw'}}>
-            <div className='d-flex  justify-content-center align-items-center'> Distributive law verified &nbsp; <b>LHS [AU(B∩C)] = RHS[(AUB)∩(AUC)]</b></div>
+            <div className='d-flex  justify-content-center align-items-center'> {t("line-5")} &nbsp; <b>LHS [AU(B∩C)] = RHS[(AUB)∩(AUC)]</b></div>
           </div>
           <div className="row" style={{height:'20%'}}>
             <div className='d-flex justify-content-center align-items-end'>
               <Button id="btn" autoFocus variant="contained" onClick={Restart}>
-                Restart
+              {t("btn-6")}
               </Button>
             </div>
           </div>

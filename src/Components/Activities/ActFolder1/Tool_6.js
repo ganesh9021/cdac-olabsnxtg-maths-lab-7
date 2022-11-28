@@ -1,12 +1,14 @@
 import { Divider } from "@material-ui/core";
 import { width } from "@mui/system";
 import React, { useRef, useEffect, useContext, useState } from "react";
+import { useTranslation } from "react-i18next";
 import { useNavigate, useOutletContext } from "react-router-dom";
 import { toast } from "react-toastify";
 import { rezContext } from "./Act1startpage";
 import BackNextBar from "./BackNextBar";
 
 function Tool_6() {
+  const { t, i18n } = useTranslation();
   let navigate = useNavigate();
   const canvas = useRef();
   const { setArv } = useContext(rezContext);
@@ -34,7 +36,7 @@ function Tool_6() {
     }
     else 
     {
-      toast.error("Wrong position of sets..!", {
+      toast.error(`${t("line-3")}`, {
         position: "top-center",
         autoClose: 2000,
       });
@@ -136,7 +138,7 @@ function Tool_6() {
     if((x === 200 && y === 110) || (x === 265 && y === 110))
     {
       //alert("Wrong position of sets as sets are coinciding....!");
-      toast.error("Wrong position of sets.....!", {
+      toast.error(`${t("line-3")}`, {
         position: "top-center",
         autoClose: 2000,
         });
@@ -202,7 +204,7 @@ function Tool_6() {
     <div style={{height : '100%'}}>
       <div className="container-fluid" style={{height : '90%'}}>
       <div className="row align-items-center" style={{height : '10vh',fontFamily:'arial', fontSize:'1.2vw'}}>
-      <div className=" fw-bold">Set Theory Relations - RHS</div>
+      <div className=" fw-bold">{t("line-4")}</div>
       </div>
       <div className="row">
         <div className="col-3">

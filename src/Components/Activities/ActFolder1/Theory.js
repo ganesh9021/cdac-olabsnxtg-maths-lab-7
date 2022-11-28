@@ -9,8 +9,10 @@ import AUB from "../../../Img/results/AUB.png";
 import AUC from "../../../Img/results/AUC.png";
 import AUBIAUC from "../../../Img/results/(AUB)I(AUC).png";
 import { useNavigate } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 
 const Theory = () => {
+  const { t, i18n } = useTranslation();
   const navigate = useNavigate();
   const onBack = () => {
     navigate(-1);
@@ -47,77 +49,61 @@ const Theory = () => {
             style={{ height: "100%" }}
           >
             <div className="my-5" style={{ width: "93%" }}>
-              <h6 className="">Objective</h6>
+              <h6 className="fw-bolder">{t("obj")}</h6>
               <p>
-                To verify distributive law for three given non-empty sets A, B,
-                and C, that is, A∪(B∩C) = (A∪B)∩(A∪C)
+              {t("obj_content")} A∪(B∩C) = (A∪B)∩(A∪C)
               </p>
-              <h6>Distributive Law </h6>
+              <h6 className="fw-bolder">{t("theory-1")}</h6>
               <ul>
                 <li>
-                  Distributive Law states that the sum and product remain at the
-                  same value even when the order of the elements is altered.
+                {t("theory-2")}
                 </li>
                 <li>
-                  We will see the distributive property of sets using the Venn
-                  diagram. Before starting with the distributive property. Let's
-                  see some basic concepts of set theory.
+                {t("theory-3")}   
                 </li>
                 <li>
-                  Distributive laws for three given non-empty sets A, B, and C,
-                  that is, A∪(B∩C) = (A∪B)∩(A∪C)
+                {t("obj_content")} A∪(B∩C) = (A∪B)∩(A∪C)
                 </li>
               </ul>
-              <h6>Venn Diagram</h6>
+              <h6>{t("theory-4")}</h6>
               <ul>
                 {" "}
                 <li>
-                  A Venn diagram in math is used in logic theory and set theory
-                  to show various sets of data and their relationship with each
-                  other.
+                {t("theory-5")}   
                 </li>
               </ul>
-              <h6>Set Theory</h6>
+              <h6 className="fw-bolder">{t("title")}</h6>
               <ul>
                 {" "}
                 <li>
-                  Set Theory is a branch of mathematical logic where we learn
-                  sets and their properties. A set is a collection of objects or
-                  groups of objects.
+                {t("theory-6")}
                 </li>
                 <li>
-                  These objects are often called elements or members of a set.
-                  For example, a group of players in a cricket team is a set.
+                {t("theory-7")}
                 </li>
               </ul>
 
-              <h6>Prerequisite Knowledge</h6>
-              <h6>Null Set</h6>
+              <h6 className="fw-bolder">{t("theory-8")}</h6>
+              <h6 className="fw-bolder">{t("theory-9")}</h6>
               <p>
-                In mathematical sets, the null set, also called the empty set,
-                is the set that does not contain anything.
+              {t("theory-10")}
               </p>
-              <h6>Non-Empty Set</h6>
+              <h6 className="fw-bolder">{t("theory-11")}</h6>
               <ul>
                 <li>
-                  A nonempty set is a set containing one or more elements. Any
-                  set other than the empty set is called a non-empty set.
-                  Nonempty sets are sometimes also called nonvoid sets.
+                {t("theory-12")}
                 </li>
                 <li>
-                  A non-empty set containing a single element is called a
-                  singleton set.
+                {t("theory-13")}
                 </li>
               </ul>
-              <h6>Union</h6>
+              <h6 className="fw-bolder">{t("theory-14")}</h6>
               <p>
-                The union of two sets A and B is the set of all those elements
-                which are either in A or B, i.e. A ∪ B
+              {t("theory-15")}
               </p>
-              <h6>Intersection</h6>
+              <h6 className="fw-bolder">{t("theory-16")}</h6>
               <p>
-                The intersection of two sets A and B is the set of all common
-                elements. The intersection of these two sets is denoted by A∩B.
+              {t("theory-17")}
               </p>
               <div style={{ fontFamily: "arial", fontSize: "1.2vw" }}>
                 <div className="row" style={{ height: "25vh" }}>

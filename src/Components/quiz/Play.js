@@ -30,10 +30,24 @@ import QuitExamAlert from "./QuitExamAlert";
 import ExamFinalScoreStats from "./ExamFinalScoreStats";
 import Headcomp from "../MajorComponents/Headcomp";
 import "../MajorComponents/Mid.css";
+import { Translation } from "react-i18next";
+import questionsHindi from '../../questions_hindi.json'
+import questionsEnglish from '../../questions_english.json'
 
 class Play extends React.Component {
   constructor(props) {
     super(props);
+
+    if (this.props.lang == "hn") {
+      questions = questionsHindi;
+
+      //console.log("inside play.js assigned hindi json file "+this.props.lang )
+    } else if (this.props.lang == "en") {
+      questions = questionsEnglish;
+      //console.log("inside play.js assigned english json file "+this.props.lang )
+    } 
+
+
     this.state = {
       counter: 0,
       questions,

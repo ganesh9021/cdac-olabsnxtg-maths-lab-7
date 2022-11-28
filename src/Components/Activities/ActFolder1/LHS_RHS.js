@@ -5,11 +5,13 @@ import BackNextBar from "./BackNextBar";
 import { rezContext } from "./Act1startpage";
 import { toast } from "react-toastify";
 import Button from "@mui/material/Button";
+import { useTranslation } from "react-i18next";
 
 const LHS_RHS = () => {
     const { setArv } = useContext(rezContext);
     const { setToolvisible } = useOutletContext();
     const navigate = useNavigate();
+    const { t, i18n } = useTranslation();
     
     const LHS = () => {
       setArv(3);
@@ -23,7 +25,7 @@ const LHS_RHS = () => {
       }
       else 
       {
-        toast.error("Please click on LHS first..!", {
+        toast.error(`${t("toaster-2")}`, {
           position: "top-center",
           autoClose: 2000,
         });
@@ -39,7 +41,7 @@ const LHS_RHS = () => {
       else 
       {
         document.getElementById("btn").disabled = true;
-        toast.error("You haven't generate all the relations..!", {
+        toast.error(`${t("toaster-1")}`, {
           position: "top-center",
           autoClose: 2000,
           });
@@ -103,7 +105,7 @@ const LHS_RHS = () => {
     <div style={{height : '100%',fontFamily:'arial'}}>
       <div className="container-fluid" style={{height : '90%'}}>
       <div className="row justify-content-center align-items-end" style={{fontSize:'1.2vw',height:'20%'}}>
-        <div className="d-flex justify-content-center text-danger"><b>To verify the distributive law for three non-empty sets A, B, and C:</b></div>
+        <div className="d-flex justify-content-center text-danger"><b>{t("obj_content")}:</b></div>
         <div className="d-flex justify-content-center text-danger"><b>A∪(B∩C) = (A∪B)∩(A∪C)</b></div>
       </div>
       <div className="row" style={{height : '20vh',fontSize:'1.2vw'}}>
@@ -151,7 +153,7 @@ const LHS_RHS = () => {
         <div className="d-flex justify-content-center align-items-end" >
           {/* <div id="btn" className="btn btn-primary btn-sm" onClick={Result}>Result</div> */}
           <Button id="btn" autoFocus variant="contained" onClick={Result}>
-            Result
+            {t("result")}
           </Button>
         </div>
       </div>

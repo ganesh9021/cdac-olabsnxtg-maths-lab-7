@@ -4,18 +4,20 @@ import { useNavigate, useOutletContext } from "react-router-dom";
 import BackNextBar from "./BackNextBar";
 import { toast } from "react-toastify";
 import { rezContext } from "./Act1startpage";
-import res_image from "../../../Img/res_image.png";
+
 import { Button } from "@mui/material";
+import { useTranslation } from "react-i18next";
 
 
 function Res_6() {
+  const { t, i18n } = useTranslation();
   const canvas = useRef();
   const navigate = useNavigate();
   const { setArv } = useContext(rezContext);
   const { setToolvisible } = useOutletContext();
 
   useEffect(() => {
-    toast.success("Relation (AUB)∩(AUC) created successfully...!", {
+    toast.success(`${t("toaster-11")}`, {
       position: "top-center",
       autoClose: 2000,
     });
@@ -165,7 +167,7 @@ function Res_6() {
     <div style={{height : '100%'}}>
       <div className="container-fluid" style={{height : '90%'}}>
       <div className="row align-items-center" style={{height : '10vh',fontFamily:'arial', fontSize:'1.2vw'}}>
-      <div className=" fw-bold">Set Theory Relations - RHS</div>
+      <div className=" fw-bold">{t("line-4")}</div>
       </div>
       <div className="row">
         <div className="col-3">
@@ -202,7 +204,7 @@ function Res_6() {
       <div className="row" style={{height:'40%'}}>
         <div className="d-flex justify-content-center align-items-end" >
           <Button autoFocus variant="contained" onClick={res6_withno}>
-            Set With Numbers
+          {t("btn-3")}
           </Button>
         </div>
       </div>
