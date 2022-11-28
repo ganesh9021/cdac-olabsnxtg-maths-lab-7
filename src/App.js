@@ -1,5 +1,7 @@
 import Activity from "./Components/Activity";
-import { Route, Routes } from "react-router-dom";
+import { Route, Routes, useParams } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { useTranslation } from "react-i18next";
 import Activity2 from "./Components/Activities/ActFolder2/Activity2";
 import Error from "./Components/Error";
 import LetsVerify from "./Components/Activities/ActFolder1/LetsVerify";
@@ -38,11 +40,34 @@ import Res_6_Copy from "./Components/Activities/ActFolder1/Res_6_Copy";
 import Res1_WithNumbers from "./Components/Activities/ActFolder1/Res1_WithNumbers";
 import Play from "./Components/quiz/Play";
 import QuizInstructions from "./Components/quiz/QuizInstructions";
+import Language from "./Language";
+import { setLangStore } from "./store/Store";
+import { useEffect } from "react";
 
 
 function App() {
+
+  const { id } = useParams();
+  const { t, i18n } = useTranslation();
+  const { firstStore } = useSelector((state) => state);
+  let dispatch = useDispatch();
+
+  useEffect(() => {
+    if (id == "en") {
+      alert("in app en : ", id);
+      i18n.changeLanguage("en");
+      dispatch(setLangStore("en"));
+    }
+    if (id == "hn") {
+      alert("in app hn : ", id);
+      i18n.changeLanguage("hn");
+      dispatch(setLangStore("hn"));
+    }
+  }, []);
+
   return (
     <Routes>
+      <Route path="/lang=:id" element={<App />} />
       <Route path="/" element={<Activity7 />} />
 
       <Route path="/activity7" element={<Activity7 />} />
@@ -95,7 +120,7 @@ function App() {
       
       <Route path="/letusverify/sqtheory" element={<Theory />} />
       <Route path="/letusverify/instructions" element={<QuizInstructions />} />
-      <Route path="/letusverify/quiz" element={<Play />} />
+      <Route path="/letusverify/quiz" element={<Play lang={firstStore.lang}/>} />
       <Route path="/letusverify/help" element={<Help />} />
 
       <Route path="/activity2" element={<Activity2 />} />

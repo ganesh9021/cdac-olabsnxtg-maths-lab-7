@@ -3,8 +3,10 @@ import { Link } from "react-router-dom";
 import exp1 from "../../Superscript";
 import backg from "../../../Img/backg.jpg";
 import "bootstrap/dist/css/bootstrap.min.css";
+import { useTranslation } from "react-i18next";
 
 const Activity7 = () => {
+  const { t, i18n } = useTranslation();
   return (
     <div
       className="flex-column d-flex justify-content-center align-items-center"
@@ -30,22 +32,20 @@ const Activity7 = () => {
           className="d-flex justify-content-center align-items-center font-Arial fw-bolder "
           style={{ height: "15vh", color: "#ac3843" ,fontSize:'2.5vw',fontFamily:'arial'}}
         >
-          <b>Set Theory:&nbsp;</b> {exp1()}
+          <b>{t("title")}:&nbsp;</b> {exp1()}
         </div>
         <div className="" style={{ height: "20vh" }}>
           <div
             className="d-flex justify-content-center align-items-end fw-bolder"
             style={{ height: "10vh", fontSize : '2vw' }}
           >
-            Objective:
+            {t("obj")}:
           </div>
           <div
             className="d-flex justify-content-center align-items-center fw-normal text-center"
             style={{ height: "10vh",fontSize : '1.8vw' }}
           >
-            To verify distributive law for three
-given non-empty sets A, B and C, that
-is,<br /> 
+            {t("obj_content")}<br /> 
             {exp1()}
           </div>
         </div>
@@ -54,15 +54,15 @@ is,<br />
             className="d-flex justify-content-center align-items-end fw-bolder"
             style={{ height: "10vh",fontSize : '2vw' }}
           >
-            Learning Outcome:
+            {t("Learning Outcome")}:
           </div>
           <div
             className="d-flex justify-content-center align-items-start fw-normal text-center"
             style={{ height: "20vh" ,fontSize : '1.5vw'}}
           >
             <ol>
-              <li>The student will understand the concepts of distributive law in set theory.</li>
-              <li>The student will able to use distributive law wherever required efficiently.</li>
+              <li>{t("Learning Outcome-1")}.</li>
+              <li>{t("Learning Outcome-2")}.</li>
             </ol>
           </div>
         </div>
@@ -82,7 +82,7 @@ is,<br />
                 boxShadow: "0px 7px 4px rgba(0, 0, 0, 0.25)",
               }}
             >
-              Start
+              {t("start")}
             </div>
           </Link>
         </div>

@@ -13,6 +13,8 @@ import DialogActions from "@mui/material/DialogActions";
 import IconButton from "@mui/material/IconButton";
 import Typography from "@mui/material/Typography";
 import letusverify from "../../Img/letusverify.png";
+import { useTranslation } from "react-i18next";
+import { t } from "i18next";
 
 const BootstrapDialog = styled(Dialog)(({ theme }) => ({
   "& .MuiDialogContent-root": {
@@ -24,6 +26,7 @@ const BootstrapDialog = styled(Dialog)(({ theme }) => ({
 }));
 
 const BootstrapDialogTitle = (props) => {
+  const { t, i18n } = useTranslation();
   const { children, onClose, ...other } = props;
 
   return (
@@ -79,8 +82,7 @@ const Startact = () => {
         style={{ height: "50%", fontSize: "1.5vw" }}
       >
         <span className="">
-          <b>Objective:</b> To verify distributive law for three given non-empty
-          sets A, B and C, that is, <br /> {exp1()}
+          <b>{t("obj")}:</b> {t("obj_content")} <br /> {exp1()}
         </span>
       </div>
       <div
@@ -121,33 +123,31 @@ const Startact = () => {
               className="fw-bold"
               style={{ fontSize: "1.2vw" }}
             >
-              What are we going to learn?
+              {t("instr_popup-1")}
             </BootstrapDialogTitle>
             <DialogContent dividers>
               <Typography gutterBottom>
                 <ul style={{ fontSize: "1.2vw" }}>
                   <li>
                     {" "}
-                    We are going to verify the distributive law of set theory
-                    with three non-empty sets: A, B, and C.
+                    {t("instr_popup-2")}
                     <br />
-                    <u>Distributive law is A∪(B∩C) = (A∪B)∩(A∪C).</u>
+                    <u>{t("instr_popup-3")}</u>
                   </li>
                 </ul>
               </Typography>
               <Typography gutterBottom>
                 <ul style={{ fontSize: "1.2vw" }}>
                   <li>
-                    To verify the distributive law of set theory, we need to
-                    verify the relations of LHS and RHS. <br />
-                    For LHS the different relations are:{" "}
+                  {t("instr_popup-4")} <br />
+                  {t("instr_popup-5")}:{" "}
                   </li>
                   <ol>
-                    <li>Set A,</li>
+                    <li>{t("instr_popup-6")} A,</li>
                     <li>B∩C </li>
                     <li>A∪(B∩C)</li>
                   </ol>
-                  For RHS the different relations are:
+                  {t("instr_popup-7")}:
                   <ol>
                     <li>(A∪B) </li>
                     <li>(A∪C)</li>
@@ -166,7 +166,7 @@ const Startact = () => {
                 size="small"
                 onClick={onForward}
               >
-                ok
+                {t("ok")}
               </Button>
               <Button
                 variant="contained"
@@ -174,7 +174,7 @@ const Startact = () => {
                 size="small"
                 onClick={onBackward}
               >
-                Cancel
+                {t("cancel")}
               </Button>
             </DialogActions>
           </BootstrapDialog>
