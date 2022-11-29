@@ -5,6 +5,7 @@ import {Modal} from 'react-bootstrap'
 import { Navigate } from "react-router";
 import { stepConnectorClasses } from "@mui/material";
 import trophy from "../../Img/QuizImage/trophy.png"
+import { Translation } from "react-i18next";
 
 class ExamFinalScoreStats extends React.Component {
 
@@ -124,12 +125,12 @@ class ExamFinalScoreStats extends React.Component {
             centered
           >
           <Modal.Header closeButton>
-            <Modal.Title>Result</Modal.Title>
+            <Modal.Title><Translation>{(t) => t("result")}</Translation></Modal.Title>
           </Modal.Header>
           <Modal.Body centered>
 
             {/* <h5 style={{textAlign:"center"}}> You Scored : {score} out of {totalMarks} </h5> */}
-            <h5 style={{textAlign:"center"}}> You Scored: {score} out of {noOfQuestion} </h5>
+            <h5 style={{textAlign:"center"}}> <Translation>{(t) => t("score")}</Translation>: {score} out of {noOfQuestion} </h5>
 
         <div style={{ justifyContent:"center", display: "block", textAlign:"center" }}>
 
@@ -138,28 +139,28 @@ class ExamFinalScoreStats extends React.Component {
                     alt="cannot load img"
             />
 
-            {score/totalMarks == 1 && <h5> Congratulations ... !!! </h5>}
+            {score/totalMarks == 1 && <h5> <Translation>{(t) => t("congo")}</Translation> </h5>}
 
             <table class="table" style={{width:"80%", marginLeft:"auto", marginRight:"auto", textAlign:"left"}}>
             <thead class="table-dark" style={{textAlign:"center"}}>
-                <tr> <th colspan="3" scope="col"># Total no of Questions: {noOfQuestion}</th> </tr>
+                <tr> <th colspan="3" scope="col">#<Translation>{(t) => t("totalquestions")}</Translation>: {noOfQuestion}</th> </tr>
             </thead>
             <tbody>
                 <tr class="table-info">
                     <th scope="row">1</th>
-                    <td>Correct Answers</td> <td>{noOfCorrectAnswers}</td>
+                    <td><Translation>{(t) => t("correctanswers")}</Translation></td> <td>{noOfCorrectAnswers}</td>
                 </tr>
                 <tr class="table-danger">
                     <th scope="row">2</th>
-                    <td>Wrong Answers</td> <td>{noOfWrongAttempts}</td>
+                    <td><Translation>{(t) => t("wronganswers")}</Translation></td> <td>{noOfWrongAttempts}</td>
                 </tr>
                 <tr class="table-warning">
                     <th scope="row">3</th>
-                    <td>Partial Attempts</td> <td>{noOfPartialAttempts}</td>
+                    <td><Translation>{(t) => t("partialattempts")}</Translation></td> <td>{noOfPartialAttempts}</td>
                 </tr>                
                 <tr class="table-light">
                     <th scope="row">4</th>
-                    <td>Unattempted</td>
+                    <td><Translation>{(t) => t("unattempted")}</Translation></td>
                     <td>{noOfUnattempts}</td>
                 </tr>
                 <tr class="table-light">
@@ -169,8 +170,8 @@ class ExamFinalScoreStats extends React.Component {
                 </tr>
                 <tr class="table-primary">
                     <th scope="row"></th>
-                    <td>Time Taken</td>
-                    <td>{time.minutes} minutes:{time.seconds} seconds</td>
+                    <td><Translation>{(t) => t("timetaken")}</Translation></td>
+                    <td>{time.minutes} <Translation>{(t) => t("min")}</Translation>:{time.seconds} <Translation>{(t) => t("seconds")}</Translation></td>
                 </tr>
             </tbody>
             </table>
@@ -182,7 +183,7 @@ class ExamFinalScoreStats extends React.Component {
               onClick={() => {
                                 this.handleClose(); 
                         }}    >   
-              ok
+              <Translation>{(t) => t("ok")}</Translation>
             </Button>
           </Modal.Footer>
         </Modal>

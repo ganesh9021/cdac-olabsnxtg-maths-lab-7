@@ -57,7 +57,7 @@ const Activity7 = () => {
             {t("Learning Outcome")}:
           </div>
           <div
-            className="d-flex justify-content-center align-items-start fw-normal text-center"
+            className="d-flex justify-content-center align-items-start fw-normal text-start"
             style={{ height: "20vh" ,fontSize : '1.5vw'}}
           >
             <ol>

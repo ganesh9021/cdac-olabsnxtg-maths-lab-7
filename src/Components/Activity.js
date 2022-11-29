@@ -2,8 +2,10 @@ import React from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import ActivityComp from "./ActivityComp";
 import * as expre from "./Superscript";
+import { useTranslation } from "react-i18next";
 
 function Activity() {
+  const { t, i18n } = useTranslation();
   return (
     <>
       <div
@@ -27,7 +29,7 @@ function Activity() {
               fontStyle: "normal",
             }}
           >
-            Set Theory
+            {t("title")}
           </div>
         </div>
 

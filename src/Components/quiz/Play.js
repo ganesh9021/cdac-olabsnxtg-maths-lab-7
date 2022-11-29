@@ -284,7 +284,7 @@ class Play extends React.Component {
 
   handleSubmitClick = (e) => {
     if (this.state.optionChoosen.toLowerCase().trim().length === 0) {
-      toast.error("Please select option !!!", {
+      toast.error(<Translation>{(t) => t("selectoption")}</Translation>, {
         position: "top-center",
         autoClose: 700,
       });
@@ -306,7 +306,7 @@ class Play extends React.Component {
         const { currentQuestion } = this.state;
         navigator.vibrate(1000); // vibrate screen on wrong answer
 
-        toast.error("Wrong Answer !!!", {
+        toast.error(<Translation>{(t) => t("alert-5")}</Translation>, {
           position: "top-center",
           autoClose: 500,
         });
@@ -419,7 +419,7 @@ class Play extends React.Component {
   };
 
   correctAnswer = () => {
-    toast.success("Correct Answer !!!", {
+    toast.success(<Translation>{(t) => t("alert-6")}</Translation>, {
       position: "top-center",
       autoClose: 500,
     });
@@ -527,7 +527,8 @@ class Play extends React.Component {
       const { currentQuestion } = this.state;
 
       navigator.vibrate(1000); // vibrate screen on wrong answer
-      toast.error("Wrong Answer !!!", {
+      toast.error(
+        <Translation>{(t) => t("alert-5")}</Translation>, {
         position: "top-center",
         autoClose: 500,
       });
@@ -584,17 +585,17 @@ class Play extends React.Component {
       this.state.currentQuestion.noOfAttempts
     ) {
       alert(
-        "Explanation : " +
+        <Translation>{(t) => t("alert-1")}</Translation> +
           "\n\n" +
           explantion +
           "\n\n" +
-          "You Reached Maximum Attempts !!" +
+          <Translation>{(t) => t("alert-2")}</Translation> +
           "\n\n" +
-          "Please Attempt Next Question"
+          <Translation>{(t) => t("alert-3")}</Translation>
       );
     } else {
       alert(
-        "Explanation : " + "\n\n" + explantion + "\n\n" + "Please Try Again !!"
+        <Translation>{(t) => t("alert-1")}</Translation> + "\n\n" + explantion + "\n\n" + <Translation>{(t) => t("alert-4")}</Translation>
       );
     }
   };
@@ -634,7 +635,7 @@ class Play extends React.Component {
             }}
           >
             <Fragment>
-              <title>Welcome to Quiz</title>
+              <title><Translation>{(t) => t("quiz-10")}</Translation></title>
               <Fragment>
                 <audio id="correct-sound" src={correctNotification}></audio>
                 <audio id="wrong-sound" src={wrongNotification}></audio>
@@ -652,7 +653,7 @@ class Play extends React.Component {
                 <div className="lifeline-container fw-bold">
                   <p>
                     {" "}
-                    <span>Question: </span>{" "}
+                    <span><Translation>{(t) => t("que")}</Translation>: </span>{" "}
                     <span className="lifeline"></span>{" "}
                     <span className="text-success">
                       {" "}
@@ -672,13 +673,13 @@ class Play extends React.Component {
                 <div className="lifeline-container text-success fw-bold">
                   <p>
                     {" "}
-                    <span className="text-black"> Question Marks: </span>{" "}
+                    <span className="text-black"> <Translation>{(t) => t("que-1")}</Translation>: </span>{" "}
                     <span className="lifeline"></span>{" "}
                     <span> {currentQuestion.maxMarks} </span>{" "}
                   </p>
                   <p>
                     {" "}
-                    <span className="text-black">Score: </span>{" "}
+                    <span className="text-black"><Translation>{(t) => t("que-2")}</Translation>: </span>{" "}
                     <span>{score}</span>{" "}
                   </p>
                 </div>
@@ -952,14 +953,14 @@ class Play extends React.Component {
                     onClick={this.handleButtonClick}
                   >
                     <FaAngleDoubleLeft size={11} />
-                    Previous
+                    <Translation>{(t) => t("que-3")}</Translation>
                   </button>
 
                   <button
                     onClick={this.handleSubmitClick}
                     disabled={questionTwiceWrongAttempt ? true : false}
                   >
-                    Submit
+                    <Translation>{(t) => t("que-4")}</Translation>
                   </button>
 
                   <button
@@ -969,12 +970,12 @@ class Play extends React.Component {
                     id="next-button"
                     onClick={this.handleButtonClick}
                   >
-                    Next
+                    <Translation>{(t) => t("que-5")}</Translation>
                     <FaAngleDoubleRight size={11} />
                   </button>
                   {currentQuestionIndex + 1 === numberOfQuestions ? (
                     <button id="exit-button" onClick={this.handleButtonClick}>
-                      Score Card
+                    <Translation>{(t) => t("que-6")}</Translation>
                     </button>
                   ) : null}
                   {/*<button id="exit-button" onClick={this.handleButtonClick}>Quit</button>*/}

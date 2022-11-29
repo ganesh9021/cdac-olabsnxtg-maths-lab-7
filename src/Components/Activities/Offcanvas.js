@@ -100,7 +100,7 @@ const Offcanvas = () => {
                   className=" d-flex justify-content-center align-items-center p-3"
                   style={{ height: "33%" }}
                 >
-                  <LightTooltip title="Theory" placement="left">
+                  <LightTooltip title={t("Theory")} placement="left">
                     <Link to="/letusverify/sqtheory">
                       <motion.img
                         whileHover={{ scale: 1.1 }}
@@ -122,7 +122,7 @@ const Offcanvas = () => {
                   className=" d-flex justify-content-center align-items-center p-3"
                   style={{ height: "33%" }}
                 >
-                  <LightTooltip title="Viva voce" placement="left">
+                  <LightTooltip title={t("Vivavice")} placement="left">
                     <div onClick={openDialog}>
                       <motion.img
                         whileHover={{ scale: 1.1 }}
@@ -167,7 +167,7 @@ const Offcanvas = () => {
                   className=" d-flex justify-content-center align-items-center p-3"
                   style={{ height: "34%" }}
                 >
-                  <LightTooltip title="Help" placement="left">
+                  <LightTooltip title={t("help")} placement="left">
                     <Link to="/letusverify/help">
                       <motion.img
                         whileHover={{ scale: 1.1 }}

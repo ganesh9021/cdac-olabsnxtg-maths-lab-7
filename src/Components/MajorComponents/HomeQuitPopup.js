@@ -8,6 +8,7 @@ import {
 } from "@material-ui/core";
 
 import Slide from '@mui/material/Slide';
+import { useTranslation } from "react-i18next";
 
 
 const Transition = React.forwardRef(function Transition(props, ref) {
@@ -15,11 +16,12 @@ const Transition = React.forwardRef(function Transition(props, ref) {
 });
 
 const HomeQuitPopup = ({ openDialog, onAgree, closeDialog }) => {
+  const { t, i18n } = useTranslation();
   return (
     <>
       <Dialog open={openDialog} TransitionComponent={Transition}>
         <DialogContent>
-          <Typography>Are you sure you want to quit?</Typography>
+          <Typography>{t("quit")}</Typography>
         </DialogContent>
         <DialogActions style={{ justifyContent: "space-around" }}>
           <Button
@@ -28,7 +30,7 @@ const HomeQuitPopup = ({ openDialog, onAgree, closeDialog }) => {
             size="small"
             onClick={onAgree}
           >
-            Yes
+            {t("yes")}
           </Button>
           <Button
             variant="contained"
@@ -36,7 +38,7 @@ const HomeQuitPopup = ({ openDialog, onAgree, closeDialog }) => {
             size="small"
             onClick={closeDialog}
           >
-            Cancel
+            {t("cancel")}
           </Button>
         </DialogActions>
       </Dialog>

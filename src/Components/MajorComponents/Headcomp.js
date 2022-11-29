@@ -6,8 +6,10 @@ import HomeQuitPopup from "../../Components/MajorComponents/HomeQuitPopup";
 import { useNavigate } from "react-router-dom";
 //import Offcanvas from "./Offcanvas";
 import Offcanvas from "../Activities/Offcanvas";
+import { useTranslation } from "react-i18next";
 
 const Headcomp = ({ sidebarvisible }) => {
+  const { t, i18n } = useTranslation();
   const [showDialog, setShowDialog] = useState(false);
 
   const navigate = useNavigate();
@@ -56,7 +58,7 @@ const Headcomp = ({ sidebarvisible }) => {
           }}
         >
           <div className=" fw-bold" style={{ fontSize: "1.4vw" }}>
-            Set Theory:{" "}
+          {t("title")}:{" "}
             <span className="fw-normal">{expre.default()}</span>
           </div>
         </div>

@@ -2,6 +2,7 @@ import React, { Fragment } from "react";
 import { Button } from "@material-ui/core";
 import parse from "html-react-parser";
 import {Modal} from 'react-bootstrap'
+import { Translation } from "react-i18next";
 
 class QuestionExplanation extends React.Component {
 
@@ -36,7 +37,7 @@ class QuestionExplanation extends React.Component {
           onHide={this.handleClose} centered>
         
         <Modal.Header closeButton>
-          <Modal.Title>Explanation</Modal.Title>
+          <Modal.Title><Translation>{(t) => t("alert-1")}</Translation></Modal.Title>
          </Modal.Header>
 
         <Modal.Body>
@@ -51,19 +52,19 @@ class QuestionExplanation extends React.Component {
 
             {noOfAttemptList[currentQuestionIndex] >= currentQuestion.noOfAttempts ? (
                 <div className="DisplayExplanationMssg">
-                    <p>You Reached Maximum Attempts !!</p>
-                    <p>Please Attempt Next Question</p>
+                    <p><Translation>{(t) => t("alert-2")}</Translation></p>
+                    <p><Translation>{(t) => t("alert-3")}</Translation></p>
                 </div>
                 ) : (
                 <div className="DisplayExplanationMssg">
-                    <p>Please Try Again !! !!</p>
+                    <p><Translation>{(t) => t("alert-4")}</Translation></p>
                 </div>
             )}
           </Modal.Body>
 
           <Modal.Footer>
             <Button variant="contained" color="primary"  size="small" onClick={this.handleClose}>
-              Close    </Button>
+            <Translation>{(t) => t("Close")}</Translation>    </Button>
           </Modal.Footer>
         </Modal>
         

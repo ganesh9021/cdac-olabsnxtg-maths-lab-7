@@ -2,6 +2,7 @@ import React, { Fragment } from "react";
 import { Button } from "@material-ui/core";
 import parse from "html-react-parser";
 import {Modal} from 'react-bootstrap'
+import { Translation } from "react-i18next";
 
 class QuitExamAlert extends React.Component {
 
@@ -41,17 +42,17 @@ class QuitExamAlert extends React.Component {
           centered
         >
           <Modal.Body>
-            <h6>Are you sure you want to quit?</h6>
+            <h6><Translation>{(t) => t("quit")}</Translation></h6>
           </Modal.Body>
 
           <Modal.Footer style={{ justifyContent: "space-around" }}>
             <Button variant="contained" color="primary" size="small"
               onClick={() => {
                 this.handleYesQuit();
-            }}  >   Yes   </Button>
+            }}  >   <Translation>{(t) => t("yes")}</Translation>   </Button>
 
             <Button variant="contained" color="secondary" size="small"
-              onClick={() => {  this.handleClose(); }}  >   Cancel    </Button>
+              onClick={() => {  this.handleClose(); }}  >   <Translation>{(t) => t("cancel")}</Translation>    </Button>
 
           </Modal.Footer>
         </Modal>
