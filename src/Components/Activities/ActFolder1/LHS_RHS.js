@@ -149,7 +149,7 @@ const LHS_RHS = () => {
           </div> */}
         </div>
       </div>
-      <div className="row" style={{height : '45%'}}>
+      <div className="row" style={{height : '35%'}}>
         <div className="d-flex justify-content-center align-items-end" >
           {/* <div id="btn" className="btn btn-primary btn-sm" onClick={Result}>Result</div> */}
           <Button id="btn" autoFocus variant="contained" onClick={Result}>

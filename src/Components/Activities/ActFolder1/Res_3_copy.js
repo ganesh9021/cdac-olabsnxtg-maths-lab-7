@@ -1,93 +1,22 @@
 
-import React, { useRef, useEffect, useContext } from "react";
-import { useNavigate, useOutletContext } from "react-router-dom";
-import BackNextBar from "./BackNextBar";
-import { toast } from "react-toastify";
-import { rezContext } from "./Act1startpage";
-import { Button } from "@mui/material";
-//import res_image from "../../../Img/res_image.png";
-
+import React, { useRef, useEffect } from "react";
 
 function Res_3_Copy() {
 
-  const navigate = useNavigate();
   const canvas = useRef();
-  const { setArv } = useContext(rezContext);
-  const { setToolvisible } = useOutletContext();
+ 
 
-  // const Component = () => {
-  //   localStorage.setItem("A",4);
-  //   setArv(2);
-  //   navigate("/activity7/letusverify/act1startpage/lhs_rhs");
-  // }
-  const onBack = () => {
-    navigate("/activity7/letusverify/act1startpage/lhs_rhs/tool_3/res_3");
-    setArv(7);
-    setToolvisible("visible");
-  };
-
-  const onNext = (e) => {
-    navigate("/activity7/letusverify/act1startpage/lhs_rhs");
-    setToolvisible("visible");
-    setArv(1);
-  };
-
-  
   let ctx = null;
   const boxes = [
      { x: 250, y: 75, r: 50, s: 0, e: 2 * Math.PI, shapeName : 'A'},
-    // { x: 230, y: 75, r: 50, s: 0, e: 2 * Math.PI, shapeName : 'B'},
-    // { x: 200, y: 130, r: 50, s: 0, e: 2 * Math.PI, shapeName : 'C'},
   ];
   
   useEffect(() => {
     const canvasEle = canvas.current;
-    canvasEle.width = 400;
+    canvasEle.width = 300;
     canvasEle.height = 200;
     ctx = canvasEle.getContext("2d");
   }, []);
-
-  // useEffect(() => {
-  //   if(localStorage.getItem("A") === '2')
-  //   {
-  //     document.getElementById("cb1").checked = true;
-  //   }
-  //   if(localStorage.getItem("A") === '3')
-  //   {
-  //     document.getElementById("cb1").checked = true;
-  //     document.getElementById("cb2").checked = true;
-  //   }
-  //   if(localStorage.getItem("A") === '4')
-  //   {
-  //     document.getElementById("cb1").checked = true;
-  //     document.getElementById("cb2").checked = true;
-  //     document.getElementById("cb3").checked = true;
-  //   }
-  //   if(localStorage.getItem("A") === '5')
-  //   {
-  //     document.getElementById("cb1").checked = true;
-  //     document.getElementById("cb2").checked = true;
-  //     document.getElementById("cb3").checked = true;
-  //     document.getElementById("cb4").checked = true;
-  //   }
-  //   if(localStorage.getItem("A") === '6')
-  //   {
-  //     document.getElementById("cb1").checked = true;
-  //     document.getElementById("cb2").checked = true;
-  //     document.getElementById("cb3").checked = true;
-  //     document.getElementById("cb4").checked = true;
-  //     document.getElementById("cb5").checked = true;
-  //   }
-  //   if(localStorage.getItem("A") === '7')
-  //   {
-  //     document.getElementById("cb1").checked = true;
-  //     document.getElementById("cb2").checked = true;
-  //     document.getElementById("cb3").checked = true;
-  //     document.getElementById("cb4").checked = true;
-  //     document.getElementById("cb5").checked = true;
-  //     document.getElementById("cb6").checked = true;
-  //   }
-  // },[])
 
   useEffect(() => {
     draw();
@@ -104,47 +33,45 @@ function Res_3_Copy() {
     ctx.textAlign = 'center';
     ctx. textBaseline = 'middle';
     ctx.fillStyle = 'black';  
-    ctx.fillText('U', 390, 10); 
+    ctx.fillText('U', 290, 10); 
     boxes.map((info) => drawFillCircle(info));
   };
 
   const drawFillCircle = (info, style = {}) => {
-    // const { x, y, r, s, e, shapeName} = info;
-    // const { backgroundColor = 'rgba(201, 50, 48, 0.55)'} = style;
 
     //Circle A
     ctx.beginPath();
     ctx.fillStyle = 'rgba(255, 39, 77, 0.4)';
-    ctx.arc(250, 75, 50, 0,2 * Math.PI,true);
+    ctx.arc(150, 75, 50, 0,2 * Math.PI,true);
     ctx.fill();
 
     //Circle B
     ctx.beginPath();
     ctx.fillStyle = 'rgba(73, 146, 228, 0.55)';
-    ctx.arc(220, 125, 50, 0.9,5.32,true);
+    ctx.arc(120, 125, 50, 0.9,5.32,true);
     ctx.fill();
 
     //Circle C
     ctx.beginPath();
     ctx.fillStyle = 'rgba(73, 146, 228, 0.55)';
-    ctx.arc(280,125,50,2.1816667,4.04);
+    ctx.arc(180,125,50,2.1816667,4.04);
     ctx.fill();
 
     //Border of circle B
     ctx.beginPath();
-    ctx.arc(220, 125, 50, 0, 2 * Math.PI);
+    ctx.arc(120, 125, 50, 0, 2 * Math.PI);
     ctx.strokeStyle = "black";
     ctx.stroke();
 
     //border of circle C
     ctx.beginPath();
-    ctx.arc(280, 125, 50, 0, 2 * Math.PI);
+    ctx.arc(180, 125, 50, 0, 2 * Math.PI);
     ctx.strokeStyle = "black";
     ctx.stroke();
 
     //border of circle A
     ctx.beginPath();
-    ctx.arc(250, 75, 50, 0, 2 * Math.PI);
+    ctx.arc(150, 75, 50, 0, 2 * Math.PI);
     ctx.strokeStyle = "black";
     ctx.stroke();
 
@@ -153,36 +80,36 @@ function Res_3_Copy() {
     ctx.textAlign = 'center';
     ctx. textBaseline = 'middle';
     ctx.fillStyle = 'Black';  
-    ctx.fillText('A', 250, 75);
+    ctx.fillText('A', 150, 75);
 
     //Text B
     ctx.font = '18px Arial';
     ctx.textAlign = 'center';
     ctx. textBaseline = 'middle';
     ctx.fillStyle = 'Black';  
-    ctx.fillText('B', 220, 125);
+    ctx.fillText('B', 120, 125);
 
     //Text C
     ctx.font = '18px Arial';
     ctx.textAlign = 'center';
     ctx. textBaseline = 'middle';
     ctx.fillStyle = 'Black';  
-    ctx.fillText('C', 280, 125);
+    ctx.fillText('C', 180, 125);
 
     //code for numbers
     ctx.font = '18px Arial';
     ctx.textAlign = 'center';
     ctx. textBaseline = 'middle';
     ctx.fillStyle = 'red';  
-    ctx.fillText('4', 250, 135);
-    ctx.fillText('6', 250, 150);
-    ctx.fillText('5', 220, 100);
-    ctx.fillText('7', 230, 50);
-    ctx.fillText('9', 270, 50);
-    ctx.fillText('8', 280, 100);
-    ctx.fillText('3', 200, 135);
-    ctx.fillText('10', 310, 135);
-    ctx.fillText('2', 280, 160);
+    ctx.fillText('4', 150, 135);
+    ctx.fillText('6', 150, 150);
+    ctx.fillText('5', 120, 100);
+    ctx.fillText('7', 130, 50);
+    ctx.fillText('9', 170, 50);
+    ctx.fillText('8', 180, 100);
+    ctx.fillText('3', 100, 135);
+    ctx.fillText('10',210, 135);
+    ctx.fillText('2', 180, 160);
   };
 
   return (

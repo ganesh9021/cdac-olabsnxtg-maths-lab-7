@@ -1,2 +1,22 @@
 @import './base/_base.css';
 @import './components/_quiz-instructions.css';
+
+.title{
+    font-size: calc(1rem + 1.8vw)
+  }
+ 
+  .title1{
+    font-size: calc(0.9rem + 1.4vw)
+  }
+ 
+  .objective{
+    font-size: calc(0.6rem + 1vw)
+  }
+ 
+   .workbenchTag{
+    font-size: calc(0.5rem + 0.1vw)
+  }
+ 
+  .instructionTag{
+    font-size: calc(0.5rem + 0.1vw)
+  }

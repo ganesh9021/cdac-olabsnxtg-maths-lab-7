@@ -14,7 +14,7 @@ const BackNextBar = ({ setBackward, setForward }) => {
           onClick={setBackward}
           style={{
             height: "100%",
-            marginBottom:"5%"
+            marginBottom:"1%"
           }}
         >
           <img
@@ -22,8 +22,8 @@ const BackNextBar = ({ setBackward, setForward }) => {
             style={{
               backgroundRepeat: "no-repeat",
               backgroundSize: "cover",
-              //maxHeight: "150%",
-              maxWidth: "4.0vw",
+              maxHeight: "150%",
+              maxWidth: "150%",
             }}
             src={back}
             alt="Logo"
@@ -34,14 +34,14 @@ const BackNextBar = ({ setBackward, setForward }) => {
         className=" col-6 d-flex justify-content-center align-items-center"
         style={{}}
       >
-        <Button style={{ height: "100%",marginBottom:"5%" }} onClick={setForward}>
+        <Button style={{ height: "100%",marginBottom:"1%" }} onClick={setForward}>
           <img
             className="img-fluid"
             style={{
               backgroundRepeat: "no-repeat",
               backgroundSize: "cover",
-              //maxHeight: "150%",
-              maxWidth: "4.0vw",
+              maxHeight: "150%",
+              maxWidth: "150%",
             }}
             src={next}
             alt="Logo"
