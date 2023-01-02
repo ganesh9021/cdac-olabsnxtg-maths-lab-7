@@ -79,7 +79,7 @@ const Startact = () => {
     <div className="" style={{ height: "100%" }}>
       <div
         className=" d-flex justify-content-center align-items-center text-center"
-        style={{ height: "50%", fontSize: "1.5vw" }}
+        style={{ height: "50%" }}
       >
         <span className="">
           <b>{t("obj")}:</b> {t("obj_content")} <br /> {exp1()}
@@ -105,7 +105,7 @@ const Startact = () => {
               backgroundRepeat: "no-repeat",
               backgroundSize: "cover",
               maxHeight: "100%",
-              maxWidth: "100%",
+              // maxWidth: "100%",
               cursor: "pointer",
             }}
             src={letusverify}
@@ -121,13 +121,13 @@ const Startact = () => {
               id="customized-dialog-title"
               onClose={handleClose}
               className="fw-bold"
-              style={{ fontSize: "1.2vw" }}
+              style={{  }}
             >
               {t("instr_popup-1")}
             </BootstrapDialogTitle>
             <DialogContent dividers>
               <Typography gutterBottom>
-                <ul style={{ fontSize: "1.2vw" }}>
+                <ul style={{ }}>
                   <li>
                     {" "}
                     {t("instr_popup-2")}
@@ -137,7 +137,7 @@ const Startact = () => {
                 </ul>
               </Typography>
               <Typography gutterBottom>
-                <ul style={{ fontSize: "1.2vw" }}>
+                <ul style={{}}>
                   <li>
                   {t("instr_popup-4")} <br />
                   {t("instr_popup-5")}:{" "}

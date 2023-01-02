@@ -7,6 +7,7 @@ import { useNavigate } from "react-router-dom";
 //import Offcanvas from "./Offcanvas";
 import Offcanvas from "../Activities/Offcanvas";
 import { useTranslation } from "react-i18next";
+import "../../styles/styles.css";
 
 const Headcomp = ({ sidebarvisible }) => {
   const { t, i18n } = useTranslation();
@@ -27,7 +28,7 @@ const Headcomp = ({ sidebarvisible }) => {
   };
 
   return (
-    <div className="d-flex" style={{ height: "10%" }}>
+    <div className="d-flex" style={{ height: "10%" , fontSize:"1rem"}}>
       <div className="col-2  d-flex justify-content-center align-items-center">
         <img
           className=""
@@ -48,7 +49,7 @@ const Headcomp = ({ sidebarvisible }) => {
         />
       </div>
 
-      <div className="col-8  d-flex justify-content-center align-items-center">
+      <div className="col-8 d-flex justify-content-center align-items-center">
         <div
           className=" px-5 border border-2 d-flex justify-content-center align-items-center "
           style={{
@@ -57,7 +58,7 @@ const Headcomp = ({ sidebarvisible }) => {
             background: "skyblue",
           }}
         >
-          <div className=" fw-bold" style={{ fontSize: "1.4vw" }}>
+          <div className=" fw-bold" style={{}}>
           {t("title")}:{" "}
             <span className="fw-normal">{expre.default()}</span>
           </div>

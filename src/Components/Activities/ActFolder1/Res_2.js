@@ -46,13 +46,13 @@ function Res_2() {
 
   let ctx = null;
   const boxes = [
-    { x: 208, y: 100, r: 50, s: 0, e: 2 * Math.PI, shapeName : 'B'},
-    { x: 268, y: 100, r: 50, s: 0, e: 2 * Math.PI, shapeName : 'C'},
+    { x: 133, y: 100, r: 50, s: 0, e: 2 * Math.PI, shapeName : 'B'},
+    { x: 193, y: 100, r: 50, s: 0, e: 2 * Math.PI, shapeName : 'C'},
   ];
   
   useEffect(() => {
     const canvasEle = canvas.current;
-    canvasEle.width = 400;
+    canvasEle.width = 300;
     canvasEle.height = 200;
     ctx = canvasEle.getContext("2d");
   }, []);
@@ -119,9 +119,9 @@ function Res_2() {
     
     ctx.beginPath();
     ctx.fillStyle = backgroundColor;
-    ctx.arc(208, 100, 50, 0.9,5.32,true);
+    ctx.arc(133, 100, 50, 0.9,5.32,true);
     
-    if(x === 208 && y === 100)
+    if(x === 133 && y === 100)
     {
         ctx.fill();
     }
@@ -132,8 +132,8 @@ function Res_2() {
 
     ctx.beginPath();
     ctx.fillStyle = backgroundColor;
-    ctx.arc(268,100,50,2.1816667,4.04);
-    if(x === 268 && y === 100)
+    ctx.arc(193,100,50,2.1816667,4.04);
+    if(x === 193 && y === 100)
     {
         ctx.fill();
     }
@@ -149,66 +149,80 @@ function Res_2() {
     ctx. textBaseline = 'middle';
     ctx.fillStyle = 'Black';  
     ctx.fillText(shapeName, x, y);
-    ctx.fillText('U', 390, 10); 
+    ctx.fillText('U', 290, 10); 
 
     //Border of circle B
     ctx.beginPath();
-    ctx.arc(208, 100, 50, 0, 2 * Math.PI);
+    ctx.arc(133, 100, 50, 0, 2 * Math.PI);
     ctx.strokeStyle = "black";
     ctx.stroke();
 
     //border of circle C
     ctx.beginPath();
-    ctx.arc(268, 100, 50, 0, 2 * Math.PI);
+    ctx.arc(193, 100, 50, 0, 2 * Math.PI);
     ctx.strokeStyle = "black";
     ctx.stroke();
     
   };
 
   return (
-    <div style={{height : '100%'}}>
-      <div className="container-fluid" style={{height : '90%'}}>
-      <div className="row align-items-center" style={{height : '10vh', fontFamily:'arial', fontSize:'1.2vw'}}>
-      <div className=" fw-bold">{t("line-2")}</div>
-      </div>
-      <div className="row">
-        <div className="col-3">
-        <div className="row">
-            <div className="col d-flex flex-column align-items-end" style={{fontSize:'1.2vw'}}>
-              <div>
-                <input type="checkbox" name="check_box" id="cb1" />
+    <div style={{ height: "100%" }}>
+      <div className="container" style={{ height: "90%", overflow: "auto" }}>
+        <div className="row align-items-center" style={{ height: "100%" ,width : '100%'}}>
+          <div className="col">
+            <div className="fs-1.2vw fw-bold">{t("line-2")}</div>
+            <div className="d-flex">
+              <div className="me-4">
+                <div>
+                  <input type="checkbox" name="check_box" id="cb1" value="A" />
+                </div>
+                <div>
+                  <input
+                    type="checkbox"
+                    name="check_box"
+                    id="cb2"
+                    value="B∩C"
+                  />
+                </div>
+                <div>
+                  <input
+                    type="checkbox"
+                    name="check_box"
+                    id="cb3"
+                    value="AU(B∩C)"
+                  />
+                </div>
               </div>
               <div>
-                <input type="checkbox" name="check_box" id="cb2" />
-              </div>
-              <div>
-                <input type="checkbox" name="check_box" id="cb3" />
+                <div>A</div>
+                <div>B ∩ C</div>
+                <div>A ∪ (B ∩ C)</div>
               </div>
             </div>
-            <div className="col d-flex flex-column" style={{fontSize:'1.2vw'}}>
-              <div>A</div>
-              <div>B ∩ C</div>
-              <div>A ∪ (B ∩ C)</div>
+          </div>
+          <div className="col">
+            <div>
+              <canvas
+				ref={canvas}
+				style = {{border:"1px solid black"}}
+			  ></canvas>
+            </div>
+            <div style={{marginLeft : '15%'}}>
+              <Button
+                id="id1"
+                autoFocus
+                variant="contained"
+                onClick={res2_withno}
+                size="small"
+                style={{ marginRight: "1%" ,marginBottom:'1%'}}
+              >
+                {t("btn-3")}
+              </Button>
             </div>
           </div>
         </div>
-        
-        <div className="col-6 App">
-        <canvas
-        ref={canvas}
-        style = {{border:"1px solid black"}}
-      ></canvas>
-        </div>
       </div>
-      <div className="row"  style={{height:'40%'}}>
-        <div className="d-flex justify-content-center align-items-end">
-          <Button autoFocus variant="contained" onClick={res2_withno}>
-            {t("btn-3")}
-          </Button>
-        </div>
-      </div>
-    </div>
-    <BackNextBar setBackward={onBack} setForward={onNext}/>
+      <BackNextBar setBackward={onBack} setForward={onNext} />
     </div>
     
   );

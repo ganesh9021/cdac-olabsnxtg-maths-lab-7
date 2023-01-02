@@ -106,8 +106,8 @@ const Theory = () => {
               {t("theory-17")}
               </p>
               <div style={{ fontFamily: "arial", fontSize: "1.2vw" }}>
-                <div className="row" style={{ height: "25vh" }}>
-                  <div className="col" style={{ fontSize: "1.2vw" }}>
+                <div className="row" style={{ height: "25%" , marginLeft : '10%'}}>
+                  <div className="col-md-auto" style={{ fontSize: "1.2vw" }}>
                     {/* <div className="d-flex justify-content-center">A</div> */}
                     <div className="d-flex justify-content-center">
                       <img
@@ -140,9 +140,9 @@ const Theory = () => {
                 </div>
                 <div
                   className="row"
-                  style={{ height: "25vh", fontSize: "1.2vw" }}
+                  style={{ height: "25vh", fontSize: "1.2vw" , marginLeft : '10%'}}
                 >
-                  <div className="col">
+                  <div className="col-md-auto">
                     {/* <div className="d-flex justify-content-center">A∪B</div> */}
                     <div className="d-flex justify-content-center">
                       <img

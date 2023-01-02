@@ -48,16 +48,16 @@ const Headcomp = ({ sidebarvisible }) => {
         />
       </div>
 
-      <div className="col-8  d-flex justify-content-center align-items-center">
+      <div className="col-8 d-flex justify-content-center align-items-center">
         <div
-          className=" px-5 border border-2 d-flex justify-content-center align-items-center "
+          className="objective px-5 border border-2 d-flex justify-content-center align-items-center "
           style={{
             height: "90%",
             borderRadius: "25px",
             background: "skyblue",
           }}
         >
-          <div className=" fw-bold" style={{ fontSize: "1.4vw" }}>
+          <div className=" fw-bold" style={{ }}>
           {t("title")}:{" "}
             <span className="fw-normal">{expre.default()}</span>
           </div>

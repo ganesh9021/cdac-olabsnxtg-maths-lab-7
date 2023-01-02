@@ -12,11 +12,6 @@ function Res4WithNumbers() {
   const { setArv } = useContext(rezContext);
   const { setToolvisible } = useOutletContext();
 
-  // const Component = () => {
-  //   localStorage.setItem("A",5);
-  //   setArv(10);
-  //   navigate("/activity7/letusverify/act1startpage/tool_5");
-  // };
   const onBack = () => {
     navigate("/activity7/letusverify/act1startpage/lhs_rhs/tool_4");
     setArv(8);
@@ -42,7 +37,7 @@ function Res4WithNumbers() {
     // { x: 163, y: 72, r: 50, s: 0, e: 2 * Math.PI, shapeName : 'B'},
     //{ x: 125, y: 128, r: 50, s: 0, e: 2 * Math.PI, shapeName : 'C'},
     {
-      x: 170,
+      x: 120,
       y: 100,
       r: 50,
       s: 0,
@@ -51,7 +46,7 @@ function Res4WithNumbers() {
       color: "rgba(255, 39, 77, 0.4)",
     },
     {
-      x: 230,
+      x: 180,
       y: 100,
       r: 50,
       s: 0,
@@ -63,7 +58,7 @@ function Res4WithNumbers() {
 
   useEffect(() => {
     const canvasEle = canvas.current;
-    canvasEle.width = 400;
+    canvasEle.width = 300;
     canvasEle.height = 200;
     ctx = canvasEle.getContext("2d");
   }, []);
@@ -104,7 +99,7 @@ function Res4WithNumbers() {
     ctx.beginPath();
     ctx.fillStyle = backgroundColor;
     ctx.arc(x, y, r, s, e);
-    if ((x === 170 && y === 100) || (x === 230 && y === 100)) {
+    if ((x === 120 && y === 100) || (x === 180 && y === 100)) {
       ctx.fill();
     } else {
       ctx.stroke();
@@ -114,11 +109,11 @@ function Res4WithNumbers() {
     ctx.textBaseline = "middle";
     ctx.fillStyle = "Black";
     ctx.fillText(shapeName, x, y);
-    ctx.fillText("U", 390, 10);
+    ctx.fillText("U", 290, 10);
 
     //Border of circle B
     ctx.beginPath();
-    ctx.arc(230, 100, 50, 0, 2 * Math.PI);
+    ctx.arc(180, 100, 50, 0, 2 * Math.PI);
     ctx.strokeStyle = "black";
     ctx.stroke();
 
@@ -130,7 +125,7 @@ function Res4WithNumbers() {
 
     //border of circle A
     ctx.beginPath();
-    ctx.arc(170, 100, 50, 0, 2 * Math.PI);
+    ctx.arc(120, 100, 50, 0, 2 * Math.PI);
     ctx.strokeStyle = "black";
     ctx.stroke();
 
@@ -139,56 +134,67 @@ function Res4WithNumbers() {
     ctx.textAlign = "center";
     ctx.textBaseline = "middle";
     ctx.fillStyle = "red";
-    ctx.fillText("5", 200, 100);
-    ctx.fillText("7", 150, 100);
-    ctx.fillText("8", 170, 75);
-    ctx.fillText("9", 170, 125);
-    ctx.fillText("3", 230, 75);
-    ctx.fillText("4", 250, 100);
-    ctx.fillText("6", 230, 125);
+    ctx.fillText("5", 150, 100);
+    ctx.fillText("7", 100, 100);
+    ctx.fillText("8", 120, 75);
+    ctx.fillText("9", 120, 125);
+    ctx.fillText("3", 180, 75);
+    ctx.fillText("4", 200, 100);
+    ctx.fillText("6", 180, 125);
   };
 
   return (
     <div style={{ height: "100%" }}>
-      <div className="container-fluid" style={{ height: "90%" }}>
+      <div className="container" style={{ height: "90%", overflow: "auto" }}>
         <div
           className="row align-items-center"
-          style={{ height: "10vh", fontFamily: "arial", fontSize: "1.2vw" }}
+          style={{ height: "100%", width: "100%" }}
         >
-          <div className=" fw-bold">{t("line-4")}</div>
-        </div>
-        <div className="row">
-          <div className="col-3">
-            <div className="row">
-              <div
-                className="col d-flex flex-column align-items-end"
-                style={{ fontSize: "1.2vw" }}
-              >
+          <div className="col">
+            <div className="fs-1.2vw fw-bold">{t("line-4")}</div>
+            <div className="d-flex">
+              <div className="me-4">
                 <div>
-                  <input type="checkbox" name="check_box" id="cb4" />
+                  <input
+                    type="checkbox"
+                    name="check_box"
+                    id="cb4"
+                    value="A∪B"
+                  />
                 </div>
                 <div>
-                  <input type="checkbox" name="check_box" id="cb5" />
+                  <input
+                    type="checkbox"
+                    name="check_box"
+                    id="cb5"
+                    value="A∪C"
+                  />
                 </div>
                 <div>
-                  <input type="checkbox" name="check_box" id="cb6" />
+                  <input
+                    type="checkbox"
+                    name="check_box"
+                    id="cb6"
+                    value="(A∪B)∩(A∪C)"
+                  />
                 </div>
               </div>
-              <div
-                className="col d-flex flex-column"
-                style={{ fontSize: "1.2vw" }}
-              >
+              <div>
                 <div>A ∪ B</div>
                 <div>A ∪ C</div>
                 <div>(A ∪ B)∩(A ∪ C)</div>
               </div>
             </div>
           </div>
-
-          <div className="col-5 App">
-            <canvas ref={canvas} style={{ border: "1px solid black" }}></canvas>
+          <div className="col">
+            <div>
+              <canvas
+                ref={canvas}
+                style={{ border: "1px solid black" }}
+              ></canvas>
+            </div>
           </div>
-          <div className="col-4">
+          <div className="col">
             <ul>
               <b>Set A:</b> &#123; 5, 7, 8, 9 &#125;
             </ul>

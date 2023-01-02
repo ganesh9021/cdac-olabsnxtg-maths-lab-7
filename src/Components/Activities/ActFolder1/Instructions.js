@@ -12,21 +12,21 @@ import { Translation } from "react-i18next";
 
 const Instructions = () => {
   return (
-    <ul className=" fw-normal" style={{ fontSize: "1.2vw" }}>
+    <ul className=" fw-normal" style={{ fontSize: "1rem" }}>
       <Translation>{(t) => t("instr-1")}</Translation>
     </ul>
   );
 };
 const Instructions_1 = () => {
   return (
-    <ul className=" fw-normal" style={{ fontSize: "1.2vw" }}>
+    <ul className=" fw-normal" style={{ fontSize: "1rem" }}>
       <Translation>{(t) => t("instr-2")}</Translation>
     </ul>
   );
 };
 const Instructions_2 = () => {
   return (
-    <ul className=" fw-normal" style={{ fontSize: "1.2vw" }}>
+    <ul className=" fw-normal" style={{ fontSize: "1rem" }}>
       <li><Translation>{(t) => t("instr-3")}</Translation></li>
       <li>
       <Translation>{(t) => t("instr-4")}</Translation>
@@ -37,7 +37,7 @@ const Instructions_2 = () => {
 
 const Instructions_3 = () => {
   return (
-    <ul className=" fw-normal" style={{ fontSize: "1.2vw" }}>
+    <ul className=" fw-normal" style={{ fontSize: "1rem" }}>
       <li>
       <Translation>{(t) => t("instr-5")}</Translation>
       </li>
@@ -57,7 +57,7 @@ const Instructions_3 = () => {
 
 const Instructions_4 = () => {
   return (
-    <ul className=" fw-normal" style={{ fontSize: "1.2vw" }}>
+    <ul className=" fw-normal" style={{ fontSize: "1rem" }}>
       <li>
       <Translation>{(t) => t("instr-10")}</Translation>
       </li>
@@ -73,7 +73,7 @@ const Instructions_4 = () => {
 
 const Instructions_5 = () => {
   return (
-    <ul className=" fw-normal" style={{ fontSize: "1.2vw" }}>
+    <ul className=" fw-normal" style={{ fontSize: "1rem" }}>
       <li>
       <Translation>{(t) => t("instr-12")}</Translation>{" "}
       </li>
@@ -86,7 +86,7 @@ const Instructions_5 = () => {
 
 const Instructions_6 = () => {
   return (
-    <ul className=" fw-normal" style={{ fontSize: "1.2vw" }}>
+    <ul className=" fw-normal" style={{ fontSize: "1rem" }}>
       <Translation>{(t) => t("instr-9")}</Translation>
     </ul>
   );
@@ -94,7 +94,7 @@ const Instructions_6 = () => {
 
 const Instructions_7 = () => {
   return (
-    <ul className=" fw-normal" style={{ fontSize: "1.2vw" }}>
+    <ul className=" fw-normal" style={{ fontSize: "1rem" }}>
       <li>
       <Translation>{(t) => t("instr-13")}</Translation>
       </li>
@@ -107,7 +107,7 @@ const Instructions_7 = () => {
 
 const Instructions_8 = () => {
   return (
-    <ul className=" fw-normal" style={{ fontSize: "1.2vw" }}>
+    <ul className=" fw-normal" style={{ fontSize: "1rem" }}>
       <li>
       <Translation>{(t) => t("instr-14")}</Translation>
       </li>
@@ -120,7 +120,7 @@ const Instructions_8 = () => {
 
 const Instructions_9 = () => {
   return (
-    <ul className=" fw-normal" style={{ fontSize: "1.2vw" }}>
+    <ul className=" fw-normal" style={{ fontSize: "1rem" }}>
       <li>
       <Translation>{(t) => t("instr-15")}</Translation>
       </li>
@@ -133,7 +133,7 @@ const Instructions_9 = () => {
 
 const Instructions_10 = () => {
   return (
-    <ul className=" fw-normal" style={{ fontSize: "1.2vw" }}>
+    <ul className=" fw-normal" style={{ fontSize: "1rem" }}>
       <li>
       <Translation>{(t) => t("instr-16")}</Translation>
       </li>
@@ -146,7 +146,7 @@ const Instructions_10 = () => {
 
 const Instructions_11 = () => {
   return (
-    <ul className=" fw-normal" style={{ fontSize: "1.2vw" }}>
+    <ul className=" fw-normal" style={{ fontSize: "1rem" }}>
       <li>Drag the relations toward the center.</li>
       <li>
         Click on the <q>VERIFY</q> button to prove whether LHS is Equal to RHS
@@ -158,7 +158,7 @@ const Instructions_11 = () => {
 
 const Instructions_12 = () => {
   return (
-    <ul className=" fw-normal" style={{ fontSize: "1.2vw" }}>
+    <ul className=" fw-normal" style={{ fontSize: "1rem" }}>
       <li>
         <b><Translation>{(t) => t("instr-18")}</Translation>:</b> <Translation>{(t) => t("instr-19")}</Translation>{" "}
         <b>LHS [A∪(B∩C)] = RHS [(A∪B)∩(A∪C)]</b>
@@ -173,7 +173,7 @@ const Instructions_12 = () => {
 
 const Instructions_13 = () => {
   return (
-    <ul className=" fw-normal" style={{ fontSize: "1.2vw" }}>
+    <ul className=" fw-normal" style={{ fontSize: "1rem" }}>
       <li>
       <Translation>{(t) => t("instr-21")}</Translation>
       </li>
