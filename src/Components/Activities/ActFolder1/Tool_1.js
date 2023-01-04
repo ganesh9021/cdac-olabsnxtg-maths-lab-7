@@ -136,33 +136,13 @@ function Tool_1() {
       document.getElementById("cb2").checked = true;
       document.getElementById("cb3").checked = true;
     }
-    if (localStorage.getItem("A") === "5") {
-      document.getElementById("cb1").checked = true;
-      document.getElementById("cb2").checked = true;
-      document.getElementById("cb3").checked = true;
-      document.getElementById("cb4").checked = true;
-    }
-    if (localStorage.getItem("A") === "6") {
-      document.getElementById("cb1").checked = true;
-      document.getElementById("cb2").checked = true;
-      document.getElementById("cb3").checked = true;
-      document.getElementById("cb4").checked = true;
-      document.getElementById("cb5").checked = true;
-    }
-    if (localStorage.getItem("A") === "7") {
-      document.getElementById("cb1").checked = true;
-      document.getElementById("cb2").checked = true;
-      document.getElementById("cb3").checked = true;
-      document.getElementById("cb4").checked = true;
-      document.getElementById("cb5").checked = true;
-      document.getElementById("cb6").checked = true;
-    }
+    
   }, []);
 
   return (
     <div style={{ height: "100%" }}>
       <div className="container" style={{ height: "90%", overflow: "auto" }}>
-        <div className="row align-items-center" style={{ height: "100%" ,width : '100%'}}>
+        <div className="row align-items-center" style={{ height: "100%" ,width : '95%'}}>
           <div className="col">
             <div className="fs-1.2vw fw-bold">{t("line-2")}</div>
             <div className="d-flex">
@@ -195,12 +175,10 @@ function Tool_1() {
             </div>
           </div>
           <div className="col">
-            <div>
               <canvas
                 ref={canvas}
                 style={{ border: `${count}px solid black` }}
               ></canvas>
-            </div>
             <div className="">
               <Button
                 id="id1"

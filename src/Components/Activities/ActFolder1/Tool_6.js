@@ -18,6 +18,7 @@ function Tool_6() {
     navigate("/activity7/letusverify/act1startpage/lhs_rhs/tool_5/res_5");
     setArv(13);
     setToolvisible("visible");
+    localStorage.setItem('A',6);
   };
 
   const onNext = (e) => {

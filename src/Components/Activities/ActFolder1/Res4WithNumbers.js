@@ -16,6 +16,7 @@ function Res4WithNumbers() {
     navigate("/activity7/letusverify/act1startpage/lhs_rhs/tool_4");
     setArv(8);
     setToolvisible("hidden");
+    localStorage.setItem('A',3);
   };
 
   const onNext = (e) => {
@@ -24,12 +25,6 @@ function Res4WithNumbers() {
     setArv(9);
   };
 
-  const res4_withno = () => {
-    setArv(9);
-    navigate(
-      "/activity7/letusverify/act1startpage/lhs_rhs/tool_4/res_4/res4_withno"
-    );
-  };
 
   let ctx = null;
   const boxes = [

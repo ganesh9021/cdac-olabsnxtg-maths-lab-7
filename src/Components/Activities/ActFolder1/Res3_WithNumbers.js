@@ -19,7 +19,7 @@ function Res3_WithNumbers() {
     setToolvisible("visible");
   };
 
-  const onNext = (e) => {
+  const onNext = () => {
     navigate("/activity7/letusverify/act1startpage/lhs_rhs");
     setToolvisible("visible");
     setArv(1);

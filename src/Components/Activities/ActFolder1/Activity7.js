@@ -21,7 +21,7 @@ const Activity7 = () => {
       }}
     >
       <div
-        className="col-12 col-md-9 border border-light border-2 "
+        className="col-11 col-md-9 border border-light border-2 "
         style={{
          
           background: "rgba(255, 255, 255, .45)",
@@ -31,7 +31,7 @@ const Activity7 = () => {
         }}
       >
         <div
-          className="title text-center d-flex justify-content-center align-items-center fw-bolder mt-3 "
+          className="title text-center d-flex justify-content-center align-items-center fw-bolder mt-3 mb-3"
           style={{ color: "#ac3843" }}
 >
           {t("title")}:&nbsp;{exp1()}
@@ -51,8 +51,8 @@ const Activity7 = () => {
         </div>
  
         <div className="">
-          <div className="title1 d-flex justify-content-center align-items-end fw-bolder text-center">
-          {t("Learning Outcome")}:
+          <div className="title1 d-flex justify-content-center align-items-end fw-bolder text-center mt-3">
+            {t("Learning Outcome")}:
           </div>
           <div className="objective fw-normal d-flex justify-content-center  ">
             <div className="col-12 col-md-9 d-flex justify-content-center text-center">
@@ -73,7 +73,7 @@ const Activity7 = () => {
               style={{
                 fontWeight: "700",
                 fontSize: "calc(0.5rem + 1.5vw)",
-				background: " #eeeee6",
+				        background: " #eeeee6",
                 color: "#5f5299",
                 borderRadius: "50px",
                 boxShadow: "0px 7px 4px rgba(0, 0, 0, 0.25)",

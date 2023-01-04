@@ -4,6 +4,8 @@ import { Outlet } from "react-router-dom";
 import ApproachSelect1 from "./ActFolder1/ApproachSelect1";
 import workbench1 from "../../Img/workbench.png";
 import tools1 from "../../Img/tools1.png";
+import { Button } from "@mui/material";
+import '../../styles/styles.css'
 
 export const UserContext = createContext(null);
 
@@ -12,13 +14,11 @@ const ActivityMiddleComp = () => {
   const [len, setLen] = useState();
   const [bre, setBre] = useState();
 
-  const [toolvisible, setToolvisible] = useState("visible");
-
-
+  const [toolvisible, setToolvisible] = useState("hidden");
 
   return (
     <div className="" style={{ height: "100%" }}>
-      <img
+      {/* <img
         className="mt-5 ms-4"
         style={{
           width: "8%",
@@ -27,7 +27,8 @@ const ActivityMiddleComp = () => {
         }}
         src={workbench1}
         alt="Logo"
-      />
+      /> */}
+      
       <div
         className="col-11 bg-light d-flex "
         style={{
@@ -39,16 +40,37 @@ const ActivityMiddleComp = () => {
           marginRight: "auto",
         }}
       >
+      
         <div
           className="d-flex align-items-end"
           style={{ height: "100%", width: "7%" }}
         >
-          <button
-          className="bg-light"
+          <Button
+        style={{
+          bottom : '80%',
+          maxWidth: "100%",
+          right: "45%",
+          fontWeight: "700",
+          fontSize: "1rem",
+          background: " #D6D3D3",
+          color: "black",
+          boxShadow: "0px 7px 4px rgba(0, 0, 0, 0.25)",
+          cursor: "none",
+        }}
+      >
+        <span className="workbenchTag">workbench</span>
+      </Button>
+          {/* <button
+            className="bg-light"
             onClick={() => {
               //setFlag(!flag);
             }}
-            style={{visibility: `${toolvisible}`, border :"none",borderBottomLeftRadius: "20px",marginBottom:"5%"}}
+            style={{
+              visibility: `${toolvisible}`,
+              border: "none",
+              borderBottomLeftRadius: "20px",
+              marginBottom: "5%",
+            }}
           >
             <img
               className="img-fluid"
@@ -56,12 +78,12 @@ const ActivityMiddleComp = () => {
                 backgroundRepeat: "no-repeat",
                 backgroundSize: "cover",
                 maxHeight: "100%",
-                maxWidth:"4.0vw"
+                maxWidth: "4.0vw",
               }}
               src={tools1}
               alt="Logo"
             />
-          </button>
+          </button> */}
         </div>
 
         <div
@@ -92,4 +114,3 @@ const ActivityMiddleComp = () => {
 };
 
 export default ActivityMiddleComp;
-

@@ -13,11 +13,6 @@ function Res_3() {
   const { setArv } = useContext(rezContext);
   const { setToolvisible } = useOutletContext();
 
-  // const Component = () => {
-  //   localStorage.setItem("A",4);
-  //   setArv(2);
-  //   navigate("/activity7/letusverify/act1startpage/lhs_rhs");
-  // }
   const onBack = () => {
     navigate("/activity7/letusverify/act1startpage/tool_3");
     setArv(7);

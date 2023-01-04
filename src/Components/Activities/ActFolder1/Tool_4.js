@@ -13,10 +13,6 @@ function Tool_4() {
   const { setToolvisible } = useOutletContext();
   var [count, setCount] = useState(0);
 
-  // const Next_Res = () => {
-  //   setArv(7);
-  //   navigate("/activity7/letusverify/act1startpage/lhs_rhs/tool_4/res_4");
-  // };
 
   const onBack = () => {
     navigate("/activity7/letusverify/act1startpage/lhs_rhs");

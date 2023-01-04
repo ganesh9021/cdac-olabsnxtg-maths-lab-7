@@ -7,7 +7,6 @@ import { rezContext } from "./Act1startpage";
 import { Button } from "@mui/material";
 import { useTranslation } from "react-i18next";
 
-
 function Res_2() {
   const { t, i18n } = useTranslation();
   const navigate = useNavigate();
@@ -15,11 +14,6 @@ function Res_2() {
   const { setArv } = useContext(rezContext);
   const { setToolvisible } = useOutletContext();
 
-  // const Component = () => {
-  //   localStorage.setItem("A",3);
-  //   setArv(8)
-  //   navigate("/activity7/letusverify/act1startpage/tool_3");
-  // }
   const onBack = () => {
     navigate("/activity7/letusverify/act1startpage/tool_2/dragndrop_2");
     setArv(5);
@@ -142,7 +136,6 @@ function Res_2() {
         ctx.stroke();
     }
 
-
     //Text
     ctx.font = '18px Arial';
     ctx.textAlign = 'center';
@@ -224,7 +217,6 @@ function Res_2() {
       </div>
       <BackNextBar setBackward={onBack} setForward={onNext} />
     </div>
-    
   );
 }
 

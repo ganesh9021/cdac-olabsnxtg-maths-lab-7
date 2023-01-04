@@ -13,15 +13,11 @@ function Res_4() {
   const { setArv } = useContext(rezContext);
   const { setToolvisible } = useOutletContext();
 
-  // const Component = () => {
-  //   localStorage.setItem("A",5);
-  //   setArv(10);
-  //   navigate("/activity7/letusverify/act1startpage/tool_5");
-  // };
   const onBack = () => {
     navigate("/activity7/letusverify/act1startpage/lhs_rhs/tool_4");
     setArv(8);
     setToolvisible("hidden");
+    localStorage.setItem('A',3);
   };
 
   const onNext = (e) => {

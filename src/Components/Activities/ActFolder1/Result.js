@@ -44,8 +44,8 @@ const Result = () => {
             </div>
             <div>&#123;5, 7, 8, 9, 4, 6 &#125;</div>
           </div>
-          <div className="col-1 d-flex justify-content-center align-items-center">
-            <div className="fw-bolder">=</div>
+          <div className="col-md-auto d-flex justify-content-center align-items-center text-center">
+            <div className="fw-bolder" >=</div>
           </div>
           <div className="col d-flex flex-column justify-content-center align-items-center">
             <div>
@@ -61,7 +61,7 @@ const Result = () => {
           <div className="d-flex flex-column align-items-center mb-4">
             <div>{t("line-5")}</div>
             <div>
-              <b>LHS [AU(B∩C)] = RHS[(AUB)∩(AUC)]</b>
+              <b>LHS [AU(B∩C)] = RHS [(AUB)∩(AUC)]</b>
             </div>
           </div>
         </div>

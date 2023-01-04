@@ -218,42 +218,7 @@ function DragnDrop_3() {
         </div>
       </div>
     </div>
-
-
-    /*
-    <div className="container-fluid">
-      <div className="row flex-column App" style={{ height: "50vh" }}>
-        <div className="col">
-          <canvas
-            onMouseDown={handleMouseDown}
-            onMouseMove={handleMouseMove}
-            onMouseUp={handleMouseUp}
-            onMouseOut={handleMouseOut}
-            ref={canvas}
-            style={{ border: "1px solid black" }}
-          ></canvas>
-        </div>
-        <div className="col mt-3">
-          <button className="btn btn-primary btn-sm" onClick={Next_Res}>Next</button>
-        </div>
-      </div>
-    </div>
-    */
   );
-
-  {
-    /* <div className="App">
-      <canvas
-        onMouseDown={handleMouseDown}
-        onMouseMove={handleMouseMove}
-        onMouseUp={handleMouseUp}
-        onMouseOut={handleMouseOut}
-        ref={canvas}
-        style = {{border:"1px solid black"}}
-      ></canvas>
-      <div className="btn btn-primary btn-small" onClick={Next_Res}>Next</div>
-    </div> */
-  }
 }
 
 export default DragnDrop_3;

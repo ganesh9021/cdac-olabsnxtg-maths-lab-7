@@ -21,9 +21,6 @@ function DragnDrop_2() {
     setToolvisible("visible");
   };
 
-  // navigate("/activity7/letusverify/act1startpage/lhs_rhs/tool_2/dragndrop_2/res_2");
-  //     setToolvisible("visible");
-  //     setArv(6);
   const onNext = () => {
     if (count == 1) {
       localStorage.setItem("A", 3);
@@ -60,7 +57,7 @@ function DragnDrop_2() {
       shapeName: "C",
       color: "rgba(59, 106, 237, 0.4)",
     },
-    //{ x: 75, y: 100, r: 50, s: 0, e: 2 * Math.PI, shapeName: "D" ,color : 'rgba(59, 106, 237, 0.4)'}
+    
   ];
   let isDown = false;
   let dragTarget = null;
@@ -192,11 +189,13 @@ function DragnDrop_2() {
   };
 
   const handleMouseDown = (e) => {
+    //console.log('inside handlemousedown')
     startX = parseInt(e.nativeEvent.offsetX - canvas.current.clientLeft);
     startY = parseInt(e.nativeEvent.offsetY - canvas.current.clientTop);
     isDown = hitBox(startX, startY);
   };
   const handleMouseMove = (e) => {
+    //console.log("inside handlemousemove")
     if (!isDown) return;
     const mouseX = parseInt(e.nativeEvent.offsetX - canvas.current.clientLeft);
     const mouseY = parseInt(e.nativeEvent.offsetY - canvas.current.clientTop);
@@ -210,11 +209,14 @@ function DragnDrop_2() {
     isFixed(dragTarget.x, dragTarget.y);
     draw();
   };
+
   const handleMouseUp = (e) => {
+    //console.log("inside handlemouseup")
     dragTarget = null;
     isDown = false;
   };
   const handleMouseOut = (e) => {
+    //console.log('inside handlemouseout')
     handleMouseUp(e);
   };
 
@@ -258,6 +260,7 @@ function DragnDrop_2() {
           </div>
           <div className="col">
             <canvas
+            
               onMouseDown={handleMouseDown}
               onMouseMove={handleMouseMove}
               onMouseUp={handleMouseUp}

@@ -129,27 +129,7 @@ function Tool_2() {
       document.getElementById("cb2").checked = true;
       document.getElementById("cb3").checked = true;
     }
-    if (localStorage.getItem("A") === "5") {
-      document.getElementById("cb1").checked = true;
-      document.getElementById("cb2").checked = true;
-      document.getElementById("cb3").checked = true;
-      document.getElementById("cb4").checked = true;
-    }
-    if (localStorage.getItem("A") === "6") {
-      document.getElementById("cb1").checked = true;
-      document.getElementById("cb2").checked = true;
-      document.getElementById("cb3").checked = true;
-      document.getElementById("cb4").checked = true;
-      document.getElementById("cb5").checked = true;
-    }
-    if (localStorage.getItem("A") === "7") {
-      document.getElementById("cb1").checked = true;
-      document.getElementById("cb2").checked = true;
-      document.getElementById("cb3").checked = true;
-      document.getElementById("cb4").checked = true;
-      document.getElementById("cb5").checked = true;
-      document.getElementById("cb6").checked = true;
-    }
+    
   }, []);
 
   return (

@@ -1,4 +1,4 @@
-import Activity from "./Components/Activity";
+
 import { Route, Routes, useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { useTranslation } from "react-i18next";
@@ -10,10 +10,6 @@ import Theory from "./Components/Activities/ActFolder1/Theory";
 import Mcq from "./Components/Activities/ActFolder1/Mcq";
 import Game from "./Components/Activities/ActFolder1/Game";
 import Help from "./Components/Activities/ActFolder1/Help";
-
-import ApproachSelect1 from "./Components/Activities/ActFolder1/ApproachSelect1";
-
-import Combine_Result from "./Components/Activities/ActFolder1/Combine_Result";
 import DragnDrop_2 from "./Components/Activities/ActFolder1/DragnDrop_2";
 import Res_2 from "./Components/Activities/ActFolder1/Res_2";
 import Res_3 from "./Components/Activities/ActFolder1/Res_3";
@@ -44,9 +40,7 @@ import Language from "./Language";
 import { setLangStore } from "./store/Store";
 import { useEffect } from "react";
 
-
 function App() {
-
   const { id } = useParams();
   const { t, i18n } = useTranslation();
   const { firstStore } = useSelector((state) => state);
@@ -69,62 +63,72 @@ function App() {
     <Routes>
       <Route path="/lang=:id" element={<App />} />
       <Route path="/" element={<Activity7 />} />
-
       <Route path="/activity7" element={<Activity7 />} />
       <Route path="/activity7/letusverify" element={<LetsVerify />} />
-      
       <Route
         path="/activity7/letusverify/act1startpage"
         element={<Act1startpage />}
       >
-        {/* <Route path="inputvalues" element={<Inputvalues />} /> */}
-        {/* <Route path="approach" element={<ApproachSelect1 />} /> */}
         <Route path="lhs_rhs" element={<LHS_RHS />} />
-        {/* <Route path="twosqare" element={<Twosquares />} /> */}
-        {/* <Route path="onerectangle" element={<Onerectangle />} /> */}
         <Route path="lhs_rhs/tool_1" element={<Tool_1 />} />
         <Route path="tool_2" element={<Tool_2 />} />
         <Route path="tool_3" element={<Tool_3 />} />
         <Route path="lhs_rhs/tool_4" element={<Tool_4 />} />
         <Route path="tool_5" element={<Tool_5 />} />
         <Route path="tool_6" element={<Tool_6 />} />
-        {/* <Route path="tool_1/dragndrop_1" element={<DragnDrop_1 />} />*/}
         <Route path="tool_2/dragndrop_2" element={<DragnDrop_2 />} />
-        {/* <Route path="lhs_rhs/tool_3/dragndrop_3" element={<DragnDrop_3 />} />
-        <Route path="lhs_rhs/tool_4/dragndrop_4" element={<DragnDrop_4 />} />
-        <Route path="lhs_rhs/tool_5/dragndrop_5" element={<DragnDrop_5 />} />
-        <Route path="lhs_rhs/tool_6/dragndrop_6" element={<DragnDrop_6 />} />  */}
-        <Route path="lhs_rhs/tool_1/res1_withno" element={<Res1_WithNumbers/>}></Route>
-        <Route path="lhs_rhs/tool_2/dragndrop_2/res_2" element={<Res_2/>}></Route>
-        <Route path="lhs_rhs/tool_2/dragndrop_2/res_2/res2_withno" element={<Res2WithNumbers/>}></Route>
-        <Route path="lhs_rhs/tool_3/res_3" element={<Res_3/>}></Route>
-        <Route path="lhs_rhs/tool_3/res_3/res3_withno" element={<Res3_WithNumbers/>}></Route>
-        <Route path="lhs_rhs/tool_4/res_4" element={<Res_4/>}></Route>
-        <Route path="lhs_rhs/tool_4/res_4/res4_withno" element={<Res4WithNumbers/>}></Route>
-        <Route path="lhs_rhs/tool_5/res_5" element={<Res_5/>}></Route>
-        <Route path="lhs_rhs/tool_5/res_5/res5_withno" element={<Res5_WithNumbers/>}></Route>
-        <Route path="lhs_rhs/tool_6/res_6" element={<Res_6/>}></Route>
-        <Route path="lhs_rhs/tool_6/res_6/res6_withno" element={<Res6_WithNumbers/>}></Route>
-        {/* <Route path="lhs_rhs/combine_result" element={<Combine_Result/>}></Route> */}
-        {/* <Route path="lhs_rhs/result" element={<Result/>}></Route> */}
-        <Route path="lhs_rhs/result" element={<Result/>}></Route>
-        <Route path="res_3_copy" element={<Res_3_copy/>}></Route>
-        <Route path="res_6_copy" element={<Res_6_Copy/>}></Route>
+        <Route
+          path="lhs_rhs/tool_1/res1_withno"
+          element={<Res1_WithNumbers />}
+        ></Route>
+        <Route
+          path="lhs_rhs/tool_2/dragndrop_2/res_2"
+          element={<Res_2 />}
+        ></Route>
+        <Route
+          path="lhs_rhs/tool_2/dragndrop_2/res_2/res2_withno"
+          element={<Res2WithNumbers />}
+        ></Route>
+        <Route path="lhs_rhs/tool_3/res_3" element={<Res_3 />}></Route>
+        <Route
+          path="lhs_rhs/tool_3/res_3/res3_withno"
+          element={<Res3_WithNumbers />}
+        ></Route>
+        <Route path="lhs_rhs/tool_4/res_4" element={<Res_4 />}></Route>
+        <Route
+          path="lhs_rhs/tool_4/res_4/res4_withno"
+          element={<Res4WithNumbers />}
+        ></Route>
+        <Route path="lhs_rhs/tool_5/res_5" element={<Res_5 />}></Route>
+        <Route
+          path="lhs_rhs/tool_5/res_5/res5_withno"
+          element={<Res5_WithNumbers />}
+        ></Route>
+        <Route path="lhs_rhs/tool_6/res_6" element={<Res_6 />}></Route>
+        <Route
+          path="lhs_rhs/tool_6/res_6/res6_withno"
+          element={<Res6_WithNumbers />}
+        ></Route>
+        <Route path="lhs_rhs/result" element={<Result />}></Route>
+        <Route path="res_3_copy" element={<Res_3_copy />}></Route>
+        <Route path="res_6_copy" element={<Res_6_Copy />}></Route>
       </Route>
-
       <Route path="/activity7/letusverify/theory" element={<Theory />} />
-      <Route path="/activity7/letusverify/theory/theory1" element={<Theory1 />} />
+      <Route
+        path="/activity7/letusverify/theory/theory1"
+        element={<Theory1 />}
+      />
       <Route path="/activity7/letusverify/mcq" element={<Mcq />} />
       <Route path="/activity7/letusverify/game" element={<Game />} />
       <Route path="/activity7/letusverify/help" element={<Help />} />
-      
       <Route path="/letusverify/sqtheory" element={<Theory />} />
       <Route path="/letusverify/instructions" element={<QuizInstructions />} />
-      <Route path="/letusverify/quiz" element={<Play lang={firstStore.lang}/>} />
+      <Route
+        path="/letusverify/quiz"
+        element={<Play lang={firstStore.lang} />}
+      />
       <Route path="/letusverify/help" element={<Help />} />
-
       <Route path="/activity2" element={<Activity2 />} />
-
       <Route path="*" element={<Error />} />
     </Routes>
   );

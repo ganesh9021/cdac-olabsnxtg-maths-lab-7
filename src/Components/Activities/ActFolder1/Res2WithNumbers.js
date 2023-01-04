@@ -12,11 +12,7 @@ function Res2WithNumbers() {
   const { setArv } = useContext(rezContext);
   const { setToolvisible } = useOutletContext();
 
-  // const Component = () => {
-  //   localStorage.setItem("A",3);
-  //   setArv(8)
-  //   navigate("/activity7/letusverify/act1startpage/tool_3");
-  // }
+
   const onBack = () => {
     navigate("/activity7/letusverify/act1startpage/tool_2/dragndrop_2");
     setArv(5);
@@ -29,11 +25,6 @@ function Res2WithNumbers() {
     setArv(7);
   };
 
-  const res2_withno = () => {
-    navigate(
-      "/activity7/letusverify/act1startpage/lhs_rhs/tool_2/dragndrop_2/res_2/res2_withno"
-    );
-  };
 
   let ctx = null;
   const boxes = [

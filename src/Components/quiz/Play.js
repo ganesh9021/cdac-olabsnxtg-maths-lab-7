@@ -717,7 +717,7 @@ class Play extends React.Component {
                           <div className="img-container">
                             {" "}
                             <img
-                              className="question-img"
+                              className="question-img img-fluid"
                               src={require(`../../Img/OptionImg/${currentQuestion.questionImg}`)}
                               alt="cannot load img"
                             />{" "}

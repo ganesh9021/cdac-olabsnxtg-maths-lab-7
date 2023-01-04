@@ -90,115 +90,94 @@ const LHS_RHS = () => {
 
   return (
     <div className="container-fluid" style={{ height: "100%" }}>
-      <div style={{ height: "90%", overflow: "true" }}>
-        <div className="row mb-4">
+      <div style={{ height: "90%", overflow: "hidden auto" }}>
+        <div className="row mb-4 mt-3">
           <div className="text-center text-danger fw-bolder">
             {t("obj_content")}: <br /> A∪(B∩C) = (A∪B)∩(A∪C)
           </div>
         </div>
-        <div className="row mb-4" style={{ fontSize: "1rem" }}>
-          <div className="col">
-            <div className="row">
-              <div className="col text-end">
+
+        <div className="row mb-3">
+          {/* <div className="col-1"></div> */}
+          <div className="col d-flex justify-content-center">
+            <div className="d-flex flex-column">
+              <div>
                 <input
-                  className="bg-primary"
+                  className="bg-primary me-3"
                   type="checkbox"
                   name="check_box"
                   id="cb1"
                   value="A"
                 />
-              </div>
-              <div className="col">
                 <span>A</span>
               </div>
-            </div>
-            <div className="row">
-              <div className="col text-end">
+              <div>
                 <input
-                  className="bg-primary"
+                  className="bg-primary me-3"
                   type="checkbox"
                   name="check_box"
-                  id="cb1"
+                  id="cb2"
                   value="BIC"
                 />
-              </div>
-              <div className="col">
                 <span>B∩C</span>
               </div>
-            </div>
-            <div className="row mb-2">
-              <div className="col text-end">
+              <div className="mb-3">
                 <input
-                  className="bg-primary"
+                  className="bg-primary me-3"
                   type="checkbox"
                   name="check_box"
-                  id="cb1"
+                  id="cb3"
                   value="AUBIC"
                 />
-              </div>
-              <div className="col">
                 <span>A∪(B∩C)</span>
               </div>
-            </div>
-            <div className="row">
-              <div className="text-center">
+              <div>
                 <Button autoFocus variant="contained" onClick={LHS}>
                   LHS
                 </Button>
               </div>
             </div>
           </div>
-          <div className="col">
-            <div className="row">
-              <div className="col text-end">
+          <div className="col d-flex justify-content-center">
+            <div>
+              <div>
                 <input
-                  className="bg-primary"
+                  className="bg-primary me-3"
                   type="checkbox"
                   name="check_box"
                   id="cb4"
                   value="A∪B"
                 />
-              </div>
-              <div className="col">
                 <span>A∪B</span>
               </div>
-            </div>
-            <div className="row">
-              <div className="col text-end">
+              <div>
                 <input
-                  className="bg-primary"
+                  className="bg-primary me-3"
                   type="checkbox"
                   name="check_box"
                   id="cb5"
                   value="A∪C"
                 />
-              </div>
-              <div className="col">
                 <span>A∪C</span>
               </div>
-            </div>
-            <div className="row mb-2">
-              <div className="col text-end">
+              <div className="mb-3">
                 <input
-                  className="bg-primary"
+                  className="bg-primary me-3"
                   type="checkbox"
                   name="check_box"
                   id="cb6"
                   value="(A∪B)∩(A∪C)"
                 />
-              </div>
-              <div className="col">
                 <span>(A∪B)∩(A∪C)</span>
               </div>
-            </div>
-            <div className="row">
-              <div className="text-center">
+              <div>
                 <Button autoFocus variant="contained" onClick={RHS}>
                   RHS
                 </Button>
               </div>
             </div>
           </div>
+          {/* <div className="col-1"></div> */}
         </div>
         <div className="row">
           <div className="d-flex justify-content-center">

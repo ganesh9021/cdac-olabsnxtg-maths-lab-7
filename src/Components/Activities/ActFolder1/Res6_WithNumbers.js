@@ -15,6 +15,7 @@ function Res6_withNumbers() {
     navigate("/activity7/letusverify/act1startpage/lhs_rhs/tool_6/res_6");
     setArv(10);
     setToolvisible("hidden");
+    localStorage.setItem('A',6);
   };
 
   const onNext = (e) => {

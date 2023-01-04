@@ -27,6 +27,7 @@ function Res_6() {
     navigate("/activity7/letusverify/act1startpage/tool_6");
     setArv(10);
     setToolvisible("hidden");
+    localStorage.setItem('A',6);
   };
 
   const onNext = (e) => {
