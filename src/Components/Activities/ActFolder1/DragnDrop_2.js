@@ -15,6 +15,61 @@ function DragnDrop_2() {
   var [count, setCount] = useState(0);
   const { t, i18n } = useTranslation();
 
+  useEffect(() => {
+
+    let canvasContext = document.getElementById("canvas");
+    canvasContext.addEventListener("touchstart", function (event) {
+      let touch = event.touches[0];
+      console.log('touch : ',touch);
+      touchX = touch.clientX;
+      touchY = touch.clientY;
+
+       touchX = Math.round(touchX);
+       touchY = Math.round(touchY);
+
+       touchX = touchX - 51;
+       touchY = touchY - 241;
+
+      console.log("touchX , touchY : ",touchX,touchY);
+      isDown = hitBox(touchX, touchY);
+
+    });
+    canvasContext.addEventListener("touchmove", function (event) {
+      console.log('inside touch move')
+      if (!isDown) return;
+      let touch = event.touches[0];
+      let touchXX = touch.clientX;
+      let touchYY = touch.clientY;
+
+       touchXX = Math.round(touchXX);
+       touchYY = Math.round(touchYY);
+
+       touchXX = touchXX - 51;
+       touchYY = touchYY - 241;
+     
+      let dx = touchXX - touchX;
+      let dy = touchYY - touchY;
+      touchX = touchXX;
+      touchY = touchYY;
+      dragTarget.x += dx;
+      dragTarget.y += dy;
+      console.log("for touch dragtarget.x, dragtarget.y : ",dragTarget.x,dragTarget.y)
+      isCoincide(dragTarget.x, dragTarget.y);
+      isFixed(dragTarget.x, dragTarget.y);
+      draw();
+    });
+
+    canvasContext.addEventListener("touchend", function () {
+      dragTarget = null;
+      isDown = false;
+    });
+
+    canvasContext.addEventListener("touchcancel", function () {
+      dragTarget = null;
+      isDown = false;
+    });
+  });
+
   const onBack = () => {
     navigate("/activity7/letusverify/act1startpage/tool_2");
     setArv(4);
@@ -57,12 +112,13 @@ function DragnDrop_2() {
       shapeName: "C",
       color: "rgba(59, 106, 237, 0.4)",
     },
-    
   ];
   let isDown = false;
   let dragTarget = null;
   let startX = null;
   let startY = null;
+  let touchX = null;
+  let touchY = null;
 
   useEffect(() => {
     const canvasEle = canvas.current;
@@ -189,34 +245,38 @@ function DragnDrop_2() {
   };
 
   const handleMouseDown = (e) => {
-    //console.log('inside handlemousedown')
     startX = parseInt(e.nativeEvent.offsetX - canvas.current.clientLeft);
     startY = parseInt(e.nativeEvent.offsetY - canvas.current.clientTop);
+    console.log("startx starty :",startX,startY);
     isDown = hitBox(startX, startY);
   };
   const handleMouseMove = (e) => {
-    //console.log("inside handlemousemove")
+    // console.log("inside handlemousemove");
     if (!isDown) return;
     const mouseX = parseInt(e.nativeEvent.offsetX - canvas.current.clientLeft);
     const mouseY = parseInt(e.nativeEvent.offsetY - canvas.current.clientTop);
+    console.log("mousex, mousey : ", mouseX, mouseY);
     const dx = mouseX - startX;
     const dy = mouseY - startY;
+    console.log("dx,dy : ", dx, dy);
     startX = mouseX;
     startY = mouseY;
+    console.log("startx,starty : ", startX, startY);
     dragTarget.x += dx;
     dragTarget.y += dy;
+    console.log(" for mouse dragtarget.x , dragtarget.y : ",dragTarget.x, dragTarget.y);
     isCoincide(dragTarget.x, dragTarget.y);
     isFixed(dragTarget.x, dragTarget.y);
     draw();
   };
 
   const handleMouseUp = (e) => {
-    //console.log("inside handlemouseup")
+    // console.log("inside handlemouseup");
     dragTarget = null;
     isDown = false;
   };
   const handleMouseOut = (e) => {
-    //console.log('inside handlemouseout')
+    // console.log("inside handlemouseout");
     handleMouseUp(e);
   };
 
@@ -260,7 +320,7 @@ function DragnDrop_2() {
           </div>
           <div className="col">
             <canvas
-            
+              id="canvas"
               onMouseDown={handleMouseDown}
               onMouseMove={handleMouseMove}
               onMouseUp={handleMouseUp}

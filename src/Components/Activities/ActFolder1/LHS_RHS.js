@@ -93,7 +93,7 @@ const LHS_RHS = () => {
       <div style={{ height: "90%", overflow: "hidden auto" }}>
         <div className="row mb-4 mt-3">
           <div className="text-center text-danger fw-bolder">
-            {t("obj_content")}: <br /> A∪(B∩C) = (A∪B)∩(A∪C)
+            {t("obj_content")} <br /> A∪(B∩C) = (A∪B)∩(A∪C)
           </div>
         </div>
 

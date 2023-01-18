@@ -55,7 +55,7 @@ const Activity7 = () => {
             {t("Learning Outcome")}:
           </div>
           <div className="objective fw-normal d-flex justify-content-center  ">
-            <div className="col-12 col-md-9 d-flex justify-content-center text-center">
+            <div className="col-12 col-md-9 d-flex justify-content-center text-start">
              
            <ol>
                 <li>{t("Learning Outcome-1")}.</li>

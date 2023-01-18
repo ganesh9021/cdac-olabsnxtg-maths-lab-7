@@ -23,7 +23,7 @@ const LetsVerify = () => {
           height: "75vh",
           background: "rgba(255, 255, 255, .45)",
           border: "3px solid rgba(255, 255, 255, .5)",
-          backdropFilter: "blur(5px)",
+          //backdropFilter: "blur(5px)",
           borderRadius: "20px",
         }}
       >
