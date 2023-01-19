@@ -1,5 +1,3 @@
-
-
 import React, { useState } from "react";
 import "./Menusidebar.css";
 import { Navbar, Container } from "react-bootstrap";
@@ -59,50 +57,46 @@ const Offcanvas = () => {
           <Typography>
             <ul className="broswer-default" id="main-list">
               <li>{t("quiz-2")}</li>
-              <li>
-              {t("quiz-3")}
-              </li>
-              <li>
-              {t("quiz-4")}
-              </li>
-              <li>
-              {t("quiz-5")}
-              </li>
+              <li>{t("quiz-3")}</li>
+              <li>{t("quiz-4")}</li>
+              <li>{t("quiz-5")}</li>
               <li>{t("quiz-6")}</li> {t("quiz-7")}
-              <li>
-              {t("quiz-8")}
-              </li>
+              <li>{t("quiz-8")}</li>
               <li>{t("quiz-9")}</li>
             </ul>
           </Typography>
         </DialogContent>
         <DialogActions>
           <Button variant="contained" color="primary" onClick={onAgree}>
-          {t("ok")}
+            {t("ok")}
           </Button>
           <Button variant="contained" color="secondary" onClick={closeDialog}>
-          {t("cancel")}
+            {t("cancel")}
           </Button>
         </DialogActions>
       </Dialog>
 
       {[false].map((expand) => (
         <Navbar key={expand} expand={expand} className="mb-3">
-          <Container fluid>
+          <Container fluid className="">
             <Navbar.Brand href="#"></Navbar.Brand>
             <Navbar.Toggle aria-controls={`offcanvasNavbar-expand-${expand}`} />
             <Navbar.Offcanvas
-              className="offStyle"
               id={`offcanvasNavbar-expand-${expand}`}
               aria-labelledby={`offcanvasNavbarLabel-expand-${expand}`}
               placement="end"
+              style={{ width: "125px", height: "300px", background: "#8bb7c5" }}
             >
               <div className="" style={{ height: "100%" }}>
                 <div
                   className=" d-flex justify-content-center align-items-center p-3"
                   style={{ height: "33%" }}
                 >
-                  <LightTooltip title={t("Theory")} placement="left">
+                  <LightTooltip
+                    title={t("theory_tooltip")}
+                    placement="left"
+                    arrow
+                  >
                     <Link to="/letusverify/sqtheory">
                       <motion.img
                         whileHover={{ scale: 1.1 }}
@@ -119,12 +113,15 @@ const Offcanvas = () => {
                     </Link>
                   </LightTooltip>
                 </div>
-
                 <div
                   className=" d-flex justify-content-center align-items-center p-3"
                   style={{ height: "33%" }}
                 >
-                  <LightTooltip title={t("Vivavice")} placement="left">
+                  <LightTooltip
+                    title={t("quiz_tooltip")}
+                    placement="left"
+                    arrow
+                  >
                     <div onClick={openDialog}>
                       <motion.img
                         whileHover={{ scale: 1.1 }}
@@ -134,7 +131,6 @@ const Offcanvas = () => {
                           backgroundSize: "cover",
                           maxHeight: "100%",
                           maxWidth: "100%",
-                          cursor: "pointer",
                         }}
                         src={mcq}
                         alt="Logo"
@@ -142,34 +138,11 @@ const Offcanvas = () => {
                     </div>
                   </LightTooltip>
                 </div>
-
-                {/* <div
-                  className=" d-flex justify-content-center align-items-center p-3"
-                  style={{ height: "25%" }}
-                >
-                  <LightTooltip title="Lets Play!" placement="left">
-                    <Link to="/letusverify/game">
-                      <motion.img
-                        whileHover={{ scale: 1.1 }}
-                        whileTap={{ scale: 0.9 }}
-                        style={{
-                          backgroundRepeat: "no-repeat",
-                          backgroundSize: "cover",
-                          maxHeight: "100%",
-                          maxWidth: "100%",
-                        }}
-                        src={game}
-                        alt="Logo"
-                      ></motion.img>
-                    </Link>
-                  </LightTooltip>
-                </div> */}
-
                 <div
                   className=" d-flex justify-content-center align-items-center p-3"
-                  style={{ height: "34%" }}
+                  style={{ height: "33%" }}
                 >
-                  <LightTooltip title={t("help")} placement="left">
+                  <LightTooltip title={t("help")} placement="left" arrow>
                     <Link to="/letusverify/help">
                       <motion.img
                         whileHover={{ scale: 1.1 }}

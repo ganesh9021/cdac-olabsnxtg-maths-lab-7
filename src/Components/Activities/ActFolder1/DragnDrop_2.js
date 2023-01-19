@@ -15,60 +15,60 @@ function DragnDrop_2() {
   var [count, setCount] = useState(0);
   const { t, i18n } = useTranslation();
 
-  useEffect(() => {
+  // useEffect(() => {
 
-    let canvasContext = document.getElementById("canvas");
-    canvasContext.addEventListener("touchstart", function (event) {
-      let touch = event.touches[0];
-      console.log('touch : ',touch);
-      touchX = touch.clientX;
-      touchY = touch.clientY;
+  //   let canvasContext = document.getElementById("canvas");
+  //   canvasContext.addEventListener("touchstart", function (event) {
+  //     let touch = event.touches[0];
+  //     console.log('touch : ',touch);
+  //     touchX = touch.clientX;
+  //     touchY = touch.clientY;
 
-       touchX = Math.round(touchX);
-       touchY = Math.round(touchY);
+  //      touchX = Math.round(touchX);
+  //      touchY = Math.round(touchY);
 
-       touchX = touchX - 51;
-       touchY = touchY - 241;
+  //      touchX = touchX - 51;
+  //      touchY = touchY - 241;
 
-      console.log("touchX , touchY : ",touchX,touchY);
-      isDown = hitBox(touchX, touchY);
+  //     console.log("touchX , touchY : ",touchX,touchY);
+  //     isDown = hitBox(touchX, touchY);
 
-    });
-    canvasContext.addEventListener("touchmove", function (event) {
-      console.log('inside touch move')
-      if (!isDown) return;
-      let touch = event.touches[0];
-      let touchXX = touch.clientX;
-      let touchYY = touch.clientY;
+  //   });
+  //   canvasContext.addEventListener("touchmove", function (event) {
+  //     console.log('inside touch move')
+  //     if (!isDown) return;
+  //     let touch = event.touches[0];
+  //     let touchXX = touch.clientX;
+  //     let touchYY = touch.clientY;
 
-       touchXX = Math.round(touchXX);
-       touchYY = Math.round(touchYY);
+  //      touchXX = Math.round(touchXX);
+  //      touchYY = Math.round(touchYY);
 
-       touchXX = touchXX - 51;
-       touchYY = touchYY - 241;
+  //      touchXX = touchXX - 51;
+  //      touchYY = touchYY - 241;
      
-      let dx = touchXX - touchX;
-      let dy = touchYY - touchY;
-      touchX = touchXX;
-      touchY = touchYY;
-      dragTarget.x += dx;
-      dragTarget.y += dy;
-      console.log("for touch dragtarget.x, dragtarget.y : ",dragTarget.x,dragTarget.y)
-      isCoincide(dragTarget.x, dragTarget.y);
-      isFixed(dragTarget.x, dragTarget.y);
-      draw();
-    });
+  //     let dx = touchXX - touchX;
+  //     let dy = touchYY - touchY;
+  //     touchX = touchXX;
+  //     touchY = touchYY;
+  //     dragTarget.x += dx;
+  //     dragTarget.y += dy;
+  //     console.log("for touch dragtarget.x, dragtarget.y : ",dragTarget.x,dragTarget.y)
+  //     isCoincide(dragTarget.x, dragTarget.y);
+  //     isFixed(dragTarget.x, dragTarget.y);
+  //     draw();
+  //   });
 
-    canvasContext.addEventListener("touchend", function () {
-      dragTarget = null;
-      isDown = false;
-    });
+  //   canvasContext.addEventListener("touchend", function () {
+  //     dragTarget = null;
+  //     isDown = false;
+  //   });
 
-    canvasContext.addEventListener("touchcancel", function () {
-      dragTarget = null;
-      isDown = false;
-    });
-  });
+  //   canvasContext.addEventListener("touchcancel", function () {
+  //     dragTarget = null;
+  //     isDown = false;
+  //   });
+  // });
 
   const onBack = () => {
     navigate("/activity7/letusverify/act1startpage/tool_2");
@@ -245,9 +245,11 @@ function DragnDrop_2() {
   };
 
   const handleMouseDown = (e) => {
+    
     startX = parseInt(e.nativeEvent.offsetX - canvas.current.clientLeft);
     startY = parseInt(e.nativeEvent.offsetY - canvas.current.clientTop);
-    console.log("startx starty :",startX,startY);
+    // console.log("offsetX offsetY :",e.nativeEvent.offsetX,e.nativeEvent.offsetY);
+    // console.log('startX and startY in mouse : ',startX,startY)
     isDown = hitBox(startX, startY);
   };
   const handleMouseMove = (e) => {
@@ -255,16 +257,16 @@ function DragnDrop_2() {
     if (!isDown) return;
     const mouseX = parseInt(e.nativeEvent.offsetX - canvas.current.clientLeft);
     const mouseY = parseInt(e.nativeEvent.offsetY - canvas.current.clientTop);
-    console.log("mousex, mousey : ", mouseX, mouseY);
+    // console.log("mousex, mousey : ", mouseX, mouseY);
     const dx = mouseX - startX;
     const dy = mouseY - startY;
-    console.log("dx,dy : ", dx, dy);
+    // console.log("dx,dy : ", dx, dy);
     startX = mouseX;
     startY = mouseY;
-    console.log("startx,starty : ", startX, startY);
+    // console.log("startx,starty : ", startX, startY);
     dragTarget.x += dx;
     dragTarget.y += dy;
-    console.log(" for mouse dragtarget.x , dragtarget.y : ",dragTarget.x, dragTarget.y);
+    // console.log(" for mouse dragtarget.x , dragtarget.y : ",dragTarget.x, dragTarget.y);
     isCoincide(dragTarget.x, dragTarget.y);
     isFixed(dragTarget.x, dragTarget.y);
     draw();
@@ -279,6 +281,71 @@ function DragnDrop_2() {
     // console.log("inside handlemouseout");
     handleMouseUp(e);
   };
+  const handleTouchStart = (e) => {
+    //console.log('event in touch : ',e)
+
+    let rect = e.target.getBoundingClientRect().left;
+    let rect1 = e.target.getBoundingClientRect().top;
+
+    let offsetX = e.touches[0].clientX - window.pageXOffset-rect;
+   
+    let offsetY = e.touches[0].clientY - window.pageYOffset-rect1;
+    // startX = parseInt(e.nativeEvent.offsetX - canvas.current.clientLeft);
+    
+
+    // console.log('offsetX and offsetY in touch : ',offsetX,offsetY)
+
+
+    // let touch = e.touches[0];
+      // touchX = touch.clientX;
+      // touchY = touch.clientY;
+      touchX = offsetX - canvas.current.clientLeft;
+      touchY = offsetY - canvas.current.clientTop;
+       touchX = Math.round(touchX);
+       touchY = Math.round(touchY);
+      //  touchX = touchX - 51;
+      //  touchY = touchY - 241;
+      // console.log('touchX and touchY in touchstart: ',touchX,touchY);
+      isDown = hitBox(touchX, touchY);
+  }
+  const handleTouchMove = (e) => {
+    // console.log('inside touch move')
+      if (!isDown) return;
+      // let touch = event.touches[0];
+      let rect = e.target.getBoundingClientRect().left;
+      let rect1 = e.target.getBoundingClientRect().top;
+
+      let offsetX = e.touches[0].clientX - window.pageXOffset-rect;
+      let offsetY = e.touches[0].clientY - window.pageYOffset-rect1;
+
+      let touchXX = offsetX - canvas.current.clientLeft;
+      let touchYY = offsetY - canvas.current.clientTop;
+
+       touchXX = Math.round(touchXX);
+       touchYY = Math.round(touchYY);
+
+      //  touchXX = touchXX - 51;
+      //  touchYY = touchYY - 241;
+     
+      let dx = touchXX - touchX;
+      let dy = touchYY - touchY;
+      touchX = touchXX;
+      touchY = touchYY;
+      dragTarget.x += dx;
+      dragTarget.y += dy;
+      // console.log("for touch dragtarget.x, dragtarget.y : ",dragTarget.x,dragTarget.y)
+      isCoincide(dragTarget.x, dragTarget.y);
+      isFixed(dragTarget.x, dragTarget.y);
+      draw();
+  }
+  const handleTouchEnd = () => {
+    dragTarget = null;
+      isDown = false;
+  }
+  const handleTouchCancel = () => {
+    dragTarget = null;
+      isDown = false;
+  }
 
   return (
     <div style={{ height: "100%" }}>
@@ -325,6 +392,10 @@ function DragnDrop_2() {
               onMouseMove={handleMouseMove}
               onMouseUp={handleMouseUp}
               onMouseOut={handleMouseOut}
+              onTouchStart={handleTouchStart}
+              onTouchMove={handleTouchMove}
+              onTouchEnd = {handleTouchEnd}
+              onTouchCancel = {handleTouchCancel}
               ref={canvas}
               style={{ border: "1px solid black" }}
             ></canvas>
