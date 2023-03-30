@@ -7,11 +7,13 @@ import {
   Button,
 } from "@material-ui/core";
 import Slide from '@mui/material/Slide';
+import { useTranslation } from 'react-i18next';
 
 const Transition = React.forwardRef(function Transition(props, ref) {
   return <Slide direction="down" ref={ref} {...props} />;
 });
 const InfoPopup = ({ openDialog, onAgree, closeDialog, content,popuptitle }) => {
+  const { t, i18n } = useTranslation(); 
   return (
     <>
       <Dialog open={openDialog} TransitionComponent={Transition}>
@@ -23,10 +25,10 @@ const InfoPopup = ({ openDialog, onAgree, closeDialog, content,popuptitle }) => 
         </DialogContent>
         <DialogActions>
           <Button variant="contained" color="primary" size="small" onClick={onAgree}>
-            ok
+            {t("ok")}
           </Button>
           <Button variant="contained" color="secondary" size="small" onClick={closeDialog}>
-            Cancel
+            {t("cancel")}
           </Button>
         </DialogActions>
       </Dialog>

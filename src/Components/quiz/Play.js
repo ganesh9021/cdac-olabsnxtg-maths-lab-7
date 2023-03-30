@@ -20,10 +20,8 @@ import "../../../node_modules/@mdi/font/css/materialdesignicons.min.css";
 import { ToastContainer } from "react-toastify";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-
 import "bootstrap/dist/css/bootstrap.min.css";
 import parse from "html-react-parser";
-
 import QuestionStatusUpdate from "./QuestionStatusUpdate";
 import QuestionExplanation from "./QuestionExplanation";
 import QuitExamAlert from "./QuitExamAlert";
@@ -31,8 +29,8 @@ import ExamFinalScoreStats from "./ExamFinalScoreStats";
 import Headcomp from "../MajorComponents/Headcomp";
 import "../MajorComponents/Mid.css";
 import { Translation } from "react-i18next";
-import questionsHindi from '../../questions_hindi.json'
-import questionsEnglish from '../../questions_english.json'
+import questionsHindi from '../../questionsHindi.json'
+import questionsEnglish from '../../questionsEnglish.json'
 
 class Play extends React.Component {
   constructor(props) {

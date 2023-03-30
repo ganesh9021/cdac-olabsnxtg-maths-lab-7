@@ -1,16 +1,16 @@
 @import './base/_base.css';
 @import './components/_quiz-instructions.css';
-
+ 
 .title{
-    font-size: calc(1rem + 1.4vw)
+    font-size: calc(1rem + 1.6vw)
   }
  
   .title1{
-    font-size: calc(0.9rem + 1.2vw)
+    font-size: calc(0.9rem + 1.3vw)
   }
  
   .objective{
-    font-size: calc(0.6rem + 0.9vw)
+    font-size: calc(0.6rem + 1vw)
   }
  
    .workbenchTag{

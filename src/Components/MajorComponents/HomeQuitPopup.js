@@ -10,13 +10,12 @@ import {
 import Slide from '@mui/material/Slide';
 import { useTranslation } from "react-i18next";
 
-
 const Transition = React.forwardRef(function Transition(props, ref) {
   return <Slide direction="down" ref={ref} {...props} />;
 });
 
 const HomeQuitPopup = ({ openDialog, onAgree, closeDialog }) => {
-  const { t, i18n } = useTranslation();
+  const { t, i18n } = useTranslation(); 
   return (
     <>
       <Dialog open={openDialog} TransitionComponent={Transition}>
@@ -30,7 +29,7 @@ const HomeQuitPopup = ({ openDialog, onAgree, closeDialog }) => {
             size="small"
             onClick={onAgree}
           >
-            {t("yes")}
+            {t("Yes")}
           </Button>
           <Button
             variant="contained"
@@ -38,7 +37,7 @@ const HomeQuitPopup = ({ openDialog, onAgree, closeDialog }) => {
             size="small"
             onClick={closeDialog}
           >
-            {t("cancel")}
+            {t("Cancel")}
           </Button>
         </DialogActions>
       </Dialog>

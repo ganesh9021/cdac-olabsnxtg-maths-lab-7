@@ -35,7 +35,7 @@ class ExamFinalScoreStats extends React.Component {
   renderRedirect = () => {
     this.props.propsScore.scoreUpdate(false);
     if (this.state.redirect) {
-      return <Navigate to="/activity7/letusverify" />;
+      return <Navigate to="/letusverify" />;
     }
   };
 

@@ -1,13 +1,10 @@
 import React, { useState } from "react";
-
+import Rightsidemenu from "./Rightsidemenu";
 import homeImg from "../../Img/homeimg.png";
-import * as expre from "../../Components/Superscript";
-import HomeQuitPopup from "../../Components/MajorComponents/HomeQuitPopup";
+import HomeQuitPopup from "./HomeQuitPopup";
 import { useNavigate } from "react-router-dom";
-//import Offcanvas from "./Offcanvas";
-import Offcanvas from "../Activities/Offcanvas";
-import { useTranslation } from "react-i18next";
 import "../../styles/styles.css";
+import { useTranslation } from "react-i18next";
 
 const Headcomp = ({ sidebarvisible }) => {
   const { t, i18n } = useTranslation();
@@ -28,19 +25,14 @@ const Headcomp = ({ sidebarvisible }) => {
   };
 
   return (
-    <div className="d-flex" style={{ height: "10%" , fontSize:"1rem"}}>
-      <div className="col-2  d-flex justify-content-center align-items-center">
+    <div className="d-flex" style={{ height: "10%", fontSize: "1rem" }}>
+      <div className=" col-2  d-flex justify-content-center align-items-center">
         <img
-          className=""
-          style={{
-            backgroundRepeat: "no-repeat",
-            backgroundSize: "cover",
-            maxHeight: "100%",
-            cursor:"pointer"
-          }}
+          className="homeclass"
           src={homeImg}
           alt="Logo"
           onClick={openDialog}
+          style={{cursor : 'pointer'}}
         />
         <HomeQuitPopup
           openDialog={showDialog}
@@ -58,18 +50,17 @@ const Headcomp = ({ sidebarvisible }) => {
             background: "skyblue",
           }}
         >
-          <div className=" fw-bold" style={{}}>
-          {t("title")}:{" "}
-            <span className="fw-normal">{expre.default()}</span>
+          <div className="objective fw-bold" style={{}}>
+            <span className="">{t("title")}</span>
           </div>
         </div>
       </div>
 
       <div
-        className="col-2 d-flex justify-content-center align-items-center"
+        className=" col-2 d-flex justify-content-center align-items-center"
         style={{ visibility: `${sidebarvisible}` }}
       >
-        <Offcanvas />
+        <Rightsidemenu />
       </div>
     </div>
   );
