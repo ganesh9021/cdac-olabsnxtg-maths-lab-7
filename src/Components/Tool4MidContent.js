@@ -77,7 +77,7 @@ function Tool4MidContent({setInstr}) {
 
   useEffect(() => {
     if (localStorage.getItem("A") === "5") {
-      document.getElementById("cb4").checked = true;
+      //document.getElementById("cb4").checked = true;
     }
     if (localStorage.getItem("A") === "6") {
       document.getElementById("cb4").checked = true;
