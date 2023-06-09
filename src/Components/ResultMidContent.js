@@ -36,7 +36,7 @@ const ResultMidContent = () => {
             <div>
               <Res3Copy />
             </div>
-            <div>&#123;5, 7, 8, 9, 4, 6 &#125;</div>
+            <div>A∪(B∩C)=&#123;5, 7, 8, 9, 4, 6 &#125;</div>
           </div>
           <div className="col-md-auto d-flex justify-content-center align-items-center text-center">
             <div className="fw-bolder" >=</div>
@@ -48,12 +48,12 @@ const ResultMidContent = () => {
             <div>
               <Res6Copy />
             </div>
-            <div>&#123;5, 7, 8, 9, 4, 6 &#125;</div>
+            <div>(A∪B)∩(A∪C)=&#123;5, 7, 8, 9, 4, 6 &#125;</div>
           </div>
         </div>
         <div className="row">
           <div className="d-flex flex-column align-items-center mb-4">
-            <div>{t("line-5")}</div>
+            {/* <div>{t("line-5")}</div> */}
             <div>
               <b>LHS [AU(B∩C)] = RHS [(AUB)∩(AUC)]</b>
             </div>

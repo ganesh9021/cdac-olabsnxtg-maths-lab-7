@@ -144,13 +144,13 @@ const Instruction_12 = () => {
 const Instruction_13 = () => {
   return (
     <ul>
-      <li>
+      {/* <li>
         <b>
           <Translation>{(t) => t("instr-18")}</Translation>
         </b>{" "}
         <Translation>{(t) => t("instr-19")}</Translation>
         <b>LHS [A∪(B∩C)] = RHS [(A∪B)∩(A∪C)]</b>
-      </li>
+      </li> */}
       <li>
         <Translation>{(t) => t("instr-17")}</Translation>
       </li>

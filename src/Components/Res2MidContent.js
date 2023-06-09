@@ -1,7 +1,7 @@
 import React, { useRef, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import BackNextBar from "./MajorComponents/BackNextBar";
-import { toast } from "react-toastify";
+import { toast, ToastContainer } from "react-toastify";
 
 import { Button } from "@mui/material";
 import { useTranslation } from "react-i18next";
@@ -145,7 +145,13 @@ function Res2MidContent() {
             <div className="d-flex">
               <div className="me-4">
                 <div>
-                  <input type="checkbox" name="check_box" id="cb1" value="A" disabled/>
+                  <input
+                    type="checkbox"
+                    name="check_box"
+                    id="cb1"
+                    value="A"
+                    disabled
+                  />
                 </div>
                 <div>
                   <input
@@ -193,6 +199,7 @@ function Res2MidContent() {
               </Button>
             </div>
           </div>
+          <ToastContainer />
         </div>
       </div>
       <BackNextBar

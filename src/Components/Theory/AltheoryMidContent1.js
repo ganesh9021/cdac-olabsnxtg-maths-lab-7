@@ -48,10 +48,12 @@ const AltheoryMidContent1 = () => {
         <p>{t("theory-15")}</p>
         <h6 className="fw-bolder">{t("theory-16")}</h6>
         <p>{t("theory-17")}</p>
+        <div className="fw-bolder text-center">{t("theory-18")}</div>
         <div style={{ fontFamily: "arial", fontSize: "1.2vw" }}>
+
           <div className="row" style={{ height: "25%", marginLeft: "10%" }}>
+            
             <div className="col-md-auto" style={{ fontSize: "1.2vw" }}>
-              {/* <div className="d-flex justify-content-center">A</div> */}
               <div className="d-flex justify-content-center">
                 <img
                   style={{ height: "150px", width: "150px" }}
