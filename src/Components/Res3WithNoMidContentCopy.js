@@ -1,11 +1,9 @@
 import React, { useRef, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import BackNextBar from "./MajorComponents/BackNextBar";
-
 import { useTranslation } from "react-i18next";
-import { Button } from "@mui/material";
 
-function Res3WithNoMidContent() {
+function Res3WithNoMidContentCopy() {
   const { t, i18n } = useTranslation();
   const navigate = useNavigate();
   const canvas = useRef();
@@ -13,10 +11,6 @@ function Res3WithNoMidContent() {
   const onNext = () => {
     navigate("/letusverify/startpage");
   };
-
-  const handleNextExample = () => {
-    navigate("/letusverify/startpage/tool3/res3/res3withnocopy")
-  }
 
   let ctx = null;
   const boxes = [
@@ -85,10 +79,8 @@ function Res3WithNoMidContent() {
     boxes.map((info) => drawFillCircle(info));
   };
 
-  const drawFillCircle = (info, style = {}) => {
-    // const { x, y, r, s, e, shapeName} = info;
-    // const { backgroundColor = 'rgba(201, 50, 48, 0.55)'} = style;
-
+  const drawFillCircle = () => {
+    
     //Circle A
     ctx.beginPath();
     ctx.fillStyle = "rgba(255, 39, 77, 0.4)";
@@ -147,19 +139,20 @@ function Res3WithNoMidContent() {
     ctx.fillText("C", 190, 125);
 
     //code for numbers
-    ctx.font = "18px Arial";
+    ctx.font = "10px Arial";
     ctx.textAlign = "center";
     ctx.textBaseline = "middle";
     ctx.fillStyle = "red";
-    ctx.fillText("4", 160, 110);
-    ctx.fillText("6", 160, 150);
-    ctx.fillText("5", 130, 90);
-    ctx.fillText("7", 140, 50);
-    ctx.fillText("9", 180, 50);
-    ctx.fillText("8", 190, 90);
-    ctx.fillText("3", 110, 135);
-    ctx.fillText("10", 220, 135);
-    ctx.fillText("2", 190, 160);
+    ctx.fillText("Orange", 160, 140);
+    ctx.fillText("Fig", 160, 110);
+    ctx.fillText("Peach", 130, 90);
+    ctx.fillText("Kiwi", 140, 50);
+    ctx.fillText("Grape", 180, 50);
+    ctx.fillText("Mango", 190, 90);
+    ctx.fillText("Pear", 100, 110);
+    ctx.fillText("Plum", 120, 150);
+    ctx.fillText("Guava", 220, 135);
+    ctx.fillText("Cherry", 190, 160);
   };
 
   return (
@@ -210,32 +203,22 @@ function Res3WithNoMidContent() {
           </div>
           <div className="col mb-1">
             <canvas ref={canvas} style={{ border: "1px solid black" }}></canvas>
-
-            <div className="text-center mt-1">
-              <Button
-                variant="contained"
-                color="primary"
-                onClick={handleNextExample}
-              >
-                Next Example
-              </Button>
-            </div>
           </div>
           <div className="col">
             <ul>
-              <b>Set A:</b> &#123; 4, 5, 7, 8, 9 &#125;
+              <b>Set A:</b> &#123;Kiwi,Grape,Peach,Mango,fig&#125;
             </ul>
             <ul>
-              <b>Set B:</b> &#123; 3, 4, 5, 6 &#125;
+              <b>Set B:</b> &#123;Pear,Plum,Peach,Fig,Orange&#125;
             </ul>
             <ul>
-              <b>Set C:</b> &#123; 2, 4, 6, 8, 10 &#125;
+              <b>Set C:</b> &#123;Cherry,Guava,Mango,Orange,Fig&#125;
             </ul>
             <ul>
-              <b>Set B∩C:</b> &#123; 4, 6 &#125;
+              <b>Set B∩C:</b> &#123;Fig,Orange&#125;
             </ul>
             <ul>
-              <b>Set A∪(B∩C):</b> &#123; 5, 7, 8, 9, 4, 6 &#125;
+              <b>Set A∪(B∩C):</b> &#123;Kiwi,Grape,Peach,Mango,fig,Orange&#125;
             </ul>
           </div>
         </div>
@@ -250,4 +233,4 @@ function Res3WithNoMidContent() {
   );
 }
 
-export default Res3WithNoMidContent;
+export default Res3WithNoMidContentCopy;

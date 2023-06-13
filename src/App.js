@@ -29,6 +29,12 @@ import AItheory1 from "./Components/Theory/AItheory1";
 import Help from "./Components/MajorComponents/Help";
 import Play from "./Components/quiz/Play";
 import Language from "./Language";
+import Res1WithNoCopy from "./Components/Res1WithNoCopy";
+import Res2WithNoCopy from "./Components/Res2WithNoCopy";
+import Res3WithNoCopy from "./Components/Res3WithNoCopy";
+import Res4WithNoCopy from "./Components/Res4WithNoCopy";
+import Res5WithNoCopy from "./Components/Res5WithNoCopy";
+import Res6WithNoCopy from "./Components/Res6WithNoCopy";
 
 const App = () => {
   const { id } = useParams();
@@ -59,6 +65,10 @@ const App = () => {
         path="/letusverify/startpage/tool1/res1withno"
         element={<Res1WithNo />}
       />
+      <Route
+        path="/letusverify/startpage/tool1/res1withnocopy"
+        element={<Res1WithNoCopy />}
+      />
       <Route path="/letusverify/startpage/tool2" element={<Tool2 />} />
       <Route
         path="/letusverify/startpage/tool2/dragndrop2"
@@ -72,11 +82,19 @@ const App = () => {
         path="/letusverify/startpage/tool2/dragndrop2/res2/res2withno"
         element={<Res2WithNo />}
       />
+      <Route
+        path="/letusverify/startpage/tool2/dragndrop2/res2/res2withnocopy"
+        element={<Res2WithNoCopy />}
+      />
       <Route path="/letusverify/startpage/tool3" element={<Tool3 />} />
       <Route path="/letusverify/startpage/tool3/res3" element={<Res3 />} />
       <Route
         path="/letusverify/startpage/tool3/res3/res3withno"
         element={<Res3WithNo />}
+      />
+      <Route
+        path="/letusverify/startpage/tool3/res3/res3withnocopy"
+        element={<Res3WithNoCopy />}
       />
       <Route path="/letusverify/startpage/tool4" element={<Tool4 />} />
       <Route path="/letusverify/startpage/tool4/res4" element={<Res4 />} />
@@ -84,17 +102,29 @@ const App = () => {
         path="/letusverify/startpage/tool4/res4/res4withno"
         element={<Res4WithNo />}
       />
+       <Route
+        path="/letusverify/startpage/tool4/res4/res4withnocopy"
+        element={<Res4WithNoCopy />}
+      />
       <Route path="/letusverify/startpage/tool5" element={<Tool5 />} />
       <Route path="/letusverify/startpage/tool5/res5" element={<Res5 />} />
       <Route
         path="/letusverify/startpage/tool5/res5/res5withno"
         element={<Res5WithNo />}
       />
+       <Route
+        path="/letusverify/startpage/tool5/res5/res5withnocopy"
+        element={<Res5WithNoCopy />}
+      />
       <Route path="/letusverify/startpage/tool6" element={<Tool6 />} />
       <Route path="/letusverify/startpage/tool6/res6" element={<Res6 />} />
       <Route
         path="/letusverify/startpage/tool6/res6/res6withno"
         element={<Res6WithNo />}
+      />
+      <Route
+        path="/letusverify/startpage/tool6/res6/res6withnocopy"
+        element={<Res6WithNoCopy />}
       />
       <Route path="/letusverify/startpage/result" element={<Result />} />
       <Route path="/letusverify/sqtheory" element={<AItheory1 />} />

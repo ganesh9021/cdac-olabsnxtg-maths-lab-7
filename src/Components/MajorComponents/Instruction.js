@@ -132,10 +132,14 @@ const Instruction_11 = () => {
 const Instruction_12 = () => {
   return (
     <ul>
-      <li>Drag the relations toward the center.</li>
       <li>
-        Click on the <q>VERIFY</q> button to prove whether LHS is Equal to RHS
-        or not.
+        <Translation>{(t) => t("instr-22")}</Translation>
+      </li>
+      <b>
+        <Translation>{(t) => t("instr-8")}</Translation>
+      </b>
+      <li>
+        <Translation>{(t) => t("instr-9")}</Translation>
       </li>
     </ul>
   );
@@ -144,13 +148,6 @@ const Instruction_12 = () => {
 const Instruction_13 = () => {
   return (
     <ul>
-      {/* <li>
-        <b>
-          <Translation>{(t) => t("instr-18")}</Translation>
-        </b>{" "}
-        <Translation>{(t) => t("instr-19")}</Translation>
-        <b>LHS [A∪(B∩C)] = RHS [(A∪B)∩(A∪C)]</b>
-      </li> */}
       <li>
         <Translation>{(t) => t("instr-17")}</Translation>
       </li>

@@ -1,26 +1,22 @@
 import React, { useRef, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import BackNextBar from "./MajorComponents/BackNextBar";
-
 import { useTranslation } from "react-i18next";
-import { Button } from "@mui/material";
 
-function Res3WithNoMidContent() {
+
+function Res2WithNoMidContentCopy() {
   const { t, i18n } = useTranslation();
   const navigate = useNavigate();
   const canvas = useRef();
 
   const onNext = () => {
-    navigate("/letusverify/startpage");
+    navigate("/letusverify/startpage/tool3");
   };
-
-  const handleNextExample = () => {
-    navigate("/letusverify/startpage/tool3/res3/res3withnocopy")
-  }
 
   let ctx = null;
   const boxes = [
-    { x: 250, y: 75, r: 50, s: 0, e: 2 * Math.PI, shapeName: "A" },
+    { x: 133, y: 100, r: 50, s: 0, e: 2 * Math.PI, shapeName: "B" },
+    { x: 193, y: 100, r: 50, s: 0, e: 2 * Math.PI, shapeName: "C" },
   ];
 
   useEffect(() => {
@@ -77,89 +73,65 @@ function Res3WithNoMidContent() {
       canvas.current.clientWidth,
       canvas.current.clientHeight
     );
-    ctx.font = "18px Arial";
-    ctx.textAlign = "center";
-    ctx.textBaseline = "middle";
-    ctx.fillStyle = "black";
-    ctx.fillText("U", 290, 10);
     boxes.map((info) => drawFillCircle(info));
   };
 
   const drawFillCircle = (info, style = {}) => {
-    // const { x, y, r, s, e, shapeName} = info;
-    // const { backgroundColor = 'rgba(201, 50, 48, 0.55)'} = style;
+    const { x, y, r, s, e, shapeName } = info;
+    const { backgroundColor = "rgba(73, 146, 228, 0.55)" } = style;
 
-    //Circle A
     ctx.beginPath();
-    ctx.fillStyle = "rgba(255, 39, 77, 0.4)";
-    ctx.arc(160, 75, 50, 0, 2 * Math.PI, true);
-    ctx.fill();
+    ctx.fillStyle = backgroundColor;
+    ctx.arc(133, 100, 50, 0.9, 5.32, true);
 
-    //Circle B
-    ctx.beginPath();
-    ctx.fillStyle = "rgba(73, 146, 228, 0.55)";
-    ctx.arc(130, 125, 50, 0.9, 5.32, true);
-    ctx.fill();
+    if (x === 133 && y === 100) {
+      ctx.fill();
+    } else {
+      ctx.stroke();
+    }
 
-    //Circle C
     ctx.beginPath();
-    ctx.fillStyle = "rgba(73, 146, 228, 0.55)";
-    ctx.arc(190, 125, 50, 2.1816667, 4.04);
-    ctx.fill();
+    ctx.fillStyle = backgroundColor;
+    ctx.arc(193, 100, 50, 2.1816667, 4.04);
+    if (x === 193 && y === 100) {
+      ctx.fill();
+    } else {
+      ctx.stroke();
+    }
+
+    //Text
+    ctx.font = "18px Arial";
+    ctx.textAlign = "center";
+    ctx.textBaseline = "middle";
+    ctx.fillStyle = "Black";
+    ctx.fillText(shapeName, x, y);
+    ctx.fillText("U", 290, 10);
 
     //Border of circle B
     ctx.beginPath();
-    ctx.arc(130, 125, 50, 0, 2 * Math.PI);
+    ctx.arc(133, 100, 50, 0, 2 * Math.PI);
     ctx.strokeStyle = "black";
     ctx.stroke();
 
     //border of circle C
     ctx.beginPath();
-    ctx.arc(190, 125, 50, 0, 2 * Math.PI);
+    ctx.arc(193, 100, 50, 0, 2 * Math.PI);
     ctx.strokeStyle = "black";
     ctx.stroke();
 
-    //border of circle A
-    ctx.beginPath();
-    ctx.arc(160, 75, 50, 0, 2 * Math.PI);
-    ctx.strokeStyle = "black";
-    ctx.stroke();
-
-    //Text A
-    ctx.font = "18px Arial";
-    ctx.textAlign = "center";
-    ctx.textBaseline = "middle";
-    ctx.fillStyle = "Black";
-    ctx.fillText("A", 160, 75);
-
-    //Text B
-    ctx.font = "18px Arial";
-    ctx.textAlign = "center";
-    ctx.textBaseline = "middle";
-    ctx.fillStyle = "Black";
-    ctx.fillText("B", 130, 125);
-
-    //Text C
-    ctx.font = "18px Arial";
-    ctx.textAlign = "center";
-    ctx.textBaseline = "middle";
-    ctx.fillStyle = "Black";
-    ctx.fillText("C", 190, 125);
-
-    //code for numbers
-    ctx.font = "18px Arial";
+    //code for Numbers
+    ctx.font = "10px Arial";
     ctx.textAlign = "center";
     ctx.textBaseline = "middle";
     ctx.fillStyle = "red";
-    ctx.fillText("4", 160, 110);
-    ctx.fillText("6", 160, 150);
-    ctx.fillText("5", 130, 90);
-    ctx.fillText("7", 140, 50);
-    ctx.fillText("9", 180, 50);
-    ctx.fillText("8", 190, 90);
-    ctx.fillText("3", 110, 135);
-    ctx.fillText("10", 220, 135);
-    ctx.fillText("2", 190, 160);
+    ctx.fillText("White", 160, 100);
+
+    ctx.fillText("Red", 125, 75);
+    ctx.fillText("Green", 100, 100);
+    ctx.fillText("Yellow", 125, 130);
+    ctx.fillText("Violet", 195, 75);
+    ctx.fillText("Black", 225, 100);
+    ctx.fillText("Purple", 195, 130);
   };
 
   return (
@@ -209,34 +181,26 @@ function Res3WithNoMidContent() {
             </div>
           </div>
           <div className="col mb-1">
-            <canvas ref={canvas} style={{ border: "1px solid black" }}></canvas>
-
-            <div className="text-center mt-1">
-              <Button
-                variant="contained"
-                color="primary"
-                onClick={handleNextExample}
-              >
-                Next Example
-              </Button>
+            <div>
+              <canvas
+                ref={canvas}
+                style={{ border: "1px solid black" }}
+              ></canvas>
             </div>
+           
           </div>
           <div className="col">
-            <ul>
-              <b>Set A:</b> &#123; 4, 5, 7, 8, 9 &#125;
-            </ul>
-            <ul>
-              <b>Set B:</b> &#123; 3, 4, 5, 6 &#125;
-            </ul>
-            <ul>
-              <b>Set C:</b> &#123; 2, 4, 6, 8, 10 &#125;
-            </ul>
-            <ul>
-              <b>Set B∩C:</b> &#123; 4, 6 &#125;
-            </ul>
-            <ul>
-              <b>Set A∪(B∩C):</b> &#123; 5, 7, 8, 9, 4, 6 &#125;
-            </ul>
+            <div>
+              <ul>
+                <b>Set B:</b> &#123;Red,Green,yellow,white&#125;
+              </ul>
+              <ul>
+                <b>Set C:</b> &#123;Violet,Black,White,Purple&#125;
+              </ul>
+              <ul>
+                <b>Set B∩C:</b> &#123;White&#125;
+              </ul>
+            </div>
           </div>
         </div>
       </div>
@@ -250,4 +214,4 @@ function Res3WithNoMidContent() {
   );
 }
 
-export default Res3WithNoMidContent;
+export default Res2WithNoMidContentCopy;

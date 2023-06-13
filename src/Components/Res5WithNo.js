@@ -26,7 +26,7 @@ const Res5WithNo = () => {
        
       />
 
-      <Footercomp footheight="20%" instruction={Instru.Instruction_7()} />
+      <Footercomp footheight="20%" instruction={Instru.Instruction_12()} />
       <ToastContainer/>
     </div>
   )

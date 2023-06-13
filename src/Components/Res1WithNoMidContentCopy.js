@@ -1,26 +1,21 @@
 import React, { useRef, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import BackNextBar from "./MajorComponents/BackNextBar";
-import { useTranslation } from "react-i18next";
-import { Button } from "@mui/material";
 
-function Res2WithNoMidContent() {
+import { useTranslation } from "react-i18next";
+
+function Res1WithNoMidContent() {
   const { t, i18n } = useTranslation();
+
   const navigate = useNavigate();
   const canvas = useRef();
 
-  const onNext = () => {
-    navigate("/letusverify/startpage/tool3");
-  };
-  const handleNextExample = () => {
-    navigate("/letusverify/startpage/tool2/dragndrop2/res2/res2withnocopy");
+  const onNext = (e) => {
+    navigate("/letusverify/startpage/tool2");
   };
 
   let ctx = null;
-  const boxes = [
-    { x: 133, y: 100, r: 50, s: 0, e: 2 * Math.PI, shapeName: "B" },
-    { x: 193, y: 100, r: 50, s: 0, e: 2 * Math.PI, shapeName: "C" },
-  ];
+  const boxes = [{ x: 200, y: 100, r: 50, s: 0, e: 2 * Math.PI }];
 
   useEffect(() => {
     const canvasEle = canvas.current;
@@ -42,27 +37,6 @@ function Res2WithNoMidContent() {
       document.getElementById("cb2").checked = true;
       document.getElementById("cb3").checked = true;
     }
-    if (localStorage.getItem("A") === "5") {
-      document.getElementById("cb1").checked = true;
-      document.getElementById("cb2").checked = true;
-      document.getElementById("cb3").checked = true;
-      document.getElementById("cb4").checked = true;
-    }
-    if (localStorage.getItem("A") === "6") {
-      document.getElementById("cb1").checked = true;
-      document.getElementById("cb2").checked = true;
-      document.getElementById("cb3").checked = true;
-      document.getElementById("cb4").checked = true;
-      document.getElementById("cb5").checked = true;
-    }
-    if (localStorage.getItem("A") === "7") {
-      document.getElementById("cb1").checked = true;
-      document.getElementById("cb2").checked = true;
-      document.getElementById("cb3").checked = true;
-      document.getElementById("cb4").checked = true;
-      document.getElementById("cb5").checked = true;
-      document.getElementById("cb6").checked = true;
-    }
   }, []);
 
   useEffect(() => {
@@ -76,64 +50,43 @@ function Res2WithNoMidContent() {
       canvas.current.clientWidth,
       canvas.current.clientHeight
     );
-    boxes.map((info) => drawFillCircle(info));
-  };
-
-  const drawFillCircle = (info, style = {}) => {
-    const { x, y, r, s, e, shapeName } = info;
-    const { backgroundColor = "rgba(73, 146, 228, 0.55)" } = style;
-
-    ctx.beginPath();
-    ctx.fillStyle = backgroundColor;
-    ctx.arc(133, 100, 50, 0.9, 5.32, true);
-
-    if (x === 133 && y === 100) {
-      ctx.fill();
-    } else {
-      ctx.stroke();
-    }
-
-    ctx.beginPath();
-    ctx.fillStyle = backgroundColor;
-    ctx.arc(193, 100, 50, 2.1816667, 4.04);
-    if (x === 193 && y === 100) {
-      ctx.fill();
-    } else {
-      ctx.stroke();
-    }
-
-    //Text
     ctx.font = "18px Arial";
     ctx.textAlign = "center";
     ctx.textBaseline = "middle";
     ctx.fillStyle = "Black";
-    ctx.fillText(shapeName, x, y);
     ctx.fillText("U", 290, 10);
+    boxes.map((info) => drawFillCircle(info));
+  };
 
-    //Border of circle B
+  const drawFillCircle = () => {
+    // fill Circle A
     ctx.beginPath();
-    ctx.arc(133, 100, 50, 0, 2 * Math.PI);
+    ctx.fillStyle = "rgba(255, 39, 77, 0.4)";
+    ctx.arc(150, 100, 50, 0, 2 * Math.PI);
+    ctx.fill();
+
+    //Text of Letter A
+    ctx.font = "18px Arial";
+    ctx.textAlign = "center";
+    ctx.textBaseline = "middle";
+    ctx.fillStyle = "Black";
+    ctx.fillText("A", 150, 100);
+
+    //border of circle A
+    ctx.beginPath();
+    ctx.arc(150, 100, 50, 0, 2 * Math.PI);
     ctx.strokeStyle = "black";
     ctx.stroke();
 
-    //border of circle C
-    ctx.beginPath();
-    ctx.arc(193, 100, 50, 0, 2 * Math.PI);
-    ctx.strokeStyle = "black";
-    ctx.stroke();
-
-    //code for Numbers
+    //code for numbers
     ctx.font = "18px Arial";
     ctx.textAlign = "center";
     ctx.textBaseline = "middle";
     ctx.fillStyle = "red";
-    ctx.fillText("4", 160, 75);
-    ctx.fillText("6", 160, 120);
-    ctx.fillText("3", 125, 75);
-    ctx.fillText("5", 95, 100);
-    ctx.fillText("2", 195, 75);
-    ctx.fillText("8", 225, 100);
-    ctx.fillText("10", 195, 130);
+    ctx.fillText("a", 180, 100);
+    ctx.fillText("b", 120, 100);
+    ctx.fillText("c", 150, 75);
+    ctx.fillText("d", 150, 125);
   };
 
   return (
@@ -183,31 +136,11 @@ function Res2WithNoMidContent() {
             </div>
           </div>
           <div className="col mb-1">
-            <div>
-              <canvas
-                ref={canvas}
-                style={{ border: "1px solid black" }}
-              ></canvas>
-            </div>
-            <div className="text-center mt-1">
-              <Button
-                variant="contained"
-                color="primary"
-                onClick={handleNextExample}
-              >
-                Next Example
-              </Button>
-            </div>
+            <canvas ref={canvas} style={{ border: "1px solid black" }}></canvas>
           </div>
           <div className="col">
             <ul>
-              <b>Set B:</b> &#123; 3, 4, 5, 6 &#125;
-            </ul>
-            <ul>
-              <b>Set C:</b> &#123; 2, 4, 6, 8, 10 &#125;
-            </ul>
-            <ul>
-              <b>Set B∩C:</b> &#123; 4, 6 &#125;
+              <b>Set A:</b> &#123; a, b, c, d &#125;
             </ul>
           </div>
         </div>
@@ -222,4 +155,4 @@ function Res2WithNoMidContent() {
   );
 }
 
-export default Res2WithNoMidContent;
+export default Res1WithNoMidContent;

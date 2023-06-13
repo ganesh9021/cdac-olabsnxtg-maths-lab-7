@@ -24,7 +24,7 @@ const AltheoryMidContent1 = () => {
           <li>{t("theory-3")}</li>
           <li>{t("obj_content")} A∪(B∩C) = (A∪B)∩(A∪C)</li>
         </ul>
-        <h6  className="fw-bolder">{t("theory-4")}</h6>
+        <h6 className="fw-bolder">{t("theory-4")}</h6>
         <ul>
           {" "}
           <li>{t("theory-5")}</li>
@@ -48,75 +48,69 @@ const AltheoryMidContent1 = () => {
         <p>{t("theory-15")}</p>
         <h6 className="fw-bolder">{t("theory-16")}</h6>
         <p>{t("theory-17")}</p>
-        <div className="fw-bolder text-center">{t("theory-18")}</div>
-        <div style={{ fontFamily: "arial", fontSize: "1.2vw" }}>
-
-          <div className="row" style={{ height: "25%", marginLeft: "10%" }}>
-            
-            <div className="col-md-auto" style={{ fontSize: "1.2vw" }}>
-              <div className="d-flex justify-content-center">
-                <img
-                  style={{ height: "150px", width: "150px" }}
-                  src={A}
-                  alt="logo"
-                />
+        <div className="col-8">
+          <div className="fw-bolder text-start"><ul><li>{t("theory-18")}</li></ul></div>
+          <div>
+            <div className="row" style={{ height: "25%", marginLeft: "10%" }}>
+              <div className="col-md-auto" style={{ fontSize: "1.2vw" }}>
+                <div className="d-flex justify-content-center">
+                  <img
+                    style={{ height: "150px", width: "150px" }}
+                    src={A}
+                    alt="logo"
+                  />
+                </div>
+              </div>
+              <div className="col" style={{ fontSize: "1.2vw" }}>
+                <div className="d-flex justify-content-center">
+                  <img
+                    style={{ height: "150px", width: "150px" }}
+                    src={BIC}
+                    alt="logo"
+                  />
+                </div>
+              </div>
+              <div className="col" style={{ fontSize: "1.2vw" }}>
+                <div className="d-flex justify-content-center">
+                  <img
+                    style={{ height: "150px", width: "150px" }}
+                    src={AUBIC}
+                    alt="logo"
+                  />
+                </div>
               </div>
             </div>
-            <div className="col" style={{ fontSize: "1.2vw" }}>
-              {/* <div className="d-flex justify-content-center">B∩C</div> */}
-              <div className="d-flex justify-content-center">
-                <img
-                  style={{ height: "150px", width: "150px" }}
-                  src={BIC}
-                  alt="logo"
-                />
+            <div className="fw-bolder text-start"><ul><li>{t("theory-19")}</li></ul></div>
+            <div
+              className="row"
+              style={{ height: "25vh", fontSize: "1.2vw", marginLeft: "10%" }}
+            >
+              <div className="col-md-auto">
+                <div className="d-flex justify-content-center">
+                  <img
+                    style={{ height: "150px", width: "150px" }}
+                    src={AUB}
+                    alt="logo"
+                  />
+                </div>
               </div>
-            </div>
-            <div className="col" style={{ fontSize: "1.2vw" }}>
-              {/* <div className="d-flex justify-content-center">A∪(B∩C)</div> */}
-              <div className="d-flex justify-content-center">
-                <img
-                  style={{ height: "150px", width: "150px" }}
-                  src={AUBIC}
-                  alt="logo"
-                />
+              <div className="col" style={{ fontSize: "1.2vw" }}>
+                <div className="d-flex justify-content-center">
+                  <img
+                    style={{ height: "150px", width: "150px" }}
+                    src={AUC}
+                    alt="logo"
+                  />
+                </div>
               </div>
-            </div>
-          </div>
-          <div
-            className="row"
-            style={{ height: "25vh", fontSize: "1.2vw", marginLeft: "10%" }}
-          >
-            <div className="col-md-auto">
-              {/* <div className="d-flex justify-content-center">A∪B</div> */}
-              <div className="d-flex justify-content-center">
-                <img
-                  style={{ height: "150px", width: "150px" }}
-                  src={AUB}
-                  alt="logo"
-                />
-              </div>
-            </div>
-            <div className="col" style={{ fontSize: "1.2vw" }}>
-              {/* <div className="d-flex justify-content-center">A∪C</div> */}
-              <div className="d-flex justify-content-center">
-                <img
-                  style={{ height: "150px", width: "150px" }}
-                  src={AUC}
-                  alt="logo"
-                />
-              </div>
-            </div>
-            <div className="col" style={{ fontSize: "1.2vw" }}>
-              {/* <div className="d-flex justify-content-center">
-                      (A∪B)∩(A∪C)
-                    </div> */}
-              <div className="d-flex justify-content-center">
-                <img
-                  style={{ height: "150px", width: "150px" }}
-                  src={AUBIAUC}
-                  alt="logo"
-                />
+              <div className="col" style={{ fontSize: "1.2vw" }}>
+                <div className="d-flex justify-content-center">
+                  <img
+                    style={{ height: "150px", width: "150px" }}
+                    src={AUBIAUC}
+                    alt="logo"
+                  />
+                </div>
               </div>
             </div>
           </div>

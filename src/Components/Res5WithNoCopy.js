@@ -5,9 +5,9 @@ import Middlecomp from './MajorComponents/Middlecomp'
 import backgroundImg from "../Img/backg.jpg";
 import * as Instru from "./MajorComponents/Instruction"
 import { ToastContainer } from 'react-toastify'
-import Res2WithNoMidContent from './Res2WithNoMidContent';
+import Res5WithNoMidContentCopy from './Res5WithNoMidContentCopy';
 
-const Res2WithNo = () => {
+const Res5WithNoCopy = () => {
   return (
     <div
       style={{
@@ -21,15 +21,15 @@ const Res2WithNo = () => {
 
       <Middlecomp
         midheight="70%"
-        midcontent={<Res2WithNoMidContent/>}
+        midcontent={<Res5WithNoMidContentCopy/>}
         toolvisible="hidden"
        
       />
 
-      <Footercomp footheight="20%" instruction={Instru.Instruction_12()} />
+      <Footercomp footheight="20%" instruction={Instru.Instruction_7()} />
       <ToastContainer/>
     </div>
   )
 }
 
-export default Res2WithNo;
+export default Res5WithNoCopy;

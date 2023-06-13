@@ -1,26 +1,38 @@
 import React, { useRef, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import BackNextBar from "./MajorComponents/BackNextBar";
-
 import { useTranslation } from "react-i18next";
 import { Button } from "@mui/material";
 
-function Res6WithNoMidContent() {
+function Res4WithNoMidContentCopy() {
   const { t, i18n } = useTranslation();
-  const canvas = useRef();
   const navigate = useNavigate();
+  const canvas = useRef();
 
   const onNext = (e) => {
-    navigate("/letusverify/startpage");
+    navigate("/letusverify/startpage/tool5");
   };
-  const handleNextExample = () => {
-    navigate("/letusverify/startpage/tool6/res6/res6withnocopy");
-  }
 
   let ctx = null;
-
   const boxes = [
-    { x: 90, y: 75, r: 50, s: 0, e: 2 * Math.PI, shapeName: "A" },
+    {
+      x: 120,
+      y: 100,
+      r: 50,
+      s: 0,
+      e: 2 * Math.PI,
+      shapeName: "A",
+      color: "rgba(255, 39, 77, 0.4)",
+    },
+    {
+      x: 180,
+      y: 100,
+      r: 50,
+      s: 0,
+      e: 2 * Math.PI,
+      shapeName: "B",
+      color: "rgba(115, 230, 163, 0.4)",
+    },
   ];
 
   useEffect(() => {
@@ -28,10 +40,6 @@ function Res6WithNoMidContent() {
     canvasEle.width = 300;
     canvasEle.height = 200;
     ctx = canvasEle.getContext("2d");
-  }, []);
-
-  useEffect(() => {
-    draw();
   }, []);
 
   useEffect(() => {
@@ -49,6 +57,10 @@ function Res6WithNoMidContent() {
     }
   }, []);
 
+  useEffect(() => {
+    draw();
+  }, []);
+
   const draw = () => {
     ctx.clearRect(
       0,
@@ -56,86 +68,58 @@ function Res6WithNoMidContent() {
       canvas.current.clientWidth,
       canvas.current.clientHeight
     );
-    ctx.font = "18px Arial";
-    ctx.textAlign = "center";
-    ctx.textBaseline = "middle";
-    ctx.fillStyle = "Black";
-    ctx.fillText("U", 290, 10);
     boxes.map((info) => drawFillCircle(info));
   };
 
   const drawFillCircle = (info, style = {}) => {
-    //Circle A
-    ctx.beginPath();
-    ctx.fillStyle = "rgba(255, 39, 77, 0.4)";
-    ctx.arc(120, 110, 50, 0, 2 * Math.PI, true);
-    ctx.fill();
+    const { x, y, r, s, e, shapeName, color } = info;
+    const { backgroundColor = color } = style;
 
-    //Circle B
     ctx.beginPath();
-    ctx.fillStyle = "rgba(73, 146, 228, 0.55)";
-    ctx.arc(185, 110, 50, 3.1765, 5.02655);
-    ctx.fill();
-
-    //Circle C
-    ctx.beginPath();
-    ctx.fillStyle = "rgba(73, 146, 228, 0.55)";
-    ctx.arc(150, 60, 50, 0.0523599, 1.8675);
-    ctx.fill();
+    ctx.fillStyle = backgroundColor;
+    ctx.arc(x, y, r, s, e);
+    if ((x === 120 && y === 100) || (x === 180 && y === 100)) {
+      ctx.fill();
+    } else {
+      ctx.stroke();
+    }
+    ctx.font = "18px Arial";
+    ctx.textAlign = "center";
+    ctx.textBaseline = "middle";
+    ctx.fillStyle = "Black";
+    ctx.fillText(shapeName, x, y);
+    ctx.fillText("U", 290, 10);
 
     //Border of circle B
     ctx.beginPath();
-    ctx.arc(185, 110, 50, 0, 2 * Math.PI);
+    ctx.arc(180, 100, 50, 0, 2 * Math.PI);
     ctx.strokeStyle = "black";
     ctx.stroke();
 
-    //border of circle C
-    ctx.beginPath();
-    ctx.arc(150, 60, 50, 0, 2 * Math.PI);
-    ctx.strokeStyle = "black";
-    ctx.stroke();
+    //border of circle B
+    // ctx.beginPath();
+    // ctx.arc(125, 128, 50, 0, 2 * Math.PI);
+    // ctx.strokeStyle = "black";
+    // ctx.stroke();
 
     //border of circle A
     ctx.beginPath();
-    ctx.arc(120, 110, 50, 0, 2 * Math.PI);
+    ctx.arc(120, 100, 50, 0, 2 * Math.PI);
     ctx.strokeStyle = "black";
     ctx.stroke();
 
-    //Text A
-    ctx.font = "18px Arial";
-    ctx.textAlign = "center";
-    ctx.textBaseline = "middle";
-    ctx.fillStyle = "Black";
-    ctx.fillText("A", 120, 110);
-
-    //Text B
-    ctx.font = "18px Arial";
-    ctx.textAlign = "center";
-    ctx.textBaseline = "middle";
-    ctx.fillStyle = "Black";
-    ctx.fillText("B", 185, 110);
-
-    //Text C
-    ctx.font = "18px Arial";
-    ctx.textAlign = "center";
-    ctx.textBaseline = "middle";
-    ctx.fillStyle = "Black";
-    ctx.fillText("C", 150, 60);
-
     //code for numbers
-    ctx.font = "18px Arial";
+    ctx.font = "10px Arial";
     ctx.textAlign = "center";
     ctx.textBaseline = "middle";
     ctx.fillStyle = "red";
-    ctx.fillText("4", 190, 70);
-    ctx.fillText("6", 170, 80);
-    ctx.fillText("8", 120, 80);
-    ctx.fillText("5", 150, 130);
-    ctx.fillText("7", 110, 140);
-    ctx.fillText("9", 90, 100);
-    ctx.fillText("3", 200, 130);
-    ctx.fillText("2", 150, 30);
-    ctx.fillText("10", 170, 50);
+    ctx.fillText("Birch", 150, 100);
+    ctx.fillText("Aspen", 100, 100);
+    ctx.fillText("Oak", 120, 75);
+    ctx.fillText("Pine", 120, 125);
+    ctx.fillText("Cedar", 180, 75);
+    ctx.fillText("Maple", 200, 100);
+    ctx.fillText("Ash", 180, 125);
   };
 
   return (
@@ -145,7 +129,7 @@ function Res6WithNoMidContent() {
           className="row align-items-center"
           style={{ height: "100%", width: "100%" }}
         >
-          <div className="col mb-1">
+          <div className="col">
             <div className="fs-1.2vw fw-bold">{t("line-4")}</div>
             <div className="d-flex">
               <div className="me-4">
@@ -184,37 +168,23 @@ function Res6WithNoMidContent() {
               </div>
             </div>
           </div>
-          <div className="col mb-1">
+          <div className="col">
             <div>
               <canvas
                 ref={canvas}
                 style={{ border: "1px solid black" }}
               ></canvas>
             </div>
-            <div className="text-center mt-1">
-              <Button variant="contained" color="primary" onClick={handleNextExample}>
-                Next Example
-              </Button>
-            </div>
           </div>
           <div className="col">
             <ul>
-              <b>Set A:</b> &#123; 5, 7, 8, 9 &#125;
+              <b>Set A:</b> &#123;Oak,Aspen,Pine,Birch&#125;
             </ul>
             <ul>
-              <b>Set B:</b> &#123; 3, 4, 5, 6 &#125;
+              <b>Set B:</b> &#123;Birch,Cedar,Maple,Ash&#125;
             </ul>
             <ul>
-              <b>Set C:</b> &#123; 2, 4, 6, 8, 10 &#125;
-            </ul>
-            <ul>
-              <b>Set A∪B:</b> &#123; 5, 7, 8, 9, 3, 4, 6 &#125;
-            </ul>
-            <ul>
-              <b>Set A∪C:</b> &#123; 5, 7, 8, 9, 2, 4, 6, 10&#125;
-            </ul>
-            <ul>
-              <b>Set (A∪B)∩(A∪C):</b> &#123; 5, 7, 8, 9, 4, 6 &#125;
+              <b>Set A∪B:</b> &#123;Oak,Aspen,Pine,Birch,Cedar,Maple,Ash&#125;
             </ul>
           </div>
         </div>
@@ -229,4 +199,4 @@ function Res6WithNoMidContent() {
   );
 }
 
-export default Res6WithNoMidContent;
+export default Res4WithNoMidContentCopy;

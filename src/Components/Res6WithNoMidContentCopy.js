@@ -1,27 +1,21 @@
 import React, { useRef, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import BackNextBar from "./MajorComponents/BackNextBar";
-
 import { useTranslation } from "react-i18next";
-import { Button } from "@mui/material";
 
-function Res3WithNoMidContent() {
+
+function Res6WithNoMidContentCopy() {
   const { t, i18n } = useTranslation();
-  const navigate = useNavigate();
   const canvas = useRef();
+  const navigate = useNavigate();
 
-  const onNext = () => {
+  const onNext = (e) => {
     navigate("/letusverify/startpage");
   };
 
-  const handleNextExample = () => {
-    navigate("/letusverify/startpage/tool3/res3/res3withnocopy")
-  }
-
   let ctx = null;
-  const boxes = [
-    { x: 250, y: 75, r: 50, s: 0, e: 2 * Math.PI, shapeName: "A" },
-  ];
+
+  const boxes = [{ x: 90, y: 75, r: 50, s: 0, e: 2 * Math.PI, shapeName: "A" }];
 
   useEffect(() => {
     const canvasEle = canvas.current;
@@ -31,43 +25,22 @@ function Res3WithNoMidContent() {
   }, []);
 
   useEffect(() => {
-    if (localStorage.getItem("A") === "2") {
-      document.getElementById("cb1").checked = true;
-    }
-    if (localStorage.getItem("A") === "3") {
-      document.getElementById("cb1").checked = true;
-      document.getElementById("cb2").checked = true;
-    }
-    if (localStorage.getItem("A") === "4") {
-      document.getElementById("cb1").checked = true;
-      document.getElementById("cb2").checked = true;
-      document.getElementById("cb3").checked = true;
-    }
+    draw();
+  }, []);
+
+  useEffect(() => {
     if (localStorage.getItem("A") === "5") {
-      document.getElementById("cb1").checked = true;
-      document.getElementById("cb2").checked = true;
-      document.getElementById("cb3").checked = true;
       document.getElementById("cb4").checked = true;
     }
     if (localStorage.getItem("A") === "6") {
-      document.getElementById("cb1").checked = true;
-      document.getElementById("cb2").checked = true;
-      document.getElementById("cb3").checked = true;
       document.getElementById("cb4").checked = true;
       document.getElementById("cb5").checked = true;
     }
     if (localStorage.getItem("A") === "7") {
-      document.getElementById("cb1").checked = true;
-      document.getElementById("cb2").checked = true;
-      document.getElementById("cb3").checked = true;
       document.getElementById("cb4").checked = true;
       document.getElementById("cb5").checked = true;
       document.getElementById("cb6").checked = true;
     }
-  }, []);
-
-  useEffect(() => {
-    draw();
   }, []);
 
   const draw = () => {
@@ -80,48 +53,45 @@ function Res3WithNoMidContent() {
     ctx.font = "18px Arial";
     ctx.textAlign = "center";
     ctx.textBaseline = "middle";
-    ctx.fillStyle = "black";
+    ctx.fillStyle = "Black";
     ctx.fillText("U", 290, 10);
     boxes.map((info) => drawFillCircle(info));
   };
 
   const drawFillCircle = (info, style = {}) => {
-    // const { x, y, r, s, e, shapeName} = info;
-    // const { backgroundColor = 'rgba(201, 50, 48, 0.55)'} = style;
-
     //Circle A
     ctx.beginPath();
     ctx.fillStyle = "rgba(255, 39, 77, 0.4)";
-    ctx.arc(160, 75, 50, 0, 2 * Math.PI, true);
+    ctx.arc(120, 110, 50, 0, 2 * Math.PI, true);
     ctx.fill();
 
     //Circle B
     ctx.beginPath();
     ctx.fillStyle = "rgba(73, 146, 228, 0.55)";
-    ctx.arc(130, 125, 50, 0.9, 5.32, true);
+    ctx.arc(185, 110, 50, 3.1765, 5.02655);
     ctx.fill();
 
     //Circle C
     ctx.beginPath();
     ctx.fillStyle = "rgba(73, 146, 228, 0.55)";
-    ctx.arc(190, 125, 50, 2.1816667, 4.04);
+    ctx.arc(150, 60, 50, 0.0523599, 1.8675);
     ctx.fill();
 
     //Border of circle B
     ctx.beginPath();
-    ctx.arc(130, 125, 50, 0, 2 * Math.PI);
+    ctx.arc(185, 110, 50, 0, 2 * Math.PI);
     ctx.strokeStyle = "black";
     ctx.stroke();
 
     //border of circle C
     ctx.beginPath();
-    ctx.arc(190, 125, 50, 0, 2 * Math.PI);
+    ctx.arc(150, 60, 50, 0, 2 * Math.PI);
     ctx.strokeStyle = "black";
     ctx.stroke();
 
     //border of circle A
     ctx.beginPath();
-    ctx.arc(160, 75, 50, 0, 2 * Math.PI);
+    ctx.arc(120, 110, 50, 0, 2 * Math.PI);
     ctx.strokeStyle = "black";
     ctx.stroke();
 
@@ -130,36 +100,37 @@ function Res3WithNoMidContent() {
     ctx.textAlign = "center";
     ctx.textBaseline = "middle";
     ctx.fillStyle = "Black";
-    ctx.fillText("A", 160, 75);
+    ctx.fillText("A", 120, 110);
 
     //Text B
     ctx.font = "18px Arial";
     ctx.textAlign = "center";
     ctx.textBaseline = "middle";
     ctx.fillStyle = "Black";
-    ctx.fillText("B", 130, 125);
+    ctx.fillText("B", 185, 110);
 
     //Text C
     ctx.font = "18px Arial";
     ctx.textAlign = "center";
     ctx.textBaseline = "middle";
     ctx.fillStyle = "Black";
-    ctx.fillText("C", 190, 125);
+    ctx.fillText("C", 150, 60);
 
     //code for numbers
-    ctx.font = "18px Arial";
+    ctx.font = "12px Arial";
     ctx.textAlign = "center";
     ctx.textBaseline = "middle";
     ctx.fillStyle = "red";
-    ctx.fillText("4", 160, 110);
-    ctx.fillText("6", 160, 150);
-    ctx.fillText("5", 130, 90);
-    ctx.fillText("7", 140, 50);
-    ctx.fillText("9", 180, 50);
-    ctx.fillText("8", 190, 90);
-    ctx.fillText("3", 110, 135);
-    ctx.fillText("10", 220, 135);
-    ctx.fillText("2", 190, 160);
+    ctx.fillText("900", 180, 80);
+    ctx.fillText("600", 120, 80);
+    ctx.fillText("300", 150, 120);
+    ctx.fillText("50", 150, 95);
+    ctx.fillText("200", 110, 140);
+    ctx.fillText("100", 90, 100);
+    ctx.fillText("700", 200, 140);
+    ctx.fillText("800", 210, 90);
+    ctx.fillText("400", 130, 30);
+    ctx.fillText("500", 170, 40);
   };
 
   return (
@@ -170,15 +141,15 @@ function Res3WithNoMidContent() {
           style={{ height: "100%", width: "100%" }}
         >
           <div className="col mb-1">
-            <div className="fs-1.2vw fw-bold">{t("line-2")}</div>
+            <div className="fs-1.2vw fw-bold">{t("line-4")}</div>
             <div className="d-flex">
               <div className="me-4">
                 <div>
                   <input
                     type="checkbox"
                     name="check_box"
-                    id="cb1"
-                    value="A"
+                    id="cb4"
+                    value="A∪B"
                     disabled
                   />
                 </div>
@@ -186,8 +157,8 @@ function Res3WithNoMidContent() {
                   <input
                     type="checkbox"
                     name="check_box"
-                    id="cb2"
-                    value="B∩C"
+                    id="cb5"
+                    value="A∪C"
                     disabled
                   />
                 </div>
@@ -195,47 +166,45 @@ function Res3WithNoMidContent() {
                   <input
                     type="checkbox"
                     name="check_box"
-                    id="cb3"
-                    value="AU(B∩C)"
+                    id="cb6"
+                    value="(A∪B)∩(A∪C)"
                     disabled
                   />
                 </div>
               </div>
               <div>
-                <div>A</div>
-                <div>B ∩ C</div>
-                <div>A ∪ (B ∩ C)</div>
+                <div>A ∪ B</div>
+                <div>A ∪ C</div>
+                <div>(A ∪ B)∩(A ∪ C)</div>
               </div>
             </div>
           </div>
           <div className="col mb-1">
-            <canvas ref={canvas} style={{ border: "1px solid black" }}></canvas>
-
-            <div className="text-center mt-1">
-              <Button
-                variant="contained"
-                color="primary"
-                onClick={handleNextExample}
-              >
-                Next Example
-              </Button>
+            <div>
+              <canvas
+                ref={canvas}
+                style={{ border: "1px solid black" }}
+              ></canvas>
             </div>
           </div>
           <div className="col">
             <ul>
-              <b>Set A:</b> &#123; 4, 5, 7, 8, 9 &#125;
+              <b>Set A:</b> &#123;100,200,300,600,50&#125;
             </ul>
             <ul>
-              <b>Set B:</b> &#123; 3, 4, 5, 6 &#125;
+              <b>Set B:</b> &#123;300,900,700,800,50&#125;
             </ul>
             <ul>
-              <b>Set C:</b> &#123; 2, 4, 6, 8, 10 &#125;
+              <b>Set C:</b> &#123;400,500,600,900,50&#125;
             </ul>
             <ul>
-              <b>Set B∩C:</b> &#123; 4, 6 &#125;
+              <b>Set A∪B:</b> &#123;50,100,200,300,600,700,800,900&#125;
             </ul>
             <ul>
-              <b>Set A∪(B∩C):</b> &#123; 5, 7, 8, 9, 4, 6 &#125;
+              <b>Set A∪C:</b> &#123;50,100,200,300,600,400,500,900&#125;
+            </ul>
+            <ul>
+              <b>Set (A∪B)∩(A∪C):</b> &#123;50,100,200,300,600,900&#125;
             </ul>
           </div>
         </div>
@@ -250,4 +219,4 @@ function Res3WithNoMidContent() {
   );
 }
 
-export default Res3WithNoMidContent;
+export default Res6WithNoMidContentCopy;
