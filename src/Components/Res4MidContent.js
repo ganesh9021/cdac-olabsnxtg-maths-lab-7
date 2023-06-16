@@ -1,7 +1,7 @@
 import React, { useRef, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import BackNextBar from "./MajorComponents/BackNextBar";
-import { toast,ToastContainer } from "react-toastify";
+import { toast, ToastContainer } from "react-toastify";
 import { Button } from "@mui/material";
 import { useTranslation } from "react-i18next";
 
@@ -9,27 +9,8 @@ function Res4MidContent() {
   const { t, i18n } = useTranslation();
   const navigate = useNavigate();
   const canvas = useRef();
-
-  const onNext = (e) => {
-    navigate("/letusverify/startpage/tool5");
-  };
-
-  const res4_withno = () => {
-    navigate("/letusverify/startpage/tool4/res4/res4withno");
-  };
-
-  useEffect(() => {
-    toast.success(`${t("toaster-9")}`, {
-      position: "top-center",
-      autoClose: 2000,
-    });
-  }, []);
-
   let ctx = null;
   const boxes = [
-    // { x: 87, y: 72, r: 50, s: 0, e: 2 * Math.PI, shapeName : 'A'},
-    // { x: 163, y: 72, r: 50, s: 0, e: 2 * Math.PI, shapeName : 'B'},
-    //{ x: 125, y: 128, r: 50, s: 0, e: 2 * Math.PI, shapeName : 'C'},
     {
       x: 120,
       y: 100,
@@ -51,25 +32,40 @@ function Res4MidContent() {
   ];
 
   useEffect(() => {
-    const canvasEle = canvas.current;
-    canvasEle.width = 300;
-    canvasEle.height = 200;
-    ctx = canvasEle.getContext("2d");
+    toast.success(`${t("toaster-9")}`, {
+      position: "top-center",
+      autoClose: 2000,
+    });
   }, []);
 
   useEffect(() => {
-    if (localStorage.getItem("A") === "5") {
+    if (localStorage.getItem("A") == 4) {
       document.getElementById("cb4").checked = true;
     }
-    if (localStorage.getItem("A") === "6") {
+    if (localStorage.getItem("A") == 5) {
       document.getElementById("cb4").checked = true;
       document.getElementById("cb5").checked = true;
     }
-    if (localStorage.getItem("A") === "7") {
+    if (localStorage.getItem("A") == 6) {
       document.getElementById("cb4").checked = true;
       document.getElementById("cb5").checked = true;
       document.getElementById("cb6").checked = true;
     }
+  });
+
+  const onNext = (e) => {
+    navigate("/letusverify/startpage/tool5");
+  };
+
+  const res4_withno = () => {
+    navigate("/letusverify/startpage/tool4/res4/res4withno");
+  };
+
+  useEffect(() => {
+    const canvasEle = canvas.current;
+    canvasEle.width = 300;
+    canvasEle.height = 200;
+    ctx = canvasEle.getContext("2d");
   }, []);
 
   useEffect(() => {
@@ -164,7 +160,10 @@ function Res4MidContent() {
               </div>
             </div>
           </div>
-          <div className="col">
+          <div
+            className="col d-flex flex-column justify-content-center"
+            style={{ height: "100%" }}
+          >
             <div>
               <canvas
                 ref={canvas}
@@ -188,7 +187,7 @@ function Res4MidContent() {
               </Button>
             </div>
           </div>
-          <ToastContainer/>
+          <ToastContainer />
         </div>
       </div>
       <BackNextBar

@@ -1,24 +1,38 @@
 import React, { useEffect, useRef, useState } from "react";
-import { useNavigate} from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import BackNextBar from "./MajorComponents/BackNextBar";
 import Button from "@mui/material/Button";
 import { useTranslation } from "react-i18next";
-import * as Instru from "./MajorComponents/Instruction"
+import * as Instru from "./MajorComponents/Instruction";
 
-function Tool2MidContent({setInstr}) {
-  let [count, setCount] = useState(0);
+function Tool2MidContent({ setInstr }) {
+  //flag is use to disable the draw universal set and draw set a button.
+  const [flag1, setFlag1] = useState(false);
+  const [flag2, setFlag2] = useState(true);
   let navigate = useNavigate();
   const canvas = useRef();
- 
   const { t, i18n } = useTranslation();
   let ctx = null;
 
+  useEffect(() => {
+    if (localStorage.getItem("A") == 1) {
+      document.getElementById("cb1").checked = true;
+    }
+    if (localStorage.getItem("A") == 2) {
+      document.getElementById("cb1").checked = true;
+      document.getElementById("cb2").checked = true;
+    }
+    if (localStorage.getItem("A") == 3) {
+      document.getElementById("cb1").checked = true;
+      document.getElementById("cb2").checked = true;
+      document.getElementById("cb3").checked = true;
+    }
+  });
 
-  const onNext = (e) => {
-    if (count == 2) {
+  const onNext = () => {
+    if (flag1 && flag2) {
       navigate("/letusverify/startpage/tool2/dragndrop2");
-      
     } else {
       toast.error(`${t("toaster-5")}`, {
         position: "top-center",
@@ -26,7 +40,6 @@ function Tool2MidContent({setInstr}) {
       });
     }
   };
- 
 
   useEffect(() => {
     const canvasEle = canvas.current;
@@ -48,12 +61,9 @@ function Tool2MidContent({setInstr}) {
   }, []);
 
   const Draw_Circle_B = (style) => {
-    setInstr(Instru.Instruction_51)
-    if (count === 0) {
-      count = count + 1;
-      setCount(count);
-      document.getElementById("id1").style.visibility = "hidden";
-    }
+    setFlag1(true);
+    setFlag2(false);
+    setInstr(Instru.Instruction_51);
 
     const canvasEle = canvas.current;
     ctx = canvasEle.getContext("2d");
@@ -78,12 +88,8 @@ function Tool2MidContent({setInstr}) {
   };
 
   const Draw_Circle_C = (style) => {
-    setInstr(Instru.Instruction_7)
-    if (count === 1) {
-      document.getElementById("id2").style.visibility = "hidden";
-      count = count + 1;
-      setCount(count);
-    }
+    setFlag2(true);
+    setInstr(Instru.Instruction_7);
 
     const canvasEle = canvas.current;
     ctx = canvasEle.getContext("2d");
@@ -107,22 +113,6 @@ function Tool2MidContent({setInstr}) {
     ctx.stroke();
   };
 
-  useEffect(() => {
-    if (localStorage.getItem("A") === "2") {
-      document.getElementById("cb1").checked = true;
-    }
-    if (localStorage.getItem("A") === "3") {
-      document.getElementById("cb1").checked = true;
-      document.getElementById("cb2").checked = true;
-    }
-    if (localStorage.getItem("A") === "4") {
-      document.getElementById("cb1").checked = true;
-      document.getElementById("cb2").checked = true;
-      document.getElementById("cb3").checked = true;
-    }
-    
-  }, []);
-
   return (
     <div style={{ height: "100%" }}>
       <div className="container" style={{ height: "90%", overflow: "auto" }}>
@@ -135,7 +125,13 @@ function Tool2MidContent({setInstr}) {
             <div className="d-flex">
               <div className="me-4">
                 <div>
-                  <input type="checkbox" name="check_box" id="cb1" value="A" disabled/>
+                  <input
+                    type="checkbox"
+                    name="check_box"
+                    id="cb1"
+                    value="A"
+                    disabled
+                  />
                 </div>
                 <div>
                   <input
@@ -177,7 +173,12 @@ function Tool2MidContent({setInstr}) {
                 variant="contained"
                 onClick={Draw_Circle_B}
                 size="small"
-                style={{ marginRight: "1%", marginBottom: "1%", marginLeft:'8%'}}
+                style={{
+                  marginRight: "1%",
+                  marginBottom: "1%",
+                  marginLeft: "8%",
+                }}
+                disabled={flag1}
               >
                 {t("btn-4")}
               </Button>
@@ -188,6 +189,7 @@ function Tool2MidContent({setInstr}) {
                 onClick={Draw_Circle_C}
                 size="small"
                 style={{ marginRight: "1%", marginBottom: "1%" }}
+                disabled={flag2}
               >
                 {t("btn-5")}
               </Button>

@@ -9,6 +9,34 @@ function Res3MidContent() {
   const { t, i18n } = useTranslation();
   const navigate = useNavigate();
   const canvas = useRef();
+  let ctx = null;
+  const boxes = [
+    { x: 250, y: 75, r: 50, s: 0, e: 2 * Math.PI, shapeName: "A" },
+    // { x: 230, y: 75, r: 50, s: 0, e: 2 * Math.PI, shapeName : 'B'},
+    // { x: 200, y: 130, r: 50, s: 0, e: 2 * Math.PI, shapeName : 'C'},
+  ];
+
+  useEffect(() => {
+    toast.success(`${t("toaster-7")}`, {
+      position: "top-center",
+      autoClose: 2000,
+    });
+  }, []);
+
+  useEffect(() => {
+    if (localStorage.getItem("A") == 1) {
+      document.getElementById("cb1").checked = true;
+    }
+    if (localStorage.getItem("A") == 2) {
+      document.getElementById("cb1").checked = true;
+      document.getElementById("cb2").checked = true;
+    }
+    if (localStorage.getItem("A") == 3) {
+      document.getElementById("cb1").checked = true;
+      document.getElementById("cb2").checked = true;
+      document.getElementById("cb3").checked = true;
+    }
+  });
 
   const onNext = (e) => {
     navigate("/letusverify/startpage");
@@ -19,60 +47,10 @@ function Res3MidContent() {
   };
 
   useEffect(() => {
-    toast.success(`${t("toaster-7")}`, {
-      position: "top-center",
-      autoClose: 2000,
-    });
-  }, []);
-
-  let ctx = null;
-  const boxes = [
-    { x: 250, y: 75, r: 50, s: 0, e: 2 * Math.PI, shapeName: "A" },
-    // { x: 230, y: 75, r: 50, s: 0, e: 2 * Math.PI, shapeName : 'B'},
-    // { x: 200, y: 130, r: 50, s: 0, e: 2 * Math.PI, shapeName : 'C'},
-  ];
-
-  useEffect(() => {
     const canvasEle = canvas.current;
     canvasEle.width = 300;
     canvasEle.height = 200;
     ctx = canvasEle.getContext("2d");
-  }, []);
-
-  useEffect(() => {
-    if (localStorage.getItem("A") === "2") {
-      document.getElementById("cb1").checked = true;
-    }
-    if (localStorage.getItem("A") === "3") {
-      document.getElementById("cb1").checked = true;
-      document.getElementById("cb2").checked = true;
-    }
-    if (localStorage.getItem("A") === "4") {
-      document.getElementById("cb1").checked = true;
-      document.getElementById("cb2").checked = true;
-      document.getElementById("cb3").checked = true;
-    }
-    if (localStorage.getItem("A") === "5") {
-      document.getElementById("cb1").checked = true;
-      document.getElementById("cb2").checked = true;
-      document.getElementById("cb3").checked = true;
-      document.getElementById("cb4").checked = true;
-    }
-    if (localStorage.getItem("A") === "6") {
-      document.getElementById("cb1").checked = true;
-      document.getElementById("cb2").checked = true;
-      document.getElementById("cb3").checked = true;
-      document.getElementById("cb4").checked = true;
-      document.getElementById("cb5").checked = true;
-    }
-    if (localStorage.getItem("A") === "7") {
-      document.getElementById("cb1").checked = true;
-      document.getElementById("cb2").checked = true;
-      document.getElementById("cb3").checked = true;
-      document.getElementById("cb4").checked = true;
-      document.getElementById("cb5").checked = true;
-      document.getElementById("cb6").checked = true;
-    }
   }, []);
 
   useEffect(() => {
@@ -202,7 +180,10 @@ function Res3MidContent() {
               </div>
             </div>
           </div>
-          <div className="col">
+          <div
+            className="col d-flex flex-column justify-content-center"
+            style={{ height: "100%" }}
+          >
             <div>
               <canvas
                 ref={canvas}

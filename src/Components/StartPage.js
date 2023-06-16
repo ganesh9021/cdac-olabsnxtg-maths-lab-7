@@ -10,7 +10,7 @@ import StartPageMidContent from "./StartPageMidContent";
 const StartPage = () => {
   const [active, setACtive] = useState(true);
   useEffect(() => {
-    if (localStorage.getItem("A") == 7) {
+    if (localStorage.getItem("A") == 6) {
       setACtive(false);
     }
   });
@@ -36,7 +36,7 @@ const StartPage = () => {
         footheight="20%"
         instruction={
           active
-            ? localStorage.getItem("A") == 4
+            ? localStorage.getItem("A") == 3
               ? Instru.Instruction_2()
               : Instru.Instruction_1()
             : Instru.Instruction_3()

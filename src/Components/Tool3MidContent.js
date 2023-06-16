@@ -3,27 +3,19 @@ import { useTranslation } from "react-i18next";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import BackNextBar from "./MajorComponents/BackNextBar";
-import * as Instru from "./MajorComponents/Instruction"
+import * as Instru from "./MajorComponents/Instruction";
 
-function Tool3MidContent({setInstr}) {
+function Tool3MidContent({ setInstr }) {
   const { t, i18n } = useTranslation();
   let navigate = useNavigate();
   const canvas = useRef();
-
   let [count, setCount] = useState(0);
-
-  const onNext = () => {
-    if (count == 1) {
-      localStorage.setItem("A", 4);
-      navigate("/letusverify/startpage/tool3/res3");
-    } else {
-      toast.error(`${t("line-3")}`, {
-        position: "top-center",
-        autoClose: 2000,
-      });
-    }
-  };
-
+  let isDown = false;
+  let dragTarget = null;
+  let startX = null;
+  let startY = null;
+  let touchX = null;
+  let touchY = null;
   let ctx = null;
   const boxes = [
     {
@@ -38,12 +30,33 @@ function Tool3MidContent({setInstr}) {
     // { x: 200, y: 100, r: 50, s: 0, e: 2 * Math.PI, shapeName: "B", color : 'rgba(115, 230, 163, 0.4)' },
     // { x: 265, y: 100, r: 50, s: 0, e: 2 * Math.PI, shapeName: "C", color : 'rgba(59, 106, 237, 0.4)' },
   ];
-  let isDown = false;
-  let dragTarget = null;
-  let startX = null;
-  let startY = null;
-  let touchX = null;
-  let touchY = null;
+
+  useEffect(() => {
+    if (localStorage.getItem("A") == 1) {
+      document.getElementById("cb1").checked = true;
+    }
+    if (localStorage.getItem("A") == 2) {
+      document.getElementById("cb1").checked = true;
+      document.getElementById("cb2").checked = true;
+    }
+    if (localStorage.getItem("A") == 3) {
+      document.getElementById("cb1").checked = true;
+      document.getElementById("cb2").checked = true;
+      document.getElementById("cb3").checked = true;
+    }
+  });
+
+  const onNext = () => {
+    if (count == 1) {
+      localStorage.setItem("A", 3);
+      navigate("/letusverify/startpage/tool3/res3");
+    } else {
+      toast.error(`${t("line-3")}`, {
+        position: "top-center",
+        autoClose: 2000,
+      });
+    }
+  };
 
   // initialize the canvas context
   useEffect(() => {
@@ -52,21 +65,6 @@ function Tool3MidContent({setInstr}) {
     canvasEle.width = 300;
     canvasEle.height = 200;
     ctx = canvasEle.getContext("2d");
-  }, []);
-
-  useEffect(() => {
-    if (localStorage.getItem("A") === "2") {
-      document.getElementById("cb1").checked = true;
-    }
-    if (localStorage.getItem("A") === "3") {
-      document.getElementById("cb1").checked = true;
-      document.getElementById("cb2").checked = true;
-    }
-    if (localStorage.getItem("A") === "4") {
-      document.getElementById("cb1").checked = true;
-      document.getElementById("cb2").checked = true;
-      document.getElementById("cb3").checked = true;
-    }
   }, []);
 
   useEffect(() => {
@@ -285,7 +283,13 @@ function Tool3MidContent({setInstr}) {
             <div className="d-flex">
               <div className="me-4">
                 <div>
-                  <input type="checkbox" name="check_box" id="cb1" value="A" disabled/>
+                  <input
+                    type="checkbox"
+                    name="check_box"
+                    id="cb1"
+                    value="A"
+                    disabled
+                  />
                 </div>
                 <div>
                   <input

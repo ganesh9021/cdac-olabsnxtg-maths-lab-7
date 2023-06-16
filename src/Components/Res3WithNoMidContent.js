@@ -9,61 +9,39 @@ function Res3WithNoMidContent() {
   const { t, i18n } = useTranslation();
   const navigate = useNavigate();
   const canvas = useRef();
-
-  const onNext = () => {
-    navigate("/letusverify/startpage");
-  };
-
-  const handleNextExample = () => {
-    navigate("/letusverify/startpage/tool3/res3/res3withnocopy")
-  }
-
   let ctx = null;
   const boxes = [
     { x: 250, y: 75, r: 50, s: 0, e: 2 * Math.PI, shapeName: "A" },
   ];
 
   useEffect(() => {
+    if (localStorage.getItem("A") == 1) {
+      document.getElementById("cb1").checked = true;
+    }
+    if (localStorage.getItem("A") == 2) {
+      document.getElementById("cb1").checked = true;
+      document.getElementById("cb2").checked = true;
+    }
+    if (localStorage.getItem("A") == 3) {
+      document.getElementById("cb1").checked = true;
+      document.getElementById("cb2").checked = true;
+      document.getElementById("cb3").checked = true;
+    }
+  });
+
+  const onNext = () => {
+    navigate("/letusverify/startpage");
+  };
+
+  const handleNextExample = () => {
+    navigate("/letusverify/startpage/tool3/res3/res3withnocopy");
+  };
+
+  useEffect(() => {
     const canvasEle = canvas.current;
     canvasEle.width = 300;
     canvasEle.height = 200;
     ctx = canvasEle.getContext("2d");
-  }, []);
-
-  useEffect(() => {
-    if (localStorage.getItem("A") === "2") {
-      document.getElementById("cb1").checked = true;
-    }
-    if (localStorage.getItem("A") === "3") {
-      document.getElementById("cb1").checked = true;
-      document.getElementById("cb2").checked = true;
-    }
-    if (localStorage.getItem("A") === "4") {
-      document.getElementById("cb1").checked = true;
-      document.getElementById("cb2").checked = true;
-      document.getElementById("cb3").checked = true;
-    }
-    if (localStorage.getItem("A") === "5") {
-      document.getElementById("cb1").checked = true;
-      document.getElementById("cb2").checked = true;
-      document.getElementById("cb3").checked = true;
-      document.getElementById("cb4").checked = true;
-    }
-    if (localStorage.getItem("A") === "6") {
-      document.getElementById("cb1").checked = true;
-      document.getElementById("cb2").checked = true;
-      document.getElementById("cb3").checked = true;
-      document.getElementById("cb4").checked = true;
-      document.getElementById("cb5").checked = true;
-    }
-    if (localStorage.getItem("A") === "7") {
-      document.getElementById("cb1").checked = true;
-      document.getElementById("cb2").checked = true;
-      document.getElementById("cb3").checked = true;
-      document.getElementById("cb4").checked = true;
-      document.getElementById("cb5").checked = true;
-      document.getElementById("cb6").checked = true;
-    }
   }, []);
 
   useEffect(() => {
@@ -151,15 +129,16 @@ function Res3WithNoMidContent() {
     ctx.textAlign = "center";
     ctx.textBaseline = "middle";
     ctx.fillStyle = "red";
-    ctx.fillText("4", 160, 110);
-    ctx.fillText("6", 160, 150);
-    ctx.fillText("5", 130, 90);
-    ctx.fillText("7", 140, 50);
-    ctx.fillText("9", 180, 50);
-    ctx.fillText("8", 190, 90);
-    ctx.fillText("3", 110, 135);
-    ctx.fillText("10", 220, 135);
-    ctx.fillText("2", 190, 160);
+    ctx.fillText("8", 160, 110);
+    ctx.fillText("5", 160, 150);
+    ctx.fillText("4", 130, 90);
+    ctx.fillText("11", 140, 50);
+    ctx.fillText("13", 180, 50);
+    ctx.fillText("3", 190, 90);
+    ctx.fillText("15", 100, 115);
+    ctx.fillText("17", 110, 155);
+    ctx.fillText("9", 220, 135);
+    ctx.fillText("6", 190, 160);
   };
 
   return (
@@ -223,19 +202,19 @@ function Res3WithNoMidContent() {
           </div>
           <div className="col">
             <ul>
-              <b>Set A:</b> &#123; 4, 5, 7, 8, 9 &#125;
+              <b>Set A:</b> &#123; 3, 4, 8, 11, 13 &#125;
             </ul>
             <ul>
-              <b>Set B:</b> &#123; 3, 4, 5, 6 &#125;
+              <b>Set B:</b> &#123; 4, 5, 8, 15, 17 &#125;
             </ul>
             <ul>
-              <b>Set C:</b> &#123; 2, 4, 6, 8, 10 &#125;
+              <b>Set C:</b> &#123; 3, 5, 6, 8, 9 &#125;
             </ul>
             <ul>
-              <b>Set B∩C:</b> &#123; 4, 6 &#125;
+              <b>Set B∩C:</b> &#123; 5, 8 &#125;
             </ul>
             <ul>
-              <b>Set A∪(B∩C):</b> &#123; 5, 7, 8, 9, 4, 6 &#125;
+              <b>Set A∪(B∩C):</b> &#123; 3, 4, 5, 8, 11, 13 &#125;
             </ul>
           </div>
         </div>

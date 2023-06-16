@@ -10,6 +10,27 @@ function Res6MidContent() {
   const { t, i18n } = useTranslation();
   const canvas = useRef();
   const navigate = useNavigate();
+  let ctx = null;
+  const boxes = [
+    { x: 70, y: 75, r: 50, s: 0, e: 2 * Math.PI, shapeName: "A" },
+    // { x: 230, y: 75, r: 50, s: 0, e: 2 * Math.PI, shapeName : 'B'},
+    // { x: 200, y: 130, r: 50, s: 0, e: 2 * Math.PI, shapeName : 'C'},
+  ];
+
+  useEffect(() => {
+    if (localStorage.getItem("A") == 4) {
+      document.getElementById("cb4").checked = true;
+    }
+    if (localStorage.getItem("A") == 5) {
+      document.getElementById("cb4").checked = true;
+      document.getElementById("cb5").checked = true;
+    }
+    if (localStorage.getItem("A") == 6) {
+      document.getElementById("cb4").checked = true;
+      document.getElementById("cb5").checked = true;
+      document.getElementById("cb6").checked = true;
+    }
+  });
 
   useEffect(() => {
     toast.success(`${t("toaster-11")}`, {
@@ -26,13 +47,6 @@ function Res6MidContent() {
     navigate("/letusverify/startpage/tool6/res6/res6withno");
   };
 
-  let ctx = null;
-  const boxes = [
-    { x: 70, y: 75, r: 50, s: 0, e: 2 * Math.PI, shapeName: "A" },
-    // { x: 230, y: 75, r: 50, s: 0, e: 2 * Math.PI, shapeName : 'B'},
-    // { x: 200, y: 130, r: 50, s: 0, e: 2 * Math.PI, shapeName : 'C'},
-  ];
-
   useEffect(() => {
     const canvasEle = canvas.current;
     canvasEle.width = 300;
@@ -42,21 +56,6 @@ function Res6MidContent() {
 
   useEffect(() => {
     draw();
-  }, []);
-
-  useEffect(() => {
-    if (localStorage.getItem("A") === "5") {
-      document.getElementById("cb4").checked = true;
-    }
-    if (localStorage.getItem("A") === "6") {
-      document.getElementById("cb4").checked = true;
-      document.getElementById("cb5").checked = true;
-    }
-    if (localStorage.getItem("A") === "7") {
-      document.getElementById("cb4").checked = true;
-      document.getElementById("cb5").checked = true;
-      document.getElementById("cb6").checked = true;
-    }
   }, []);
 
   const draw = () => {
@@ -179,7 +178,10 @@ function Res6MidContent() {
               </div>
             </div>
           </div>
-          <div className="col">
+          <div
+            className="col d-flex flex-column justify-content-center"
+            style={{ height: "100%" }}
+          >
             <div>
               <canvas
                 ref={canvas}

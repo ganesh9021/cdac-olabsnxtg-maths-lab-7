@@ -1,37 +1,23 @@
-
 import React, { useRef, useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import BackNextBar from "./MajorComponents/BackNextBar";
-import * as Instru from "./MajorComponents/Instruction"
+import * as Instru from "./MajorComponents/Instruction";
 
-function Tool4MidContent({setInstr}) {
+function Tool4MidContent({ setInstr }) {
   const { t, i18n } = useTranslation();
   let navigate = useNavigate();
   var [count, setCount] = useState(0);
-
-  const onNext = (e) => {
-    if (count == 1) {
-      localStorage.setItem("A", 5);
-      navigate("/letusverify/startpage/tool4/res4");
-     
-    } else {
-      toast.error(`${t("line-3")}`, {
-        position: "top-center",
-        autoClose: 2000,
-      });
-    }
-  };
-
-  const canvas = useRef();
-
   let ctx = null;
+  const canvas = useRef();
+  let isDown = false;
+  let dragTarget = null;
+  let startX = null;
+  let startY = null;
+  let touchX = null;
+  let touchY = null;
   const boxes = [
-    // { x: 200, y: 220, w: 100, h: 50 ,shapeName : 'U' },
-    // { x: 60, y: 55, r: 50, s: 0, e: 2 * Math.PI, shapeName: "A" },
-    // { x: 190, y: 55, r: 50, s: 0, e: 2 * Math.PI, shapeName: "B" },
-    // { x: 125, y: 145, r: 50, s: 0, e: 2 * Math.PI, shapeName: "C" },
     {
       x: 75,
       y: 100,
@@ -51,14 +37,33 @@ function Tool4MidContent({setInstr}) {
       color: "rgba(115, 230, 163, 0.4)",
     },
   ];
-  let isDown = false;
-  let dragTarget = null;
-  let startX = null;
-  let startY = null;
-  let touchX = null;
-  let touchY = null;
 
-  //console.log(boxes[0].x);
+  useEffect(() => {
+    if (localStorage.getItem("A") == 4) {
+      document.getElementById("cb4").checked = true;
+    }
+    if (localStorage.getItem("A") == 5) {
+      document.getElementById("cb4").checked = true;
+      document.getElementById("cb5").checked = true;
+    }
+    if (localStorage.getItem("A") == 6) {
+      document.getElementById("cb4").checked = true;
+      document.getElementById("cb5").checked = true;
+      document.getElementById("cb6").checked = true;
+    }
+  });
+
+  const onNext = () => {
+    if (count == 1) {
+      localStorage.setItem("A", 4);
+      navigate("/letusverify/startpage/tool4/res4");
+    } else {
+      toast.error(`${t("line-3")}`, {
+        position: "top-center",
+        autoClose: 2000,
+      });
+    }
+  };
 
   // initialize the canvas context
   useEffect(() => {
@@ -73,21 +78,6 @@ function Tool4MidContent({setInstr}) {
 
   useEffect(() => {
     draw();
-  }, []);
-
-  useEffect(() => {
-    if (localStorage.getItem("A") === "5") {
-      //document.getElementById("cb4").checked = true;
-    }
-    if (localStorage.getItem("A") === "6") {
-      document.getElementById("cb4").checked = true;
-      document.getElementById("cb5").checked = true;
-    }
-    if (localStorage.getItem("A") === "7") {
-      document.getElementById("cb4").checked = true;
-      document.getElementById("cb5").checked = true;
-      document.getElementById("cb6").checked = true;
-    }
   }, []);
 
   // draw rectangle
@@ -196,65 +186,63 @@ function Tool4MidContent({setInstr}) {
     let rect = e.target.getBoundingClientRect().left;
     let rect1 = e.target.getBoundingClientRect().top;
 
-    let offsetX = e.touches[0].clientX - window.pageXOffset-rect;
-   
-    let offsetY = e.touches[0].clientY - window.pageYOffset-rect1;
+    let offsetX = e.touches[0].clientX - window.pageXOffset - rect;
+
+    let offsetY = e.touches[0].clientY - window.pageYOffset - rect1;
     // startX = parseInt(e.nativeEvent.offsetX - canvas.current.clientLeft);
-    
 
     // console.log('offsetX and offsetY in touch : ',offsetX,offsetY)
 
-
     // let touch = e.touches[0];
-      // touchX = touch.clientX;
-      // touchY = touch.clientY;
-      touchX = offsetX - canvas.current.clientLeft;
-      touchY = offsetY - canvas.current.clientTop;
-       touchX = Math.round(touchX);
-       touchY = Math.round(touchY);
-      //  touchX = touchX - 51;
-      //  touchY = touchY - 241;
-      // console.log('touchX and touchY in touchstart: ',touchX,touchY);
-      isDown = hitBox(touchX, touchY);
-  }
+    // touchX = touch.clientX;
+    // touchY = touch.clientY;
+    touchX = offsetX - canvas.current.clientLeft;
+    touchY = offsetY - canvas.current.clientTop;
+    touchX = Math.round(touchX);
+    touchY = Math.round(touchY);
+    //  touchX = touchX - 51;
+    //  touchY = touchY - 241;
+    // console.log('touchX and touchY in touchstart: ',touchX,touchY);
+    isDown = hitBox(touchX, touchY);
+  };
   const handleTouchMove = (e) => {
     // console.log('inside touch move')
-      if (!isDown) return;
-      // let touch = event.touches[0];
-      let rect = e.target.getBoundingClientRect().left;
-      let rect1 = e.target.getBoundingClientRect().top;
+    if (!isDown) return;
+    // let touch = event.touches[0];
+    let rect = e.target.getBoundingClientRect().left;
+    let rect1 = e.target.getBoundingClientRect().top;
 
-      let offsetX = e.touches[0].clientX - window.pageXOffset-rect;
-      let offsetY = e.touches[0].clientY - window.pageYOffset-rect1;
+    let offsetX = e.touches[0].clientX - window.pageXOffset - rect;
+    let offsetY = e.touches[0].clientY - window.pageYOffset - rect1;
 
-      let touchXX = offsetX - canvas.current.clientLeft;
-      let touchYY = offsetY - canvas.current.clientTop;
+    let touchXX = offsetX - canvas.current.clientLeft;
+    let touchYY = offsetY - canvas.current.clientTop;
 
-       touchXX = Math.round(touchXX);
-       touchYY = Math.round(touchYY);
+    touchXX = Math.round(touchXX);
+    touchYY = Math.round(touchYY);
 
-      //  touchXX = touchXX - 51;
-      //  touchYY = touchYY - 241;
-     
-      let dx = touchXX - touchX;
-      let dy = touchYY - touchY;
-      touchX = touchXX;
-      touchY = touchYY;
-      dragTarget.x += dx;
-      dragTarget.y += dy;
-      // console.log("for touch dragtarget.x, dragtarget.y : ",dragTarget.x,dragTarget.y)
-      isCoincide(dragTarget.x, dragTarget.y);
-      isFixed(dragTarget.x, dragTarget.y);
-      draw();
-  }
+    //  touchXX = touchXX - 51;
+    //  touchYY = touchYY - 241;
+
+    let dx = touchXX - touchX;
+    let dy = touchYY - touchY;
+    touchX = touchXX;
+    touchY = touchYY;
+    dragTarget.x += dx;
+    dragTarget.y += dy;
+    // console.log("for touch dragtarget.x, dragtarget.y : ",dragTarget.x,dragTarget.y)
+    isCoincide(dragTarget.x, dragTarget.y);
+    isFixed(dragTarget.x, dragTarget.y);
+    draw();
+  };
   const handleTouchEnd = () => {
     dragTarget = null;
-      isDown = false;
-  }
+    isDown = false;
+  };
   const handleTouchCancel = () => {
     dragTarget = null;
-      isDown = false;
-  }
+    isDown = false;
+  };
 
   return (
     <div style={{ height: "100%" }}>
@@ -271,7 +259,7 @@ function Tool4MidContent({setInstr}) {
                   <input
                     type="checkbox"
                     name="check_box"
-                    id="cb1"
+                    id="cb4"
                     value="A∪B"
                     disabled
                   />
@@ -280,7 +268,7 @@ function Tool4MidContent({setInstr}) {
                   <input
                     type="checkbox"
                     name="check_box"
-                    id="cb2"
+                    id="cb5"
                     value="A∪C"
                     disabled
                   />
@@ -289,7 +277,7 @@ function Tool4MidContent({setInstr}) {
                   <input
                     type="checkbox"
                     name="check_box"
-                    id="cb3"
+                    id="cb6"
                     value="(A∪B)∩(A∪C)"
                     disabled
                   />
@@ -310,8 +298,8 @@ function Tool4MidContent({setInstr}) {
               onMouseOut={handleMouseOut}
               onTouchStart={handleTouchStart}
               onTouchMove={handleTouchMove}
-              onTouchEnd = {handleTouchEnd}
-              onTouchCancel = {handleTouchCancel}
+              onTouchEnd={handleTouchEnd}
+              onTouchCancel={handleTouchCancel}
               ref={canvas}
               style={{ border: "1px solid black" }}
             ></canvas>

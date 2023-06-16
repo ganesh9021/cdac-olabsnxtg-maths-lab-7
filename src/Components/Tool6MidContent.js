@@ -3,26 +3,19 @@ import { useTranslation } from "react-i18next";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import BackNextBar from "./MajorComponents/BackNextBar";
-import * as Instru from "./MajorComponents/Instruction"
+import * as Instru from "./MajorComponents/Instruction";
 
-function Tool6MidContent({setInstr}) {
+function Tool6MidContent({ setInstr }) {
   const { t, i18n } = useTranslation();
   let navigate = useNavigate();
   const canvas = useRef();
   var [count, setCount] = useState(0);
-
-  const onNext = (e) => {
-    if (count == 1) {
-      localStorage.setItem("A", 7);
-      navigate("/letusverify/startpage/tool6/res6");
-    } else {
-      toast.error(`${t("line-3")}`, {
-        position: "top-center",
-        autoClose: 2000,
-      });
-    }
-  };
-
+  let isDown = false;
+  let dragTarget = null;
+  let startX = null;
+  let startY = null;
+  let touchX = null;
+  let touchY = null;
   let ctx = null;
   const boxes = [
     {
@@ -53,12 +46,33 @@ function Tool6MidContent({setInstr}) {
       color: "rgba(59, 106, 237, 0.4)",
     },
   ];
-  let isDown = false;
-  let dragTarget = null;
-  let startX = null;
-  let startY = null;
-  let touchX = null;
-  let touchY = null;
+
+  useEffect(() => {
+    if (localStorage.getItem("A") == 4) {
+      document.getElementById("cb4").checked = true;
+    }
+    if (localStorage.getItem("A") == 5) {
+      document.getElementById("cb4").checked = true;
+      document.getElementById("cb5").checked = true;
+    }
+    if (localStorage.getItem("A") == 6) {
+      document.getElementById("cb4").checked = true;
+      document.getElementById("cb5").checked = true;
+      document.getElementById("cb6").checked = true;
+    }
+  });
+
+  const onNext = (e) => {
+    if (count == 1) {
+      localStorage.setItem("A", 6);
+      navigate("/letusverify/startpage/tool6/res6");
+    } else {
+      toast.error(`${t("line-3")}`, {
+        position: "top-center",
+        autoClose: 2000,
+      });
+    }
+  };
 
   // initialize the canvas context
   useEffect(() => {
@@ -67,21 +81,6 @@ function Tool6MidContent({setInstr}) {
     canvasEle.width = 300;
     canvasEle.height = 200;
     ctx = canvasEle.getContext("2d");
-  }, []);
-
-  useEffect(() => {
-    if (localStorage.getItem("A") === "5") {
-      document.getElementById("cb4").checked = true;
-    }
-    if (localStorage.getItem("A") === "6") {
-      document.getElementById("cb4").checked = true;
-      document.getElementById("cb5").checked = true;
-    }
-    if (localStorage.getItem("A") === "7") {
-      document.getElementById("cb4").checked = true;
-      document.getElementById("cb5").checked = true;
-      document.getElementById("cb6").checked = true;
-    }
   }, []);
 
   useEffect(() => {

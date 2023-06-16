@@ -97,15 +97,16 @@ function Res6Copy() {
     ctx.textAlign = "center";
     ctx.textBaseline = "middle";
     ctx.fillStyle = "red";
-    ctx.fillText("4", 190, 80);
-    ctx.fillText("6", 170, 90);
-    ctx.fillText("8", 120, 90);
-    ctx.fillText("5", 150, 140);
-    ctx.fillText("7", 110, 150);
-    ctx.fillText("9", 90, 110);
-    ctx.fillText("3", 200, 140);
-    ctx.fillText("2", 150, 40);
-    ctx.fillText("10", 170, 60);
+    ctx.fillText("5", 175, 90);
+    ctx.fillText("8", 150, 105);
+    ctx.fillText("4", 150, 135);
+    ctx.fillText("11", 110, 150);
+    ctx.fillText("13", 90, 110);
+    ctx.fillText("3", 130, 90);
+    ctx.fillText("9", 130, 50);
+    ctx.fillText("6", 170, 50);
+    ctx.fillText("15", 190, 150);
+    ctx.fillText("17", 210, 110);
   };
 
   return (

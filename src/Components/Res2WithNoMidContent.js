@@ -8,6 +8,26 @@ function Res2WithNoMidContent() {
   const { t, i18n } = useTranslation();
   const navigate = useNavigate();
   const canvas = useRef();
+  let ctx = null;
+  const boxes = [
+    { x: 133, y: 100, r: 50, s: 0, e: 2 * Math.PI, shapeName: "B" },
+    { x: 193, y: 100, r: 50, s: 0, e: 2 * Math.PI, shapeName: "C" },
+  ];
+
+  useEffect(() => {
+    if (localStorage.getItem("A") == 1) {
+      document.getElementById("cb1").checked = true;
+    }
+    if (localStorage.getItem("A") == 2) {
+      document.getElementById("cb1").checked = true;
+      document.getElementById("cb2").checked = true;
+    }
+    if (localStorage.getItem("A") == 3) {
+      document.getElementById("cb1").checked = true;
+      document.getElementById("cb2").checked = true;
+      document.getElementById("cb3").checked = true;
+    }
+  });
 
   const onNext = () => {
     navigate("/letusverify/startpage/tool3");
@@ -16,53 +36,11 @@ function Res2WithNoMidContent() {
     navigate("/letusverify/startpage/tool2/dragndrop2/res2/res2withnocopy");
   };
 
-  let ctx = null;
-  const boxes = [
-    { x: 133, y: 100, r: 50, s: 0, e: 2 * Math.PI, shapeName: "B" },
-    { x: 193, y: 100, r: 50, s: 0, e: 2 * Math.PI, shapeName: "C" },
-  ];
-
   useEffect(() => {
     const canvasEle = canvas.current;
     canvasEle.width = 300;
     canvasEle.height = 200;
     ctx = canvasEle.getContext("2d");
-  }, []);
-
-  useEffect(() => {
-    if (localStorage.getItem("A") === "2") {
-      document.getElementById("cb1").checked = true;
-    }
-    if (localStorage.getItem("A") === "3") {
-      document.getElementById("cb1").checked = true;
-      document.getElementById("cb2").checked = true;
-    }
-    if (localStorage.getItem("A") === "4") {
-      document.getElementById("cb1").checked = true;
-      document.getElementById("cb2").checked = true;
-      document.getElementById("cb3").checked = true;
-    }
-    if (localStorage.getItem("A") === "5") {
-      document.getElementById("cb1").checked = true;
-      document.getElementById("cb2").checked = true;
-      document.getElementById("cb3").checked = true;
-      document.getElementById("cb4").checked = true;
-    }
-    if (localStorage.getItem("A") === "6") {
-      document.getElementById("cb1").checked = true;
-      document.getElementById("cb2").checked = true;
-      document.getElementById("cb3").checked = true;
-      document.getElementById("cb4").checked = true;
-      document.getElementById("cb5").checked = true;
-    }
-    if (localStorage.getItem("A") === "7") {
-      document.getElementById("cb1").checked = true;
-      document.getElementById("cb2").checked = true;
-      document.getElementById("cb3").checked = true;
-      document.getElementById("cb4").checked = true;
-      document.getElementById("cb5").checked = true;
-      document.getElementById("cb6").checked = true;
-    }
   }, []);
 
   useEffect(() => {
@@ -127,13 +105,14 @@ function Res2WithNoMidContent() {
     ctx.textAlign = "center";
     ctx.textBaseline = "middle";
     ctx.fillStyle = "red";
-    ctx.fillText("4", 160, 75);
-    ctx.fillText("6", 160, 120);
-    ctx.fillText("3", 125, 75);
-    ctx.fillText("5", 95, 100);
-    ctx.fillText("2", 195, 75);
-    ctx.fillText("8", 225, 100);
-    ctx.fillText("10", 195, 130);
+    ctx.fillText("8", 160, 80);
+    ctx.fillText("5", 160, 115);
+    ctx.fillText("4", 125, 75);
+    ctx.fillText("15", 95, 100);
+    ctx.fillText("17", 125, 130);
+    ctx.fillText("3", 195, 75);
+    ctx.fillText("9", 225, 100);
+    ctx.fillText("6", 195, 130);
   };
 
   return (
@@ -201,13 +180,13 @@ function Res2WithNoMidContent() {
           </div>
           <div className="col">
             <ul>
-              <b>Set B:</b> &#123; 3, 4, 5, 6 &#125;
+              <b>Set B:</b> &#123; 4, 5, 8, 15, 17 &#125;
             </ul>
             <ul>
-              <b>Set C:</b> &#123; 2, 4, 6, 8, 10 &#125;
+              <b>Set C:</b> &#123; 3, 5, 6, 8, 9 &#125;
             </ul>
             <ul>
-              <b>Set B∩C:</b> &#123; 4, 6 &#125;
+              <b>Set B∩C:</b> &#123; 5, 8 &#125;
             </ul>
           </div>
         </div>

@@ -10,14 +10,6 @@ function Res5MidContent() {
   const navigate = useNavigate();
   const canvas = useRef();
 
-  const onNext = () => {
-    navigate("/letusverify/startpage/tool6");
-  };
-
-  const res5_withno = () => {
-    navigate("/letusverify/startpage/tool5/res5/res5withno");
-  };
-
   let ctx = null;
   const boxes = [
     // { x: 87, y: 72, r: 50, s: 0, e: 2 * Math.PI, shapeName : 'A'},
@@ -46,6 +38,29 @@ function Res5MidContent() {
   ];
 
   useEffect(() => {
+    if (localStorage.getItem("A") == 4) {
+      document.getElementById("cb4").checked = true;
+    }
+    if (localStorage.getItem("A") == 5) {
+      document.getElementById("cb4").checked = true;
+      document.getElementById("cb5").checked = true;
+    }
+    if (localStorage.getItem("A") == 6) {
+      document.getElementById("cb4").checked = true;
+      document.getElementById("cb5").checked = true;
+      document.getElementById("cb6").checked = true;
+    }
+  });
+
+  const onNext = () => {
+    navigate("/letusverify/startpage/tool6");
+  };
+
+  const res5_withno = () => {
+    navigate("/letusverify/startpage/tool5/res5/res5withno");
+  };
+
+  useEffect(() => {
     const canvasEle = canvas.current;
     canvasEle.width = 300;
     canvasEle.height = 200;
@@ -57,21 +72,6 @@ function Res5MidContent() {
       position: "top-center",
       autoClose: 2000,
     });
-  }, []);
-
-  useEffect(() => {
-    if (localStorage.getItem("A") === "5") {
-      document.getElementById("cb4").checked = true;
-    }
-    if (localStorage.getItem("A") === "6") {
-      document.getElementById("cb4").checked = true;
-      document.getElementById("cb5").checked = true;
-    }
-    if (localStorage.getItem("A") === "7") {
-      document.getElementById("cb4").checked = true;
-      document.getElementById("cb5").checked = true;
-      document.getElementById("cb6").checked = true;
-    }
   }, []);
 
   useEffect(() => {
@@ -108,13 +108,6 @@ function Res5MidContent() {
     ctx.fillStyle = "Black";
     ctx.fillText(shapeName, x, y);
     ctx.fillText("U", 290, 10);
-
-    //Border
-    //Border of circle B
-    // ctx.beginPath();
-    // ctx.arc(163, 72, 50, 0, 2 * Math.PI);
-    // ctx.strokeStyle = "black";
-    // ctx.stroke();
 
     //border of circle C
     ctx.beginPath();
@@ -175,7 +168,10 @@ function Res5MidContent() {
               </div>
             </div>
           </div>
-          <div className="col">
+          <div
+            className="col d-flex flex-column justify-content-center"
+            style={{ height: "100%" }}
+          >
             <div>
               <canvas
                 ref={canvas}
@@ -199,7 +195,7 @@ function Res5MidContent() {
               </Button>
             </div>
           </div>
-          <ToastContainer/>
+          <ToastContainer />
         </div>
       </div>
       <BackNextBar

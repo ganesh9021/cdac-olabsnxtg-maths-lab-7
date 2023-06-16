@@ -1,17 +1,32 @@
 import React, { useRef, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import BackNextBar from "./MajorComponents/BackNextBar";
-
 import { useTranslation } from "react-i18next";
 import { Button } from "@mui/material";
 
 function Res1WithNoMidContent() {
   const { t, i18n } = useTranslation();
-
   const navigate = useNavigate();
   const canvas = useRef();
+  let ctx = null;
+  const boxes = [{ x: 200, y: 100, r: 50, s: 0, e: 2 * Math.PI }];
 
-  const onNext = (e) => {
+  useEffect(() => {
+    if (localStorage.getItem("A") == 1) {
+      document.getElementById("cb1").checked = true;
+    }
+    if (localStorage.getItem("A") == 2) {
+      document.getElementById("cb1").checked = true;
+      document.getElementById("cb2").checked = true;
+    }
+    if (localStorage.getItem("A") == 3) {
+      document.getElementById("cb1").checked = true;
+      document.getElementById("cb2").checked = true;
+      document.getElementById("cb3").checked = true;
+    }
+  });
+
+  const onNext = () => {
     navigate("/letusverify/startpage/tool2");
   };
 
@@ -19,29 +34,11 @@ function Res1WithNoMidContent() {
     navigate("/letusverify/startpage/tool1/res1withnocopy");
   };
 
-  let ctx = null;
-  const boxes = [{ x: 200, y: 100, r: 50, s: 0, e: 2 * Math.PI }];
-
   useEffect(() => {
     const canvasEle = canvas.current;
     canvasEle.width = 300;
     canvasEle.height = 200;
     ctx = canvasEle.getContext("2d");
-  }, []);
-
-  useEffect(() => {
-    if (localStorage.getItem("A") === "2") {
-      document.getElementById("cb1").checked = true;
-    }
-    if (localStorage.getItem("A") === "3") {
-      document.getElementById("cb1").checked = true;
-      document.getElementById("cb2").checked = true;
-    }
-    if (localStorage.getItem("A") === "4") {
-      document.getElementById("cb1").checked = true;
-      document.getElementById("cb2").checked = true;
-      document.getElementById("cb3").checked = true;
-    }
   }, []);
 
   useEffect(() => {
@@ -88,10 +85,11 @@ function Res1WithNoMidContent() {
     ctx.textAlign = "center";
     ctx.textBaseline = "middle";
     ctx.fillStyle = "red";
-    ctx.fillText("5", 180, 100);
-    ctx.fillText("7", 120, 100);
-    ctx.fillText("8", 150, 75);
-    ctx.fillText("9", 150, 125);
+    ctx.fillText("4", 180, 90);
+    ctx.fillText("13", 120, 110);
+    ctx.fillText("8", 180, 120);
+    ctx.fillText("11", 150, 75);
+    ctx.fillText("3", 150, 135);
   };
 
   return (
@@ -154,7 +152,7 @@ function Res1WithNoMidContent() {
           </div>
           <div className="col">
             <ul>
-              <b>Set A:</b> &#123; 5, 7, 8, 9 &#125;
+              <b>Set A:</b> &#123; 3, 4, 8, 11, 13 &#125;
             </ul>
           </div>
         </div>

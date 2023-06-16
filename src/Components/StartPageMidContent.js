@@ -6,101 +6,80 @@ import Button from "@mui/material/Button";
 import { useTranslation } from "react-i18next";
 
 const LHS_RHS = () => {
-  const [active1, setActive1] = useState(false);
-  const [active2, setActive2] = useState(false);
-  const [active3, setActive3] = useState(false);
+  //flags are used to disable or enable the button
+  const [flag1, setFlag1] = useState(false);
+  const [flag2, setFlag2] = useState(true);
+  const [flag3, setFlag3] = useState(true);
 
-  useEffect(() => {
-    console.log("local storage : ", localStorage.getItem("A"));
-    if (localStorage.getItem("A") == 4) {
-      setActive2(false);
-      setActive1(true);
-      setActive3(true);
-    } else if (localStorage.getItem("A") == 7) {
-      setActive3(false);
-      setActive1(true);
-      setActive2(true);
-    } else {
-      setActive1(false);
-      setActive2(true);
-      setActive3(true);
-    }
-  });
   const navigate = useNavigate();
   const { t, i18n } = useTranslation();
+
+  useEffect(() => {
+    if (localStorage.getItem("A") == 3) {
+      setFlag2(false);
+      setFlag3(true);
+      setFlag1(true);
+    }
+    if (localStorage.getItem("A") == 6) {
+      setFlag3(false);
+      setFlag1(true);
+      setFlag2(true);
+    }
+  });
 
   const LHS = () => {
     navigate("/letusverify/startpage/tool1");
   };
 
   const RHS = () => {
-    if (localStorage.getItem("A") == 4) {
-      navigate("/letusverify/startpage/tool4");
-    } else {
-      toast.error(`${t("toaster-2")}`, {
-        position: "top-center",
-        autoClose: 2000,
-      });
-    }
+    navigate("/letusverify/startpage/tool4");
   };
 
   const Result = () => {
-    if (localStorage.getItem("A") === "7") {
-      navigate("/letusverify/startpage/result");
-    } else {
-      document.getElementById("btn").disabled = true;
-      toast.error(`${t("toaster-1")}`, {
-        position: "top-center",
-        autoClose: 2000,
-      });
-    }
+    navigate("/letusverify/startpage/result");
   };
 
   const onNext = () => {
-    if(localStorage.getItem('A') == 4)
-    {
+    if (localStorage.getItem("A") == 3) {
       toast.error(`${t("restriction_2")}`, {
         position: "top-center",
         autoClose: 2000,
       });
-    }
-    else 
-    {
+    } else {
       toast.error(`${t("restriction_1")}`, {
         position: "top-center",
         autoClose: 2000,
       });
     }
-
   };
 
   useEffect(() => {
-    if (localStorage.getItem("A") === "2") {
+    if (localStorage.getItem("A") == 1) {
       document.getElementById("cb1").checked = true;
     }
-    if (localStorage.getItem("A") === "3") {
+    if (localStorage.getItem("A") == 2) {
       document.getElementById("cb1").checked = true;
       document.getElementById("cb2").checked = true;
     }
-    if (localStorage.getItem("A") === "4") {
+    if (localStorage.getItem("A") == 3) {
       document.getElementById("cb1").checked = true;
       document.getElementById("cb2").checked = true;
       document.getElementById("cb3").checked = true;
     }
-    if (localStorage.getItem("A") === "5") {
+    if (localStorage.getItem("A") == 4) {
       document.getElementById("cb1").checked = true;
       document.getElementById("cb2").checked = true;
       document.getElementById("cb3").checked = true;
       document.getElementById("cb4").checked = true;
     }
-    if (localStorage.getItem("A") === "6") {
+    if (localStorage.getItem("A") == 5) {
       document.getElementById("cb1").checked = true;
       document.getElementById("cb2").checked = true;
       document.getElementById("cb3").checked = true;
       document.getElementById("cb4").checked = true;
       document.getElementById("cb5").checked = true;
     }
-    if (localStorage.getItem("A") === "7") {
+    if (localStorage.getItem("A") == 6) {
       document.getElementById("cb1").checked = true;
       document.getElementById("cb2").checked = true;
       document.getElementById("cb3").checked = true;
@@ -108,7 +87,7 @@ const LHS_RHS = () => {
       document.getElementById("cb5").checked = true;
       document.getElementById("cb6").checked = true;
     }
-  }, []);
+  });
 
   return (
     <div className="container-fluid" style={{ height: "100%" }}>
@@ -158,7 +137,7 @@ const LHS_RHS = () => {
               </div>
               <div>
                 <Button
-                  disabled={active1}
+                  disabled={flag1}
                   autoFocus
                   variant="contained"
                   onClick={LHS}
@@ -205,7 +184,7 @@ const LHS_RHS = () => {
               </div>
               <div>
                 <Button
-                  disabled={active2}
+                  disabled={flag2}
                   autoFocus
                   variant="contained"
                   onClick={RHS}
@@ -220,7 +199,7 @@ const LHS_RHS = () => {
         <div className="row">
           <div className="d-flex justify-content-center">
             <Button
-              disabled={active3}
+              disabled={flag3}
               id="btn"
               autoFocus
               variant="contained"
@@ -233,8 +212,8 @@ const LHS_RHS = () => {
       </div>
       <BackNextBar
         setForward={onNext}
-        backvisible="visible"
-        nextvisible="visible"
+        backvisible="hidden"
+        nextvisible="hidden"
         submitvisible="hidden"
       />
     </div>

@@ -3,19 +3,32 @@ import { useNavigate } from "react-router-dom";
 import BackNextBar from "./MajorComponents/BackNextBar";
 import { useTranslation } from "react-i18next";
 
-
 function Res6WithNoMidContentCopy() {
   const { t, i18n } = useTranslation();
   const canvas = useRef();
   const navigate = useNavigate();
-
-  const onNext = (e) => {
-    navigate("/letusverify/startpage");
-  };
-
   let ctx = null;
 
   const boxes = [{ x: 90, y: 75, r: 50, s: 0, e: 2 * Math.PI, shapeName: "A" }];
+
+  useEffect(() => {
+    if (localStorage.getItem("A") == 4) {
+      document.getElementById("cb4").checked = true;
+    }
+    if (localStorage.getItem("A") == 5) {
+      document.getElementById("cb4").checked = true;
+      document.getElementById("cb5").checked = true;
+    }
+    if (localStorage.getItem("A") == 6) {
+      document.getElementById("cb4").checked = true;
+      document.getElementById("cb5").checked = true;
+      document.getElementById("cb6").checked = true;
+    }
+  });
+
+  const onNext = () => {
+    navigate("/letusverify/startpage");
+  };
 
   useEffect(() => {
     const canvasEle = canvas.current;
@@ -26,21 +39,6 @@ function Res6WithNoMidContentCopy() {
 
   useEffect(() => {
     draw();
-  }, []);
-
-  useEffect(() => {
-    if (localStorage.getItem("A") === "5") {
-      document.getElementById("cb4").checked = true;
-    }
-    if (localStorage.getItem("A") === "6") {
-      document.getElementById("cb4").checked = true;
-      document.getElementById("cb5").checked = true;
-    }
-    if (localStorage.getItem("A") === "7") {
-      document.getElementById("cb4").checked = true;
-      document.getElementById("cb5").checked = true;
-      document.getElementById("cb6").checked = true;
-    }
   }, []);
 
   const draw = () => {
@@ -58,7 +56,7 @@ function Res6WithNoMidContentCopy() {
     boxes.map((info) => drawFillCircle(info));
   };
 
-  const drawFillCircle = (info, style = {}) => {
+  const drawFillCircle = () => {
     //Circle A
     ctx.beginPath();
     ctx.fillStyle = "rgba(255, 39, 77, 0.4)";
@@ -117,20 +115,20 @@ function Res6WithNoMidContentCopy() {
     ctx.fillText("C", 150, 60);
 
     //code for numbers
-    ctx.font = "12px Arial";
+    ctx.font = "18px Arial";
     ctx.textAlign = "center";
     ctx.textBaseline = "middle";
     ctx.fillStyle = "red";
-    ctx.fillText("900", 180, 80);
-    ctx.fillText("600", 120, 80);
-    ctx.fillText("300", 150, 120);
-    ctx.fillText("50", 150, 95);
-    ctx.fillText("200", 110, 140);
-    ctx.fillText("100", 90, 100);
-    ctx.fillText("700", 200, 140);
-    ctx.fillText("800", 210, 90);
-    ctx.fillText("400", 130, 30);
-    ctx.fillText("500", 170, 40);
+    ctx.fillText("h", 180, 80);
+    ctx.fillText("d", 120, 80);
+    ctx.fillText("c", 150, 125);
+    ctx.fillText("e", 150, 95);
+    ctx.fillText("b", 110, 140);
+    ctx.fillText("a", 90, 100);
+    ctx.fillText("f", 200, 140);
+    ctx.fillText("g", 210, 90);
+    ctx.fillText("i", 130, 30);
+    ctx.fillText("j", 170, 40);
   };
 
   return (
@@ -189,22 +187,22 @@ function Res6WithNoMidContentCopy() {
           </div>
           <div className="col">
             <ul>
-              <b>Set A:</b> &#123;100,200,300,600,50&#125;
+              <b>Set A:</b> &#123; a, b, c, d, e &#125;
             </ul>
             <ul>
-              <b>Set B:</b> &#123;300,900,700,800,50&#125;
+              <b>Set B:</b> &#123; c, e, h, f, g &#125;
             </ul>
             <ul>
-              <b>Set C:</b> &#123;400,500,600,900,50&#125;
+              <b>Set C:</b> &#123; d, e, h, i, j &#125;
             </ul>
             <ul>
-              <b>Set A∪B:</b> &#123;50,100,200,300,600,700,800,900&#125;
+              <b>Set A∪B:</b> &#123; a, b, c, d, e, f, g, h &#125;
             </ul>
             <ul>
-              <b>Set A∪C:</b> &#123;50,100,200,300,600,400,500,900&#125;
+              <b>Set A∪C:</b> &#123; a, b, c, d, e, h, i, j &#125;
             </ul>
             <ul>
-              <b>Set (A∪B)∩(A∪C):</b> &#123;50,100,200,300,600,900&#125;
+              <b>Set (A∪B)∩(A∪C):</b> &#123; a, b, c, d, e, h &#125;
             </ul>
           </div>
         </div>

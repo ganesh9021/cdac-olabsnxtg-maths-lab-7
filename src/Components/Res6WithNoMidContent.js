@@ -9,19 +9,30 @@ function Res6WithNoMidContent() {
   const { t, i18n } = useTranslation();
   const canvas = useRef();
   const navigate = useNavigate();
+  let ctx = null;
+  const boxes = [{ x: 90, y: 75, r: 50, s: 0, e: 2 * Math.PI, shapeName: "A" }];
 
-  const onNext = (e) => {
+  useEffect(() => {
+    if (localStorage.getItem("A") == 4) {
+      document.getElementById("cb4").checked = true;
+    }
+    if (localStorage.getItem("A") == 5) {
+      document.getElementById("cb4").checked = true;
+      document.getElementById("cb5").checked = true;
+    }
+    if (localStorage.getItem("A") == 6) {
+      document.getElementById("cb4").checked = true;
+      document.getElementById("cb5").checked = true;
+      document.getElementById("cb6").checked = true;
+    }
+  });
+
+  const onNext = () => {
     navigate("/letusverify/startpage");
   };
   const handleNextExample = () => {
     navigate("/letusverify/startpage/tool6/res6/res6withnocopy");
-  }
-
-  let ctx = null;
-
-  const boxes = [
-    { x: 90, y: 75, r: 50, s: 0, e: 2 * Math.PI, shapeName: "A" },
-  ];
+  };
 
   useEffect(() => {
     const canvasEle = canvas.current;
@@ -32,21 +43,6 @@ function Res6WithNoMidContent() {
 
   useEffect(() => {
     draw();
-  }, []);
-
-  useEffect(() => {
-    if (localStorage.getItem("A") === "5") {
-      document.getElementById("cb4").checked = true;
-    }
-    if (localStorage.getItem("A") === "6") {
-      document.getElementById("cb4").checked = true;
-      document.getElementById("cb5").checked = true;
-    }
-    if (localStorage.getItem("A") === "7") {
-      document.getElementById("cb4").checked = true;
-      document.getElementById("cb5").checked = true;
-      document.getElementById("cb6").checked = true;
-    }
   }, []);
 
   const draw = () => {
@@ -127,15 +123,17 @@ function Res6WithNoMidContent() {
     ctx.textAlign = "center";
     ctx.textBaseline = "middle";
     ctx.fillStyle = "red";
-    ctx.fillText("4", 190, 70);
-    ctx.fillText("6", 170, 80);
-    ctx.fillText("8", 120, 80);
-    ctx.fillText("5", 150, 130);
-    ctx.fillText("7", 110, 140);
-    ctx.fillText("9", 90, 100);
-    ctx.fillText("3", 200, 130);
-    ctx.fillText("2", 150, 30);
-    ctx.fillText("10", 170, 50);
+
+    ctx.fillText("5", 180, 80);
+    ctx.fillText("3", 120, 80);
+    ctx.fillText("4", 150, 130);
+    ctx.fillText("8", 150, 95);
+    ctx.fillText("11", 110, 140);
+    ctx.fillText("13", 90, 100);
+    ctx.fillText("15", 190, 140);
+    ctx.fillText("17", 210, 100);
+    ctx.fillText("9", 130, 40);
+    ctx.fillText("6", 170, 40);
   };
 
   return (
@@ -192,29 +190,33 @@ function Res6WithNoMidContent() {
               ></canvas>
             </div>
             <div className="text-center mt-1">
-              <Button variant="contained" color="primary" onClick={handleNextExample}>
+              <Button
+                variant="contained"
+                color="primary"
+                onClick={handleNextExample}
+              >
                 Next Example
               </Button>
             </div>
           </div>
           <div className="col">
             <ul>
-              <b>Set A:</b> &#123; 5, 7, 8, 9 &#125;
+              <b>Set A:</b> &#123; 3, 4, 8, 11, 13 &#125;
             </ul>
             <ul>
-              <b>Set B:</b> &#123; 3, 4, 5, 6 &#125;
+              <b>Set B:</b> &#123; 4, 5, 8, 15, 17 &#125;
             </ul>
             <ul>
-              <b>Set C:</b> &#123; 2, 4, 6, 8, 10 &#125;
+              <b>Set C:</b> &#123; 3, 5, 8, 9, 6 &#125;
             </ul>
             <ul>
-              <b>Set A∪B:</b> &#123; 5, 7, 8, 9, 3, 4, 6 &#125;
+              <b>Set A∪B:</b> &#123; 3, 4, 5, 8, 11, 13, 15, 17 &#125;
             </ul>
             <ul>
-              <b>Set A∪C:</b> &#123; 5, 7, 8, 9, 2, 4, 6, 10&#125;
+              <b>Set A∪C:</b> &#123; 3, 4, 5, 6, 8, 9, 11, 13 &#125;
             </ul>
             <ul>
-              <b>Set (A∪B)∩(A∪C):</b> &#123; 5, 7, 8, 9, 4, 6 &#125;
+              <b>Set (A∪B)∩(A∪C):</b> &#123; 3, 4, 5, 8, 11, 13 &#125;
             </ul>
           </div>
         </div>

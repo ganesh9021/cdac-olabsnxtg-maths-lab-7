@@ -15,11 +15,11 @@ const ResultMidContent = () => {
 
   const onNext = () => {
     navigate("");
-   
   };
 
   const Restart = () => {
     navigate("/letusverify");
+    localStorage.clear();
   };
 
   return (
@@ -36,7 +36,7 @@ const ResultMidContent = () => {
             <div>
               <Res3Copy />
             </div>
-            <div>A∪(B∩C)=&#123;5, 7, 8, 9, 4, 6 &#125;</div>
+            <div>A∪(B∩C)=&#123; 3, 4, 5, 8, 11, 13 &#125;</div>
           </div>
           <div className="col-md-auto d-flex justify-content-center align-items-center text-center">
             <div className="fw-bolder" >=</div>
@@ -48,7 +48,7 @@ const ResultMidContent = () => {
             <div>
               <Res6Copy />
             </div>
-            <div>(A∪B)∩(A∪C)=&#123;5, 7, 8, 9, 4, 6 &#125;</div>
+            <div>(A∪B)∩(A∪C)=&#123; 3, 4, 5, 8, 11, 13 &#125;</div>
           </div>
         </div>
         <div className="row">

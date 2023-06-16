@@ -7,57 +7,35 @@ function Res3WithNoMidContentCopy() {
   const { t, i18n } = useTranslation();
   const navigate = useNavigate();
   const canvas = useRef();
-
-  const onNext = () => {
-    navigate("/letusverify/startpage");
-  };
-
   let ctx = null;
   const boxes = [
     { x: 250, y: 75, r: 50, s: 0, e: 2 * Math.PI, shapeName: "A" },
   ];
 
   useEffect(() => {
+    if (localStorage.getItem("A") == 1) {
+      document.getElementById("cb1").checked = true;
+    }
+    if (localStorage.getItem("A") == 2) {
+      document.getElementById("cb1").checked = true;
+      document.getElementById("cb2").checked = true;
+    }
+    if (localStorage.getItem("A") == 3) {
+      document.getElementById("cb1").checked = true;
+      document.getElementById("cb2").checked = true;
+      document.getElementById("cb3").checked = true;
+    }
+  });
+
+  const onNext = () => {
+    navigate("/letusverify/startpage");
+  };
+
+  useEffect(() => {
     const canvasEle = canvas.current;
     canvasEle.width = 300;
     canvasEle.height = 200;
     ctx = canvasEle.getContext("2d");
-  }, []);
-
-  useEffect(() => {
-    if (localStorage.getItem("A") === "2") {
-      document.getElementById("cb1").checked = true;
-    }
-    if (localStorage.getItem("A") === "3") {
-      document.getElementById("cb1").checked = true;
-      document.getElementById("cb2").checked = true;
-    }
-    if (localStorage.getItem("A") === "4") {
-      document.getElementById("cb1").checked = true;
-      document.getElementById("cb2").checked = true;
-      document.getElementById("cb3").checked = true;
-    }
-    if (localStorage.getItem("A") === "5") {
-      document.getElementById("cb1").checked = true;
-      document.getElementById("cb2").checked = true;
-      document.getElementById("cb3").checked = true;
-      document.getElementById("cb4").checked = true;
-    }
-    if (localStorage.getItem("A") === "6") {
-      document.getElementById("cb1").checked = true;
-      document.getElementById("cb2").checked = true;
-      document.getElementById("cb3").checked = true;
-      document.getElementById("cb4").checked = true;
-      document.getElementById("cb5").checked = true;
-    }
-    if (localStorage.getItem("A") === "7") {
-      document.getElementById("cb1").checked = true;
-      document.getElementById("cb2").checked = true;
-      document.getElementById("cb3").checked = true;
-      document.getElementById("cb4").checked = true;
-      document.getElementById("cb5").checked = true;
-      document.getElementById("cb6").checked = true;
-    }
   }, []);
 
   useEffect(() => {
@@ -80,7 +58,6 @@ function Res3WithNoMidContentCopy() {
   };
 
   const drawFillCircle = () => {
-    
     //Circle A
     ctx.beginPath();
     ctx.fillStyle = "rgba(255, 39, 77, 0.4)";
@@ -139,20 +116,20 @@ function Res3WithNoMidContentCopy() {
     ctx.fillText("C", 190, 125);
 
     //code for numbers
-    ctx.font = "10px Arial";
+    ctx.font = "18px Arial";
     ctx.textAlign = "center";
     ctx.textBaseline = "middle";
     ctx.fillStyle = "red";
-    ctx.fillText("Orange", 160, 140);
-    ctx.fillText("Fig", 160, 110);
-    ctx.fillText("Peach", 130, 90);
-    ctx.fillText("Kiwi", 140, 50);
-    ctx.fillText("Grape", 180, 50);
-    ctx.fillText("Mango", 190, 90);
-    ctx.fillText("Pear", 100, 110);
-    ctx.fillText("Plum", 120, 150);
-    ctx.fillText("Guava", 220, 135);
-    ctx.fillText("Cherry", 190, 160);
+    ctx.fillText("h", 160, 140);
+    ctx.fillText("e", 160, 110);
+    ctx.fillText("c", 130, 90);
+    ctx.fillText("a", 140, 50);
+    ctx.fillText("b", 180, 50);
+    ctx.fillText("d", 190, 90);
+    ctx.fillText("f", 100, 110);
+    ctx.fillText("g", 120, 150);
+    ctx.fillText("i", 220, 135);
+    ctx.fillText("j", 190, 160);
   };
 
   return (
@@ -206,19 +183,19 @@ function Res3WithNoMidContentCopy() {
           </div>
           <div className="col">
             <ul>
-              <b>Set A:</b> &#123;Kiwi,Grape,Peach,Mango,fig&#125;
+              <b>Set A:</b> &#123; a, b, c, d, e &#125;
             </ul>
             <ul>
-              <b>Set B:</b> &#123;Pear,Plum,Peach,Fig,Orange&#125;
+              <b>Set B:</b> &#123; f, g, h, e, c &#125;
             </ul>
             <ul>
-              <b>Set C:</b> &#123;Cherry,Guava,Mango,Orange,Fig&#125;
+              <b>Set C:</b> &#123; i, j, d, e, h &#125;
             </ul>
             <ul>
-              <b>Set B∩C:</b> &#123;Fig,Orange&#125;
+              <b>Set B∩C:</b> &#123; e, h &#125;
             </ul>
             <ul>
-              <b>Set A∪(B∩C):</b> &#123;Kiwi,Grape,Peach,Mango,fig,Orange&#125;
+              <b>Set A∪(B∩C):</b> &#123; a, b, c, d, e, h &#125;
             </ul>
           </div>
         </div>

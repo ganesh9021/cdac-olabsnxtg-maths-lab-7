@@ -2,17 +2,11 @@ import React, { useRef, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import BackNextBar from "./MajorComponents/BackNextBar";
 import { useTranslation } from "react-i18next";
-import { Button } from "@mui/material";
 
 function Res4WithNoMidContentCopy() {
   const { t, i18n } = useTranslation();
   const navigate = useNavigate();
   const canvas = useRef();
-
-  const onNext = (e) => {
-    navigate("/letusverify/startpage/tool5");
-  };
-
   let ctx = null;
   const boxes = [
     {
@@ -36,25 +30,29 @@ function Res4WithNoMidContentCopy() {
   ];
 
   useEffect(() => {
-    const canvasEle = canvas.current;
-    canvasEle.width = 300;
-    canvasEle.height = 200;
-    ctx = canvasEle.getContext("2d");
-  }, []);
-
-  useEffect(() => {
-    if (localStorage.getItem("A") === "5") {
+    if (localStorage.getItem("A") == 4) {
       document.getElementById("cb4").checked = true;
     }
-    if (localStorage.getItem("A") === "6") {
+    if (localStorage.getItem("A") == 5) {
       document.getElementById("cb4").checked = true;
       document.getElementById("cb5").checked = true;
     }
-    if (localStorage.getItem("A") === "7") {
+    if (localStorage.getItem("A") == 6) {
       document.getElementById("cb4").checked = true;
       document.getElementById("cb5").checked = true;
       document.getElementById("cb6").checked = true;
     }
+  });
+
+  const onNext = (e) => {
+    navigate("/letusverify/startpage/tool5");
+  };
+
+  useEffect(() => {
+    const canvasEle = canvas.current;
+    canvasEle.width = 300;
+    canvasEle.height = 200;
+    ctx = canvasEle.getContext("2d");
   }, []);
 
   useEffect(() => {
@@ -109,17 +107,18 @@ function Res4WithNoMidContentCopy() {
     ctx.stroke();
 
     //code for numbers
-    ctx.font = "10px Arial";
+    ctx.font = "18px Arial";
     ctx.textAlign = "center";
     ctx.textBaseline = "middle";
     ctx.fillStyle = "red";
-    ctx.fillText("Birch", 150, 100);
-    ctx.fillText("Aspen", 100, 100);
-    ctx.fillText("Oak", 120, 75);
-    ctx.fillText("Pine", 120, 125);
-    ctx.fillText("Cedar", 180, 75);
-    ctx.fillText("Maple", 200, 100);
-    ctx.fillText("Ash", 180, 125);
+    ctx.fillText("c", 150, 90);
+    ctx.fillText("e", 150, 110);
+    ctx.fillText("b", 100, 100);
+    ctx.fillText("a", 120, 75);
+    ctx.fillText("d", 120, 125);
+    ctx.fillText("f", 180, 75);
+    ctx.fillText("g", 200, 100);
+    ctx.fillText("h", 180, 125);
   };
 
   return (
@@ -178,13 +177,13 @@ function Res4WithNoMidContentCopy() {
           </div>
           <div className="col">
             <ul>
-              <b>Set A:</b> &#123;Oak,Aspen,Pine,Birch&#125;
+              <b>Set A:</b> &#123; a, b, c, d, e &#125;
             </ul>
             <ul>
-              <b>Set B:</b> &#123;Birch,Cedar,Maple,Ash&#125;
+              <b>Set B:</b> &#123;e, f, g, h, c &#125;
             </ul>
             <ul>
-              <b>Set A∪B:</b> &#123;Oak,Aspen,Pine,Birch,Cedar,Maple,Ash&#125;
+              <b>Set A∪B:</b> &#123; a, b, c, d, e, f, g, h &#125;
             </ul>
           </div>
         </div>

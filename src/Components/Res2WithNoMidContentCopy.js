@@ -3,16 +3,10 @@ import { useNavigate } from "react-router-dom";
 import BackNextBar from "./MajorComponents/BackNextBar";
 import { useTranslation } from "react-i18next";
 
-
 function Res2WithNoMidContentCopy() {
   const { t, i18n } = useTranslation();
   const navigate = useNavigate();
   const canvas = useRef();
-
-  const onNext = () => {
-    navigate("/letusverify/startpage/tool3");
-  };
-
   let ctx = null;
   const boxes = [
     { x: 133, y: 100, r: 50, s: 0, e: 2 * Math.PI, shapeName: "B" },
@@ -20,46 +14,29 @@ function Res2WithNoMidContentCopy() {
   ];
 
   useEffect(() => {
+    if (localStorage.getItem("A") == 1) {
+      document.getElementById("cb1").checked = true;
+    }
+    if (localStorage.getItem("A") == 2) {
+      document.getElementById("cb1").checked = true;
+      document.getElementById("cb2").checked = true;
+    }
+    if (localStorage.getItem("A") == 3) {
+      document.getElementById("cb1").checked = true;
+      document.getElementById("cb2").checked = true;
+      document.getElementById("cb3").checked = true;
+    }
+  });
+
+  const onNext = () => {
+    navigate("/letusverify/startpage/tool3");
+  };
+
+  useEffect(() => {
     const canvasEle = canvas.current;
     canvasEle.width = 300;
     canvasEle.height = 200;
     ctx = canvasEle.getContext("2d");
-  }, []);
-
-  useEffect(() => {
-    if (localStorage.getItem("A") === "2") {
-      document.getElementById("cb1").checked = true;
-    }
-    if (localStorage.getItem("A") === "3") {
-      document.getElementById("cb1").checked = true;
-      document.getElementById("cb2").checked = true;
-    }
-    if (localStorage.getItem("A") === "4") {
-      document.getElementById("cb1").checked = true;
-      document.getElementById("cb2").checked = true;
-      document.getElementById("cb3").checked = true;
-    }
-    if (localStorage.getItem("A") === "5") {
-      document.getElementById("cb1").checked = true;
-      document.getElementById("cb2").checked = true;
-      document.getElementById("cb3").checked = true;
-      document.getElementById("cb4").checked = true;
-    }
-    if (localStorage.getItem("A") === "6") {
-      document.getElementById("cb1").checked = true;
-      document.getElementById("cb2").checked = true;
-      document.getElementById("cb3").checked = true;
-      document.getElementById("cb4").checked = true;
-      document.getElementById("cb5").checked = true;
-    }
-    if (localStorage.getItem("A") === "7") {
-      document.getElementById("cb1").checked = true;
-      document.getElementById("cb2").checked = true;
-      document.getElementById("cb3").checked = true;
-      document.getElementById("cb4").checked = true;
-      document.getElementById("cb5").checked = true;
-      document.getElementById("cb6").checked = true;
-    }
   }, []);
 
   useEffect(() => {
@@ -120,18 +97,18 @@ function Res2WithNoMidContentCopy() {
     ctx.stroke();
 
     //code for Numbers
-    ctx.font = "10px Arial";
+    ctx.font = "18px Arial";
     ctx.textAlign = "center";
     ctx.textBaseline = "middle";
     ctx.fillStyle = "red";
-    ctx.fillText("White", 160, 100);
-
-    ctx.fillText("Red", 125, 75);
-    ctx.fillText("Green", 100, 100);
-    ctx.fillText("Yellow", 125, 130);
-    ctx.fillText("Violet", 195, 75);
-    ctx.fillText("Black", 225, 100);
-    ctx.fillText("Purple", 195, 130);
+    ctx.fillText("e", 160, 90);
+    ctx.fillText("h", 160, 110);
+    ctx.fillText("f", 115, 80);
+    ctx.fillText("c", 100, 100);
+    ctx.fillText("g", 115, 120);
+    ctx.fillText("i", 210, 80);
+    ctx.fillText("d", 230, 100);
+    ctx.fillText("j", 210, 120);
   };
 
   return (
@@ -187,18 +164,17 @@ function Res2WithNoMidContentCopy() {
                 style={{ border: "1px solid black" }}
               ></canvas>
             </div>
-           
           </div>
           <div className="col">
             <div>
               <ul>
-                <b>Set B:</b> &#123;Red,Green,yellow,white&#125;
+                <b>Set B:</b> &#123; c, e, h, f, g &#125;
               </ul>
               <ul>
-                <b>Set C:</b> &#123;Violet,Black,White,Purple&#125;
+                <b>Set C:</b> &#123; i, j, d, e, h &#125;
               </ul>
               <ul>
-                <b>Set B∩C:</b> &#123;White&#125;
+                <b>Set B∩C:</b> &#123; e, h &#125;
               </ul>
             </div>
           </div>

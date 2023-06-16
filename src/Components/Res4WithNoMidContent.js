@@ -8,19 +8,8 @@ function Res4WithNoMidContent() {
   const { t, i18n } = useTranslation();
   const navigate = useNavigate();
   const canvas = useRef();
-
-  const onNext = (e) => {
-    navigate("/letusverify/startpage/tool5");
-  };
-  const handleNextExample  = () => {
-    navigate("/letusverify/startpage/tool4/res4/res4withnocopy");
-  }
-
   let ctx = null;
   const boxes = [
-    // { x: 87, y: 72, r: 50, s: 0, e: 2 * Math.PI, shapeName : 'A'},
-    // { x: 163, y: 72, r: 50, s: 0, e: 2 * Math.PI, shapeName : 'B'},
-    //{ x: 125, y: 128, r: 50, s: 0, e: 2 * Math.PI, shapeName : 'C'},
     {
       x: 120,
       y: 100,
@@ -42,25 +31,32 @@ function Res4WithNoMidContent() {
   ];
 
   useEffect(() => {
-    const canvasEle = canvas.current;
-    canvasEle.width = 300;
-    canvasEle.height = 200;
-    ctx = canvasEle.getContext("2d");
-  }, []);
-
-  useEffect(() => {
-    if (localStorage.getItem("A") === "5") {
+    if (localStorage.getItem("A") == 4) {
       document.getElementById("cb4").checked = true;
     }
-    if (localStorage.getItem("A") === "6") {
+    if (localStorage.getItem("A") == 5) {
       document.getElementById("cb4").checked = true;
       document.getElementById("cb5").checked = true;
     }
-    if (localStorage.getItem("A") === "7") {
+    if (localStorage.getItem("A") == 6) {
       document.getElementById("cb4").checked = true;
       document.getElementById("cb5").checked = true;
       document.getElementById("cb6").checked = true;
     }
+  });
+
+  const onNext = (e) => {
+    navigate("/letusverify/startpage/tool5");
+  };
+  const handleNextExample = () => {
+    navigate("/letusverify/startpage/tool4/res4/res4withnocopy");
+  };
+
+  useEffect(() => {
+    const canvasEle = canvas.current;
+    canvasEle.width = 300;
+    canvasEle.height = 200;
+    ctx = canvasEle.getContext("2d");
   }, []);
 
   useEffect(() => {
@@ -102,30 +98,26 @@ function Res4WithNoMidContent() {
     ctx.strokeStyle = "black";
     ctx.stroke();
 
-    //border of circle B
-    // ctx.beginPath();
-    // ctx.arc(125, 128, 50, 0, 2 * Math.PI);
-    // ctx.strokeStyle = "black";
-    // ctx.stroke();
-
     //border of circle A
     ctx.beginPath();
     ctx.arc(120, 100, 50, 0, 2 * Math.PI);
     ctx.strokeStyle = "black";
     ctx.stroke();
 
-    //code for numbers
+    //code for position of numbers
     ctx.font = "18px Arial";
     ctx.textAlign = "center";
     ctx.textBaseline = "middle";
     ctx.fillStyle = "red";
-    ctx.fillText("5", 150, 100);
-    ctx.fillText("7", 100, 100);
-    ctx.fillText("8", 120, 75);
-    ctx.fillText("9", 120, 125);
-    ctx.fillText("3", 180, 75);
-    ctx.fillText("4", 200, 100);
-    ctx.fillText("6", 180, 125);
+    ctx.fillText("4", 150, 80);
+    ctx.fillText("8", 150, 120);
+
+    ctx.fillText("3", 90, 100);
+    ctx.fillText("11", 110, 75);
+    ctx.fillText("13", 110, 125);
+    ctx.fillText("15", 190, 75);
+    ctx.fillText("17", 210, 100);
+    ctx.fillText("5", 190, 125);
   };
 
   return (
@@ -182,20 +174,24 @@ function Res4WithNoMidContent() {
               ></canvas>
             </div>
             <div className="text-center mt-1">
-              <Button variant="contained" color="primary" onClick={handleNextExample}>
+              <Button
+                variant="contained"
+                color="primary"
+                onClick={handleNextExample}
+              >
                 Next Example
               </Button>
             </div>
           </div>
           <div className="col">
             <ul>
-              <b>Set A:</b> &#123; 5, 7, 8, 9 &#125;
+              <b>Set A:</b> &#123; 3, 4, 8, 11, 13 &#125;
             </ul>
             <ul>
-              <b>Set B:</b> &#123; 3, 4, 5, 6 &#125;
+              <b>Set B:</b> &#123; 4, 5, 8, 15,17 &#125;
             </ul>
             <ul>
-              <b>Set A∪B:</b> &#123; 5, 7, 8, 9, 3, 4, 6 &#125;
+              <b>Set A∪B:</b> &#123; 3, 4, 5, 8, 11, 13, 15, 17 &#125;
             </ul>
           </div>
         </div>
@@ -211,4 +207,3 @@ function Res4WithNoMidContent() {
 }
 
 export default Res4WithNoMidContent;
-

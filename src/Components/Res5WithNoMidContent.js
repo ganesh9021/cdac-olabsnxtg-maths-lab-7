@@ -10,15 +10,7 @@ function Res5WithNoMidContent() {
   const navigate = useNavigate();
   const canvas = useRef();
 
-  const onNext = (e) => {
-    navigate("/letusverify/startpage/tool6");
-  };
-  const handleNextExample = () => {
-    navigate("/letusverify/startpage/tool5/res5/res5withnocopy");
-  }
-
   let ctx = null;
-
   const boxes = [
     {
       x: 120,
@@ -41,25 +33,32 @@ function Res5WithNoMidContent() {
   ];
 
   useEffect(() => {
-    const canvasEle = canvas.current;
-    canvasEle.width = 300;
-    canvasEle.height = 200;
-    ctx = canvasEle.getContext("2d");
-  }, []);
-
-  useEffect(() => {
-    if (localStorage.getItem("A") === "5") {
+    if (localStorage.getItem("A") == 4) {
       document.getElementById("cb4").checked = true;
     }
-    if (localStorage.getItem("A") === "6") {
+    if (localStorage.getItem("A") == 5) {
       document.getElementById("cb4").checked = true;
       document.getElementById("cb5").checked = true;
     }
-    if (localStorage.getItem("A") === "7") {
+    if (localStorage.getItem("A") == 6) {
       document.getElementById("cb4").checked = true;
       document.getElementById("cb5").checked = true;
       document.getElementById("cb6").checked = true;
     }
+  });
+
+  const onNext = (e) => {
+    navigate("/letusverify/startpage/tool6");
+  };
+  const handleNextExample = () => {
+    navigate("/letusverify/startpage/tool5/res5/res5withnocopy");
+  };
+
+  useEffect(() => {
+    const canvasEle = canvas.current;
+    canvasEle.width = 300;
+    canvasEle.height = 200;
+    ctx = canvasEle.getContext("2d");
   }, []);
 
   useEffect(() => {
@@ -114,14 +113,14 @@ function Res5WithNoMidContent() {
     ctx.textAlign = "center";
     ctx.textBaseline = "middle";
     ctx.fillStyle = "red";
-    ctx.fillText("8", 150, 100);
-    ctx.fillText("7", 100, 100);
-    ctx.fillText("5", 120, 75);
-    ctx.fillText("9", 120, 125);
-    ctx.fillText("2", 180, 75);
-    ctx.fillText("4", 210, 90);
-    ctx.fillText("6", 180, 130);
-    ctx.fillText("10", 210, 115);
+    ctx.fillText("3", 150, 80);
+    ctx.fillText("8", 150, 120);
+    ctx.fillText("11", 90, 100);
+    ctx.fillText("13", 120, 75);
+    ctx.fillText("4", 120, 125);
+    ctx.fillText("5", 180, 75);
+    ctx.fillText("6", 210, 100);
+    ctx.fillText("9", 180, 130);
   };
 
   return (
@@ -173,7 +172,11 @@ function Res5WithNoMidContent() {
           <div className="col mb-1">
             <canvas ref={canvas} style={{ border: "1px solid black" }}></canvas>
             <div className="text-center mt-1">
-              <Button variant="contained" color="primary" onClick={handleNextExample}>
+              <Button
+                variant="contained"
+                color="primary"
+                onClick={handleNextExample}
+              >
                 Next Example
               </Button>
             </div>
@@ -181,13 +184,13 @@ function Res5WithNoMidContent() {
 
           <div className="col">
             <ul>
-              <b>Set A:</b> &#123; 5, 7, 8, 9 &#125;
+              <b>Set A:</b> &#123; 3, 4, 8, 11, 13 &#125;
             </ul>
             <ul>
-              <b>Set C:</b> &#123; 2, 4, 6, 8, 10 &#125;
+              <b>Set C:</b> &#123; 3, 5, 6, 8, 9 &#125;
             </ul>
             <ul>
-              <b>Set A∪C:</b> &#123;5, 7, 8, 9, 2, 4, 6, 8, 10 &#125;
+              <b>Set A∪C:</b> &#123; 3, 4, 5, 6, 8, 9, 11 &#125;
             </ul>
           </div>
         </div>
