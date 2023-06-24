@@ -1,9 +1,15 @@
-import React, { useRef, useEffect } from "react";
+import React, { useRef, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import BackNextBar from "./MajorComponents/BackNextBar";
 import { useTranslation } from "react-i18next";
+import ReactGA from "react-ga4";
+import useWebSocket, { ReadyState } from "react-use-websocket";
+import logconfig from "../config/dbconfig.js";
+import { SendLogData } from "../config/wslog.js";
 
 function Res3WithNoMidContentCopy() {
+  const { sendJsonMessage } = useWebSocket(logconfig.logurl, { share: true });
+  const [pageName, setPageName] = useState("example-2 page of A∪(B∩C)");
   const { t, i18n } = useTranslation();
   const navigate = useNavigate();
   const canvas = useRef();
@@ -28,6 +34,19 @@ function Res3WithNoMidContentCopy() {
   });
 
   const onNext = () => {
+    ReactGA.event({
+      action: "L7|set theory-distributive law",
+      category: "L7|NEXT button of A∪(B∩C)",
+      label:
+        "L7|navigate to startpage successfully to attempt the relations of RHS",
+    });
+    SendLogData(
+      sendJsonMessage,
+      pageName,
+      "next",
+      "button",
+      "clicked on next button"
+    );
     navigate("/letusverify/startpage");
   };
 

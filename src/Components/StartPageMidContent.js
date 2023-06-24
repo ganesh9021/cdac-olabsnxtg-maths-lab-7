@@ -4,8 +4,14 @@ import BackNextBar from "./MajorComponents/BackNextBar";
 import { toast } from "react-toastify";
 import Button from "@mui/material/Button";
 import { useTranslation } from "react-i18next";
+import ReactGA from "react-ga4";
+import useWebSocket, { ReadyState } from "react-use-websocket";
+import logconfig from "../config/dbconfig.js";
+import { SendLogData } from "../config/wslog.js";
 
 const LHS_RHS = () => {
+  const { sendJsonMessage } = useWebSocket(logconfig.logurl, { share: true });
+  const [pageName, setPageName] = useState("startpage");
   //flags are used to disable or enable the button
   const [flag1, setFlag1] = useState(false);
   const [flag2, setFlag2] = useState(true);
@@ -28,14 +34,50 @@ const LHS_RHS = () => {
   });
 
   const LHS = () => {
+    ReactGA.event({
+      action: "L7|set theory-distributive law",
+      category: "L7|LHS button",
+      label: "L7|Navigate to relations of LHS successfully.",
+    });
+    SendLogData(
+      sendJsonMessage,
+      pageName,
+      "LHS",
+      "button",
+      "clicked on LHS button"
+    );
     navigate("/letusverify/startpage/tool1");
   };
 
   const RHS = () => {
+    ReactGA.event({
+      action: "L7|set theory-distributive law",
+      category: "L7|RHS button",
+      label: "L7|Navigate to relations of RHS successfully.",
+    });
+    SendLogData(
+      sendJsonMessage,
+      pageName,
+      "RHS",
+      "button",
+      "clicked on RHS button"
+    );
     navigate("/letusverify/startpage/tool4");
   };
 
   const Result = () => {
+    ReactGA.event({
+      action: "L7|set theory-distributive law",
+      category: "L7|RESULT button",
+      label: "L7|Navigate to result page successfully.",
+    });
+    SendLogData(
+      sendJsonMessage,
+      pageName,
+      "RESULT",
+      "button",
+      "clicked on RESULT button"
+    );
     navigate("/letusverify/startpage/result");
   };
 

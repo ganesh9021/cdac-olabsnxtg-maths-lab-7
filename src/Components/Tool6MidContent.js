@@ -4,8 +4,16 @@ import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import BackNextBar from "./MajorComponents/BackNextBar";
 import * as Instru from "./MajorComponents/Instruction";
+import ReactGA from "react-ga4";
+import useWebSocket, { ReadyState } from "react-use-websocket";
+import logconfig from "../config/dbconfig.js";
+import { SendLogData } from "../config/wslog.js";
 
 function Tool6MidContent({ setInstr }) {
+  const { sendJsonMessage } = useWebSocket(logconfig.logurl, { share: true });
+  const [pageName, setPageName] = useState(
+    "dragging set C to create (A∪B)∩(A∪C) page"
+  );
   const { t, i18n } = useTranslation();
   let navigate = useNavigate();
   const canvas = useRef();
@@ -63,20 +71,62 @@ function Tool6MidContent({ setInstr }) {
   });
 
   const onNext = (e) => {
+    navigate("/letusverify/startpage/tool6/res6");
     if (count == 1) {
       localStorage.setItem("A", 6);
       navigate("/letusverify/startpage/tool6/res6");
+      ReactGA.event({
+        action: "L7|set theory-distributive law",
+        category: "L7|NEXT button on drag and drop page of (A∪B)∩(A∪C)",
+        label: "L7|navigate on result page of relation (A∪B)∩(A∪C)successfully",
+      });
+      SendLogData(
+        sendJsonMessage,
+        pageName,
+        "NEXT",
+        "button",
+        "click on NEXT button",
+        [],
+        [],
+        [],
+        [
+          {
+            result:
+              "navigate on result page of relation (A∪B)∩(A∪C)successfully",
+          },
+        ]
+      );
     } else {
       toast.error(`${t("line-3")}`, {
         position: "top-center",
         autoClose: 2000,
       });
+      ReactGA.event({
+        action: "L7|set theory-distributive law",
+        category: "L7|NEXT button on drag and drop page of (A∪B)∩(A∪C)",
+        label: "L7|set C dragged at incorrect position",
+      });
+      SendLogData(
+        sendJsonMessage,
+        pageName,
+        "NEXT",
+        "button",
+        "click on NEXT button",
+        [],
+        [],
+        [],
+        [
+          {
+            result: "set C dragged at incorrect position",
+          },
+        ]
+      );
     }
   };
 
   // initialize the canvas context
   useEffect(() => {
-    // dynamically assign the width and height to canvas
+   
     const canvasEle = canvas.current;
     canvasEle.width = 300;
     canvasEle.height = 200;
@@ -137,6 +187,11 @@ function Tool6MidContent({ setInstr }) {
 
   const isFixed = (x, y) => {
     if (x >= 175 && x <= 185 && y >= 55 && y <= 65) {
+      ReactGA.event({
+        action: "L7|set theory-distributive law",
+        category: "L7|dragging of set C",
+        label: "L7|set C dragged at correct position",
+      });
       dragTarget = false;
       count = count + 1;
       setCount(count);

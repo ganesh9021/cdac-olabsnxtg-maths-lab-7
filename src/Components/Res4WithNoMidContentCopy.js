@@ -1,9 +1,15 @@
-import React, { useRef, useEffect } from "react";
+import React, { useRef, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import BackNextBar from "./MajorComponents/BackNextBar";
 import { useTranslation } from "react-i18next";
+import ReactGA from "react-ga4";
+import useWebSocket, { ReadyState } from "react-use-websocket";
+import logconfig from "../config/dbconfig.js";
+import { SendLogData } from "../config/wslog.js";
 
 function Res4WithNoMidContentCopy() {
+  const { sendJsonMessage } = useWebSocket(logconfig.logurl, { share: true });
+  const [pageName, setPageName] = useState("example-2 page of A∪B)");
   const { t, i18n } = useTranslation();
   const navigate = useNavigate();
   const canvas = useRef();
@@ -45,6 +51,18 @@ function Res4WithNoMidContentCopy() {
   });
 
   const onNext = (e) => {
+    ReactGA.event({
+      action: "L7|set theory-distributive law",
+      category: "L7|NEXT button of AUB on example-2 page",
+      label: "L7|navigate to create the relation AUB page successfully",
+    });
+    SendLogData(
+      sendJsonMessage,
+      pageName,
+      "NEXT",
+      "button",
+      "clicked on NEXT button"
+    );
     navigate("/letusverify/startpage/tool5");
   };
 

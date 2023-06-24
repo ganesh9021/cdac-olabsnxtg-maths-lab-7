@@ -5,8 +5,14 @@ import BackNextBar from "./MajorComponents/BackNextBar";
 import Button from "@mui/material/Button";
 import { useTranslation } from "react-i18next";
 import * as Instru from "./MajorComponents/Instruction";
+import ReactGA from "react-ga4";
+import useWebSocket, { ReadyState } from "react-use-websocket";
+import logconfig from "../config/dbconfig.js";
+import { SendLogData } from "../config/wslog.js";
 
 function Tool2MidContent({ setInstr }) {
+  const { sendJsonMessage } = useWebSocket(logconfig.logurl, { share: true });
+  const [pageName, setPageName] = useState("page to create B∩C");
   //flag is use to disable the draw universal set and draw set a button.
   const [flag1, setFlag1] = useState(false);
   const [flag2, setFlag2] = useState(true);
@@ -32,8 +38,52 @@ function Tool2MidContent({ setInstr }) {
 
   const onNext = () => {
     if (flag1 && flag2) {
+      ReactGA.event({
+        action: "L7|set theory-distributive law",
+        category: "L7|NEXT button",
+        label:
+          "L7|navigate to drag and drop page of set B to set C successfully",
+      });
+      SendLogData(
+        sendJsonMessage,
+        pageName,
+        "NEXT",
+        "button",
+        "click on NEXT button",
+        [],
+        [],
+        [],
+        [
+          {
+            result:
+              "navigate to drag and drop page of set B to set C successfully",
+          },
+        ]
+      );
       navigate("/letusverify/startpage/tool2/dragndrop2");
     } else {
+      ReactGA.event({
+        action: "L7|set theory-distributive law",
+        category: "L7|NEXT button",
+        label:
+          "L7|click on NEXT button without click on DRAW SET B and DRAW SET C button",
+      });
+      SendLogData(
+        sendJsonMessage,
+        pageName,
+        "NEXT",
+        "button",
+        "click on NEXT button",
+        [],
+        [],
+        [],
+        [
+          {
+            result:
+              "click on NEXT button without click on DRAW SET B and DRAW SET C button",
+          },
+        ]
+      );
       toast.error(`${t("toaster-5")}`, {
         position: "top-center",
         autoClose: 2000,
@@ -61,6 +111,19 @@ function Tool2MidContent({ setInstr }) {
   }, []);
 
   const Draw_Circle_B = (style) => {
+    ReactGA.event({
+      action: "L7|set theory-distributive law",
+      category: "L7|DRAW SET B button",
+      label: "L7|set B will be drawn successfully",
+    });
+    SendLogData(
+      sendJsonMessage,
+      pageName,
+      "DRAW SET B",
+      "button",
+      "click on DRAW SET B button"
+    );
+
     setFlag1(true);
     setFlag2(false);
     setInstr(Instru.Instruction_51);
@@ -88,6 +151,18 @@ function Tool2MidContent({ setInstr }) {
   };
 
   const Draw_Circle_C = (style) => {
+    ReactGA.event({
+      action: "L7|set theory-distributive law",
+      category: "L7|DRAW SET C button",
+      label: "L7|set C will be drawn successfully",
+    });
+    SendLogData(
+      sendJsonMessage,
+      pageName,
+      "DRAW SET C",
+      "button",
+      "click on DRAW SET C button"
+    );
     setFlag2(true);
     setInstr(Instru.Instruction_7);
 

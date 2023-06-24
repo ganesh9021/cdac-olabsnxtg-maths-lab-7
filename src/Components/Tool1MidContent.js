@@ -5,8 +5,14 @@ import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import BackNextBar from "./MajorComponents/BackNextBar";
 import * as Instru from "./MajorComponents/Instruction";
+import ReactGA from "react-ga4";
+import useWebSocket, { ReadyState } from "react-use-websocket";
+import logconfig from "../config/dbconfig.js";
+import { SendLogData } from "../config/wslog.js";
 
 function Tool1MidContent({ setInstr }) {
+  const { sendJsonMessage } = useWebSocket(logconfig.logurl, { share: true });
+  const [pageName, setPageName] = useState("page to create set A");
   //count is use to draw the border of canvas
   const [count, setCount] = useState(0);
   //flag is use to disable the draw universal set and draw set a button.
@@ -41,9 +47,42 @@ function Tool1MidContent({ setInstr }) {
 
   const onNext = () => {
     if (flag1 && flag2) {
+      ReactGA.event({
+        action: "L7|set theory-distributive law",
+        category: "L7|NEXT button",
+        label: "L7|navigate to B∩C relation successfully",
+      });
+      SendLogData(
+        sendJsonMessage,
+        pageName,
+        "NEXT",
+        "button",
+        "click on NEXT button",
+        [],
+        [],
+        [],
+        [{ result: "navigate to B∩C relation successfully" }]
+      );
       localStorage.setItem("A", 1);
       navigate("/letusverify/startpage/tool2");
     } else {
+      ReactGA.event({
+        action: "L7|set theory-distributive law",
+        category: "L7|NEXT button",
+        label:
+          "L7|click on set with numbers button without drawing the universal set U and set A",
+      });
+      SendLogData(
+        sendJsonMessage,
+        pageName,
+        "NEXT",
+        "button",
+        "click on NEXT button",
+        [],
+        [],
+        [],
+        [{ result: "click on next button without generating the sets" }]
+      );
       toast.error(`${t("toaster-5")}`, {
         position: "top-center",
         autoClose: 2000,
@@ -52,11 +91,29 @@ function Tool1MidContent({ setInstr }) {
   };
 
   const res1_withno = () => {
+    ReactGA.event({
+      action: "L7|set theory-distributive law",
+      category: "L7|SET WITH NUMBERS",
+      label: "L7|Example with numbers of set A will be shown",
+    });
+    SendLogData(
+      sendJsonMessage,
+      pageName,
+      "SET WITH NUMBERS",
+      "button",
+      "click on SET WITH NUMBERS button"
+    );
     localStorage.setItem("A", 1);
     navigate("/letusverify/startpage/tool1/res1withno");
   };
 
-  const Draw_Rectangle = () => {
+  const handleDrawUniversalSet = () => {
+    ReactGA.event({
+      action: "L7|set theory-distributive law",
+      category: "L7|DRAW UNIVERSAL SET button",
+      label: "L7|Universal set U will be created.",
+    });
+
     setCount(count + 1);
     setFlag1(true);
     setFlag2(false);
@@ -80,7 +137,13 @@ function Tool1MidContent({ setInstr }) {
     ctx.fillText("U", 290, 10);
   };
 
-  const Draw_Circle = (style) => {
+  const handleDrawSetA = (style) => {
+    ReactGA.event({
+      action: "L7|set theory-distributive law",
+      category: "L7|DRAW SET A button",
+      label: "L7|set A will be created.",
+    });
+
     setFlag2(true);
     setInstr(Instru.Instruction_42);
     const canvasEle = canvas.current;
@@ -166,7 +229,7 @@ function Tool1MidContent({ setInstr }) {
                 id="id1"
                 autoFocus
                 variant="contained"
-                onClick={Draw_Rectangle}
+                onClick={handleDrawUniversalSet}
                 size="small"
                 style={{ marginRight: "1%", marginBottom: "1%" }}
                 disabled={flag1}
@@ -177,7 +240,7 @@ function Tool1MidContent({ setInstr }) {
                 id="id2"
                 autoFocus
                 variant="contained"
-                onClick={Draw_Circle}
+                onClick={handleDrawSetA}
                 size="small"
                 style={{ marginRight: "1%", marginBottom: "1%" }}
                 disabled={flag2}

@@ -1,12 +1,17 @@
-import React, { useRef, useEffect } from "react";
+import React, { useRef, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import BackNextBar from "./MajorComponents/BackNextBar";
 import { toast, ToastContainer } from "react-toastify";
-
+import ReactGA from "react-ga4";
 import { Button } from "@mui/material";
 import { useTranslation } from "react-i18next";
+import useWebSocket, { ReadyState } from "react-use-websocket";
+import logconfig from "../config/dbconfig.js";
+import { SendLogData } from "../config/wslog.js";
 
 function Res6MidContent() {
+  const { sendJsonMessage } = useWebSocket(logconfig.logurl, { share: true });
+  const [pageName, setPageName] = useState("result page of (A∪B)∩(A∪C)");
   const { t, i18n } = useTranslation();
   const canvas = useRef();
   const navigate = useNavigate();
@@ -40,10 +45,34 @@ function Res6MidContent() {
   }, []);
 
   const onNext = (e) => {
+    ReactGA.event({
+      action: "L7|set theory-distributive law",
+      category: "L7|NEXT button on result page of (A∪B)∩(A∪C)",
+      label: "L7|navigate on startpage after attempting both LHS and RHS",
+    });
+    SendLogData(
+      sendJsonMessage,
+      pageName,
+      "NEXT",
+      "button",
+      "clicked on NEXT button"
+    );
     navigate("/letusverify/startpage");
   };
 
   const res6_withno = () => {
+    ReactGA.event({
+      action: "L7|set theory-distributive law",
+      category: "L7|SET WITH NUMBERS button on result page of (A∪B)∩(A∪C)",
+      label: "L7|navigate example-1 of (A∪B)∩(A∪C)",
+    });
+    SendLogData(
+      sendJsonMessage,
+      pageName,
+      "SET WITH NUMBERS",
+      "button",
+      "clicked on SET WITH NUMBERS button"
+    );
     navigate("/letusverify/startpage/tool6/res6/res6withno");
   };
 

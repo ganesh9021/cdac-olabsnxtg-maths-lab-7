@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Footercomp from "./MajorComponents/Footercomp";
 import Headcomp from "./MajorComponents/Headcomp";
 import Middlecomp from "./MajorComponents/Middlecomp";
@@ -6,9 +6,18 @@ import backgroundImg from "../Img/backg.jpg";
 import * as Instru from "./MajorComponents/Instruction";
 import { ToastContainer } from "react-toastify";
 import Tool3MidContent from "./Tool3MidContent";
+import ReactGA from "react-ga4";
 
 const Tool3 = () => {
   const [instr, setInstr] = useState(Instru.Instruction_8());
+  useEffect(() => {
+    ReactGA.send({
+      hitType: "pageview",
+      page: "L7/letusverify/startpage/tool3",
+      title: "L7|relation A∪(B∩C) is to be created",
+    });
+  }, []);
+
   return (
     <div
       style={{

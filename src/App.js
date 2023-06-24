@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { Route, Routes, useParams } from "react-router-dom";
 import Launchpage from "./Components/MajorComponents/Launchpage";
 import Letusverify from "./Components/MajorComponents/Letusverify";
@@ -35,12 +35,49 @@ import Res3WithNoCopy from "./Components/Res3WithNoCopy";
 import Res4WithNoCopy from "./Components/Res4WithNoCopy";
 import Res5WithNoCopy from "./Components/Res5WithNoCopy";
 import Res6WithNoCopy from "./Components/Res6WithNoCopy";
+import ReactGA from "react-ga4";
+import useWebSocket, { ReadyState } from "react-use-websocket";
+import logconfig from "./config/dbconfig.js";
+import { browserName, browserVersion } from "react-device-detect";
+import { v4 as uuid } from "uuid";
+import axios from "axios";
 
 const App = () => {
   const { id } = useParams();
   const { t, i18n } = useTranslation();
   const { firstStore } = useSelector((state) => state);
   let dispatch = useDispatch();
+  const [ip, setIP] = useState("");
+  const sid = uuid();
+
+  useEffect(() => {
+    localStorage.setItem("sessionid", sid);
+  }, []);
+
+  useEffect(() => {
+    // to call get data function which return ip address
+    getData();
+  }, [ip]);
+
+  const getData = async () => {
+    const res = await axios.get("https://ipapi.co/json/");
+    //console.log(res.data);
+    setIP(res.data.ip);
+    localStorage.setItem("clientip", ip);
+  };
+
+  const { sendJsonMessage, readyState } = useWebSocket(logconfig.logurl, {
+    onOpen: () => {
+      console.log("WebSocket connection established.");
+    },
+    onError: () => {
+      console.log("WebSocket connection Error");
+    },
+    share: true,
+    filter: () => false,
+    retryOnError: true,
+    shouldReconnect: () => true,
+  });
 
   useEffect(() => {
     if (id == "en") {
@@ -53,6 +90,14 @@ const App = () => {
       i18n.changeLanguage("hn");
       dispatch(setLangStore("hn"));
     }
+  }, []);
+
+  useEffect(() => {
+    ReactGA.initialize("G-7NLN93PQEG", {
+      gaOptions: {
+        gtag: true,
+      },
+    });
   }, []);
   return (
     <Routes>
@@ -102,7 +147,7 @@ const App = () => {
         path="/letusverify/startpage/tool4/res4/res4withno"
         element={<Res4WithNo />}
       />
-       <Route
+      <Route
         path="/letusverify/startpage/tool4/res4/res4withnocopy"
         element={<Res4WithNoCopy />}
       />
@@ -112,7 +157,7 @@ const App = () => {
         path="/letusverify/startpage/tool5/res5/res5withno"
         element={<Res5WithNo />}
       />
-       <Route
+      <Route
         path="/letusverify/startpage/tool5/res5/res5withnocopy"
         element={<Res5WithNoCopy />}
       />

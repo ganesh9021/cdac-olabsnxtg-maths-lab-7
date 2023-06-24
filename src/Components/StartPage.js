@@ -6,6 +6,7 @@ import backgroundImg from "../Img/backg.jpg";
 import * as Instru from "./MajorComponents/Instruction";
 import { ToastContainer } from "react-toastify";
 import StartPageMidContent from "./StartPageMidContent";
+import ReactGA from "react-ga4";
 
 const StartPage = () => {
   const [active, setACtive] = useState(true);
@@ -14,6 +15,13 @@ const StartPage = () => {
       setACtive(false);
     }
   });
+  useEffect(() => {
+    ReactGA.send({
+      hitType: "pageview",
+      page: "L7/letusverify/startpage",
+      title: "L7|Startpage to select LHS and RHS",
+    });
+  }, []);
 
   return (
     <div

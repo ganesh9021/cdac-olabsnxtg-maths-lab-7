@@ -1,12 +1,45 @@
 import { useTranslation } from "react-i18next";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import backgroundImg from "../../Img/backg.jpg";
 import "../../styles/styles.css";
 import "bootstrap/dist/css/bootstrap.min.css";
+import { useEffect, useState } from "react";
+import ReactGA from "react-ga4";
+import { Button } from "@mui/material";
+import useWebSocket, { ReadyState } from "react-use-websocket";
+import logconfig from "../../config/dbconfig.js";
+import { SendLogData } from "../../config/wslog.js";
 
 const LaunchPage = () => {
   // const { t, i18n } = useTranslation();
   const { t, i18n } = useTranslation();
+  const navigate = useNavigate();
+  const { sendJsonMessage } = useWebSocket(logconfig.logurl, { share: true });
+  const [pageName, setPageName] = useState("lauchpage");
+
+  useEffect(() => {
+    ReactGA.send({
+      hitType: "pageview",
+      page: "L7/launchpage",
+      title: "L7|Homepage for activity",
+    });
+  }, []);
+
+  const handleStartButton = () => {
+    ReactGA.event({
+      action: "L7|set theory-distributive law",
+      category: "L7|START button",
+      label: "L7|Navigate from launchpage to letusverify page successfully.",
+    });
+    SendLogData(
+      sendJsonMessage,
+      pageName,
+      "START",
+      "Clicked",
+      "Click on START Button"
+    );
+    navigate("/letusverify");
+  };
 
   return (
     <div
@@ -63,7 +96,10 @@ const LaunchPage = () => {
         </div>
 
         <div className="d-flex justify-content-center mb-3 mt-5">
-          <Link to="/letusverify" style={{ textDecoration: "none" }}>
+          <Button
+            onClick={handleStartButton}
+            style={{ textDecoration: "none" }}
+          >
             <div
               className="btn px-lg-5 px-mb-4 px-sm-3"
               style={{
@@ -77,7 +113,7 @@ const LaunchPage = () => {
             >
               {t("start")}
             </div>
-          </Link>
+          </Button>
         </div>
       </div>
     </div>

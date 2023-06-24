@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import Footercomp from './MajorComponents/Footercomp'
 import Headcomp from './MajorComponents/Headcomp'
 import Middlecomp from './MajorComponents/Middlecomp'
@@ -6,8 +6,16 @@ import backgroundImg from "../Img/backg.jpg";
 import * as Instru from "./MajorComponents/Instruction"
 import { ToastContainer } from 'react-toastify'
 import Res5WithNoMidContent from './Res5WithNoMidContent';
+import ReactGA from "react-ga4";
 
 const Res5WithNo = () => {
+  useEffect(() => {
+    ReactGA.send({
+      hitType: "pageview",
+      page: "L7/letusverify/startpage/tool5/res5/res5withno",
+      title: "L7|example-1 of AUC",
+    });
+  }, []);
   return (
     <div
       style={{

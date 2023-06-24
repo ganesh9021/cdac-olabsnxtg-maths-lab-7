@@ -6,8 +6,14 @@ import BackNextBar from "./MajorComponents/BackNextBar";
 import { toast } from "react-toastify";
 import { useTranslation } from "react-i18next";
 import * as Instru from "./MajorComponents/Instruction";
+import ReactGA from "react-ga4";
+import useWebSocket, { ReadyState } from "react-use-websocket";
+import logconfig from "../config/dbconfig.js";
+import { SendLogData } from "../config/wslog.js";
 
 function DragnDrop2MidContent({ setInstr }) {
+  const { sendJsonMessage } = useWebSocket(logconfig.logurl, { share: true });
+  const [pageName, setPageName] = useState("drag drop of B∩C");
   let navigate = useNavigate();
   const canvas = useRef();
   var [count, setCount] = useState(0);
@@ -21,6 +27,22 @@ function DragnDrop2MidContent({ setInstr }) {
   let touchY = null;
 
   let ctx = null;
+
+  useEffect(() => {
+    if (localStorage.getItem("A") == 1) {
+      document.getElementById("cb1").checked = true;
+    }
+    if (localStorage.getItem("A") == 2) {
+      document.getElementById("cb1").checked = true;
+      document.getElementById("cb2").checked = true;
+    }
+    if (localStorage.getItem("A") == 3) {
+      document.getElementById("cb1").checked = true;
+      document.getElementById("cb2").checked = true;
+      document.getElementById("cb3").checked = true;
+    }
+  });
+
   const boxes = [
     {
       x: 83,
@@ -42,30 +64,49 @@ function DragnDrop2MidContent({ setInstr }) {
     },
   ];
 
-  useEffect(() => {
-    if (localStorage.getItem("A") == 1) {
-      document.getElementById("cb1").checked = true;
-    }
-    if (localStorage.getItem("A") == 2) {
-      document.getElementById("cb1").checked = true;
-      document.getElementById("cb2").checked = true;
-    }
-    if (localStorage.getItem("A") == 3) {
-      document.getElementById("cb1").checked = true;
-      document.getElementById("cb2").checked = true;
-      document.getElementById("cb3").checked = true;
-    }
-  });
-
   const onNext = () => {
+    navigate("/letusverify/startpage/tool2/dragndrop2/res2");
     if (count == 1) {
       localStorage.setItem("A", 2);
       navigate("/letusverify/startpage/tool2/dragndrop2/res2");
+      ReactGA.event({
+        action: "L7|set theory-distributive law",
+        category: "L7|NEXT button of B∩C",
+        label: "L7|navigate to result of B∩C page successfully",
+      });
+      SendLogData(
+        sendJsonMessage,
+        pageName,
+        "next",
+        "button",
+        "clicked on next button on dragdrop page of B∩C",
+        [],
+        [],
+        [],
+        [{ result: "set B dragged at correct position" }]
+      );
     } else {
       toast.error(`${t("line-3")}`, {
         position: "top-center",
         autoClose: 2000,
       });
+      ReactGA.event({
+        action: "L7|set theory-distributive law",
+        category: "L7|NEXT button B∩C",
+        label:
+          "L7|wrong position of sets ie. set B not dragged at correct position",
+      });
+      SendLogData(
+        sendJsonMessage,
+        pageName,
+        "next",
+        "button",
+        "clicked on next button on dragdrop page of B∩C",
+        [],
+        [],
+        [],
+        [{ result: "set B not dragged at correct position" }]
+      );
     }
   };
 
@@ -82,6 +123,7 @@ function DragnDrop2MidContent({ setInstr }) {
 
   // draw rectangle
   const draw = () => {
+    console.log("ctx", ctx);
     ctx.clearRect(
       0,
       0,

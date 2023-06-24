@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import Footercomp from './MajorComponents/Footercomp'
 import Headcomp from './MajorComponents/Headcomp'
 import Middlecomp from './MajorComponents/Middlecomp'
@@ -6,8 +6,17 @@ import backgroundImg from "../Img/backg.jpg";
 import * as Instru from "./MajorComponents/Instruction"
 import { ToastContainer } from 'react-toastify'
 import Res3WithNoMidContentCopy from './Res3WithNoMidContentCopy';
+import ReactGA from 'react-ga4'
+
 
 const Res3WithNoCopy = () => {
+  useEffect(() => {
+    ReactGA.send({
+      hitType: "pageview",
+      page: "L7/letusverify/startpage/tool3/res3/res3withnocopy",
+      title: "L7|Example-2 of A∪(B∩C)",
+    });
+  }, []);
   return (
     <div
       style={{

@@ -1,11 +1,17 @@
-import React, { useRef, useEffect } from "react";
+import React, { useRef, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import BackNextBar from "./MajorComponents/BackNextBar";
 import { ToastContainer, toast } from "react-toastify";
 import { Button } from "@mui/material";
 import { useTranslation } from "react-i18next";
+import ReactGA from "react-ga4";
+import useWebSocket, { ReadyState } from "react-use-websocket";
+import logconfig from "../config/dbconfig.js";
+import { SendLogData } from "../config/wslog.js";
 
 function Res3MidContent() {
+  const { sendJsonMessage } = useWebSocket(logconfig.logurl, { share: true });
+  const [pageName, setPageName] = useState("result page of A∪(B∩C)");
   const { t, i18n } = useTranslation();
   const navigate = useNavigate();
   const canvas = useRef();
@@ -38,11 +44,36 @@ function Res3MidContent() {
     }
   });
 
-  const onNext = (e) => {
+  const onNext = () => {
+    ReactGA.event({
+      action: "L7|set theory-distributive law",
+      category: "L7|NEXT button of A∪(B∩C)",
+      label:
+        "L7|navigate to startpage successfully to attempt the relations of RHS",
+    });
+    SendLogData(
+      sendJsonMessage,
+      pageName,
+      "next",
+      "button",
+      "clicked on next button"
+    );
     navigate("/letusverify/startpage");
   };
 
   const res3_withno = () => {
+    ReactGA.event({
+      action: "L7|set theory-distributive law",
+      category: "L7|SET WITH NUMBERS button",
+      label: "L7|navigate to example-1 of A∪(B∩C)",
+    });
+    SendLogData(
+      sendJsonMessage,
+      pageName,
+      "set with numbers",
+      "button",
+      "clicked on set with numbers button"
+    );
     navigate("/letusverify/startpage/tool3/res3/res3withno");
   };
 

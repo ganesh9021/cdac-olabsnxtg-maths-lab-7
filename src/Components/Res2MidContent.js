@@ -1,12 +1,17 @@
-import React, { useRef, useEffect } from "react";
+import React, { useRef, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import BackNextBar from "./MajorComponents/BackNextBar";
 import { toast, ToastContainer } from "react-toastify";
-
 import { Button } from "@mui/material";
 import { useTranslation } from "react-i18next";
+import ReactGA from "react-ga4";
+import useWebSocket, { ReadyState } from "react-use-websocket";
+import logconfig from "../config/dbconfig.js";
+import { SendLogData } from "../config/wslog.js";
 
 function Res2MidContent() {
+  const { sendJsonMessage } = useWebSocket(logconfig.logurl, { share: true });
+  const [pageName, setPageName] = useState("result page of B∩C");
   const { t, i18n } = useTranslation();
   const navigate = useNavigate();
   const canvas = useRef();
@@ -33,10 +38,34 @@ function Res2MidContent() {
 
   const onNext = () => {
     navigate("/letusverify/startpage/tool3");
+    ReactGA.event({
+      action: "L7|set theory-distributive law",
+      category: "NEXT button of B∩C",
+      label: "L7|navigate to create A∪(B∩C) relation page",
+    });
+    SendLogData(
+      sendJsonMessage,
+      pageName,
+      "next",
+      "button",
+      "clicked on next button on result page of B∩C"
+    );
   };
 
   const res2_withno = () => {
     navigate("/letusverify/startpage/tool2/dragndrop2/res2/res2withno");
+    ReactGA.event({
+      action: "L7|set theory-distributive law",
+      category: "L7|SET WITH NUMBERS button",
+      label: "L7|navigate to example-1 of B∩C page",
+    });
+    SendLogData(
+      sendJsonMessage,
+      pageName,
+      "set with numbers",
+      "button",
+      "clicked on set with numbers button on result page of B∩C"
+    );
   };
 
   useEffect(() => {

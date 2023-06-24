@@ -4,8 +4,16 @@ import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import BackNextBar from "./MajorComponents/BackNextBar";
 import * as Instru from "./MajorComponents/Instruction";
+import ReactGA from "react-ga4";
+import useWebSocket, { ReadyState } from "react-use-websocket";
+import logconfig from "../config/dbconfig.js";
+import { SendLogData } from "../config/wslog.js";
 
 function Tool3MidContent({ setInstr }) {
+  const { sendJsonMessage } = useWebSocket(logconfig.logurl, { share: true });
+  const [pageName, setPageName] = useState(
+    "dragging A to B∩C page to create A∪(B∩C)"
+  );
   const { t, i18n } = useTranslation();
   let navigate = useNavigate();
   const canvas = useRef();
@@ -47,14 +55,58 @@ function Tool3MidContent({ setInstr }) {
   });
 
   const onNext = () => {
+    navigate("/letusverify/startpage/tool3/res3");
     if (count == 1) {
       localStorage.setItem("A", 3);
       navigate("/letusverify/startpage/tool3/res3");
+      ReactGA.event({
+        action: "L7|set theory-distributive law",
+        category: "L7|NEXT button",
+        label:
+          "L7|navigate to result of A∪(B∩C) relation after dragging of set A correctly",
+      });
+      SendLogData(
+        sendJsonMessage,
+        pageName,
+        "NEXT",
+        "button",
+        "click on NEXT button",
+        [],
+        [],
+        [],
+        [
+          {
+            result:
+              "navigate to result of A∪(B∩C) relation after dragging of set A correctly",
+          },
+        ]
+      );
     } else {
       toast.error(`${t("line-3")}`, {
         position: "top-center",
         autoClose: 2000,
       });
+      ReactGA.event({
+        action: "L7|set theory-distributive law",
+        category: "L7|drag set A",
+        label:
+          "L7|click on NEXT button without dragging set A at correct position in A∪(B∩C) relation",
+      });
+      SendLogData(
+        sendJsonMessage,
+        pageName,
+        "NEXT",
+        "button",
+        "click on NEXT button",
+        [],
+        [],
+        [],
+        [
+          {
+            result: "incorrect position of set A",
+          },
+        ]
+      );
     }
   };
 

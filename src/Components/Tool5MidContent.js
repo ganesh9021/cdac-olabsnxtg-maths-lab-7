@@ -4,8 +4,16 @@ import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import BackNextBar from "./MajorComponents/BackNextBar";
 import * as Instru from "./MajorComponents/Instruction";
+import ReactGA from "react-ga4";
+import useWebSocket, { ReadyState } from "react-use-websocket";
+import logconfig from "../config/dbconfig.js";
+import { SendLogData } from "../config/wslog.js";
 
 function Tool5MidContent({ setInstr }) {
+  const { sendJsonMessage } = useWebSocket(logconfig.logurl, { share: true });
+  const [pageName, setPageName] = useState(
+    "dragging set A to set C page to create A∪C)"
+  );
   const { t, i18n } = useTranslation();
   let navigate = useNavigate();
   var [count, setCount] = useState(0);
@@ -59,21 +67,62 @@ function Tool5MidContent({ setInstr }) {
     }
   });
 
-  const onNext = (e) => {
+  const onNext = () => {
     if (count == 1) {
       localStorage.setItem("A", 5);
       navigate("/letusverify/startpage/tool5/res5");
+      ReactGA.event({
+        action: "L7|set theory-distributive law",
+        category: "L7|dragging of set A",
+        label:
+          "L7|navigate to the result page of AUC after dragging set A at correct position",
+      });
+
+      SendLogData(
+        sendJsonMessage,
+        pageName,
+        "NEXT",
+        "button",
+        "click on NEXT button",
+        [],
+        [],
+        [],
+        [
+          {
+            result:
+              "navigate to the result page of AUC after dragging set A at correct position",
+          },
+        ]
+      );
     } else {
       toast.error(`${t("line-3")}`, {
         position: "top-center",
         autoClose: 2000,
       });
+      ReactGA.event({
+        action: "L7|set theory-distributive law",
+        category: "L7|dragging of set A",
+        label: "L7|wrong position of set A top create AUC",
+      });
+      SendLogData(
+        sendJsonMessage,
+        pageName,
+        "NEXT",
+        "button",
+        "click on NEXT button",
+        [],
+        [],
+        [],
+        [
+          {
+            result: "wrong position of set A top create AUC",
+          },
+        ]
+      );
     }
   };
 
-  // initialize the canvas context
   useEffect(() => {
-    // dynamically assign the width and height to canvas
     const canvasEle = canvas.current;
     canvasEle.width = 300;
     canvasEle.height = 200;
@@ -133,6 +182,11 @@ function Tool5MidContent({ setInstr }) {
   };
   const isFixed = (x, y) => {
     if (x >= 165 && x <= 175 && y >= 95 && y <= 105) {
+      ReactGA.event({
+        action: "L7|set theory-distributive law",
+        category: "L7|dragging of set A",
+        label: "L7|set A dragged at correct position to create AUC",
+      });
       dragTarget = false;
       count = count + 1;
       setCount(count);

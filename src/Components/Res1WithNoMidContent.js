@@ -1,10 +1,16 @@
-import React, { useRef, useEffect } from "react";
+import React, { useRef, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import BackNextBar from "./MajorComponents/BackNextBar";
 import { useTranslation } from "react-i18next";
 import { Button } from "@mui/material";
+import ReactGA from "react-ga4";
+import useWebSocket, { ReadyState } from "react-use-websocket";
+import logconfig from "../config/dbconfig.js";
+import { SendLogData } from "../config/wslog.js";
 
 function Res1WithNoMidContent() {
+  const { sendJsonMessage } = useWebSocket(logconfig.logurl, { share: true });
+  const [pageName, setPageName] = useState("example-1 of set A");
   const { t, i18n } = useTranslation();
   const navigate = useNavigate();
   const canvas = useRef();
@@ -28,10 +34,34 @@ function Res1WithNoMidContent() {
 
   const onNext = () => {
     navigate("/letusverify/startpage/tool2");
+    ReactGA.event({
+      action: "L7|set theory-distributive law",
+      category: "L7|NEXT button",
+      label: "L7|navigate to B∩C relation successfully",
+    });
+    SendLogData(
+      sendJsonMessage,
+      pageName,
+      "next",
+      "button",
+      "clicked on next button on example-1 page of set A"
+    );
   };
 
   const handleNextExample = () => {
     navigate("/letusverify/startpage/tool1/res1withnocopy");
+    ReactGA.event({
+      action: "L7|set theory-distributive law",
+      category: "L7|NEXT EXAMPLE button of set A ",
+      label: "L7|navigate to example-2 of set A successfully",
+    });
+    SendLogData(
+      sendJsonMessage,
+      pageName,
+      "NEXT EXAMPLE",
+      "button",
+      "clicked on next example button on example-1 page of set A"
+    );
   };
 
   useEffect(() => {

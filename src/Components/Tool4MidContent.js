@@ -4,8 +4,16 @@ import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import BackNextBar from "./MajorComponents/BackNextBar";
 import * as Instru from "./MajorComponents/Instruction";
+import ReactGA from "react-ga4";
+import useWebSocket, { ReadyState } from "react-use-websocket";
+import logconfig from "../config/dbconfig.js";
+import { SendLogData } from "../config/wslog.js";
 
 function Tool4MidContent({ setInstr }) {
+  const { sendJsonMessage } = useWebSocket(logconfig.logurl, { share: true });
+  const [pageName, setPageName] = useState(
+    "dragging set A to set B page to create A∪B)"
+  );
   const { t, i18n } = useTranslation();
   let navigate = useNavigate();
   var [count, setCount] = useState(0);
@@ -54,14 +62,55 @@ function Tool4MidContent({ setInstr }) {
   });
 
   const onNext = () => {
+    navigate("/letusverify/startpage/tool4/res4");
     if (count == 1) {
       localStorage.setItem("A", 4);
       navigate("/letusverify/startpage/tool4/res4");
+      ReactGA.event({
+        action: "L7|set theory-distributive law",
+        category: "L7|NEXT button of AUB",
+        label: "L7|navigate to result page of AUB successfully",
+      });
+      SendLogData(
+        sendJsonMessage,
+        pageName,
+        "NEXT",
+        "button",
+        "click on NEXT button",
+        [],
+        [],
+        [],
+        [
+          {
+            result: "navigate to result page of AUB successfully",
+          },
+        ]
+      );
     } else {
       toast.error(`${t("line-3")}`, {
         position: "top-center",
         autoClose: 2000,
       });
+      ReactGA.event({
+        action: "L7|set theory-distributive law",
+        category: "L7|NEXT button of AUB",
+        label: "L7|wrong position of set A after dragging",
+      });
+      SendLogData(
+        sendJsonMessage,
+        pageName,
+        "NEXT",
+        "button",
+        "click on NEXT button",
+        [],
+        [],
+        [],
+        [
+          {
+            result: "wrong position of set A after dragging",
+          },
+        ]
+      );
     }
   };
 
