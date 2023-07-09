@@ -62,7 +62,6 @@ function Tool4MidContent({ setInstr }) {
   });
 
   const onNext = () => {
-    navigate("/letusverify/startpage/tool4/res4");
     if (count == 1) {
       localStorage.setItem("A", 4);
       navigate("/letusverify/startpage/tool4/res4");
@@ -114,23 +113,17 @@ function Tool4MidContent({ setInstr }) {
     }
   };
 
-  // initialize the canvas context
-  useEffect(() => {
-    // dynamically assign the width and height to canvas
-    const canvasEle = canvas.current;
-    canvasEle.width = 300;
-    canvasEle.height = 200;
-    //console.log(canvasEle.clientHeight);
-    // get context of the canvas
-    ctx = canvasEle.getContext("2d");
-  }, []);
-
   useEffect(() => {
     draw();
   }, []);
 
-  // draw rectangle
+  
   const draw = () => {
+    const canvasEle = canvas.current;
+    canvasEle.width = 300;
+    canvasEle.height = 200;
+    ctx = canvasEle.getContext("2d");
+
     ctx.clearRect(
       0,
       0,

@@ -71,7 +71,7 @@ function Tool6MidContent({ setInstr }) {
   });
 
   const onNext = (e) => {
-    navigate("/letusverify/startpage/tool6/res6");
+    e.preventDefault();
     if (count == 1) {
       localStorage.setItem("A", 6);
       navigate("/letusverify/startpage/tool6/res6");
@@ -124,21 +124,17 @@ function Tool6MidContent({ setInstr }) {
     }
   };
 
-  // initialize the canvas context
-  useEffect(() => {
-   
-    const canvasEle = canvas.current;
-    canvasEle.width = 300;
-    canvasEle.height = 200;
-    ctx = canvasEle.getContext("2d");
-  }, []);
-
   useEffect(() => {
     draw();
   }, []);
 
   // draw rectangle
   const draw = () => {
+    const canvasEle = canvas.current;
+    canvasEle.width = 300;
+    canvasEle.height = 200;
+    ctx = canvasEle.getContext("2d");
+
     ctx.clearRect(
       0,
       0,

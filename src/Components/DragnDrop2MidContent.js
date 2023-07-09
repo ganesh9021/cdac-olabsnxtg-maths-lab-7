@@ -65,7 +65,7 @@ function DragnDrop2MidContent({ setInstr }) {
   ];
 
   const onNext = () => {
-    navigate("/letusverify/startpage/tool2/dragndrop2/res2");
+    //navigate("/letusverify/startpage/tool2/dragndrop2/res2");
     if (count == 1) {
       localStorage.setItem("A", 2);
       navigate("/letusverify/startpage/tool2/dragndrop2/res2");
@@ -111,19 +111,16 @@ function DragnDrop2MidContent({ setInstr }) {
   };
 
   useEffect(() => {
+    draw();
+  },[]);
+
+  // draw rectangle
+  const draw = () => {
     const canvasEle = canvas.current;
     canvasEle.width = 300;
     canvasEle.height = 200;
     ctx = canvasEle.getContext("2d");
-  }, []);
-
-  useEffect(() => {
-    draw();
-  }, []);
-
-  // draw rectangle
-  const draw = () => {
-    console.log("ctx", ctx);
+    
     ctx.clearRect(
       0,
       0,

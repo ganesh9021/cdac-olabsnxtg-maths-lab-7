@@ -14,7 +14,8 @@ function Tool5MidContent({ setInstr }) {
   const [pageName, setPageName] = useState(
     "dragging set A to set C page to create A∪C)"
   );
-  const { t, i18n } = useTranslation();
+  const { t, i18n 
+  } = useTranslation();
   let navigate = useNavigate();
   var [count, setCount] = useState(0);
   const canvas = useRef();
@@ -28,10 +29,6 @@ function Tool5MidContent({ setInstr }) {
 
   let ctx = null;
   const boxes = [
-    // { x: 200, y: 220, w: 100, h: 50 ,shapeName : 'U' },
-    // { x: 60, y: 55, r: 50, s: 0, e: 2 * Math.PI, shapeName: "A" },
-    // { x: 190, y: 55, r: 50, s: 0, e: 2 * Math.PI, shapeName: "B" },
-    // { x: 125, y: 145, r: 50, s: 0, e: 2 * Math.PI, shapeName: "C" },
     {
       x: 75,
       y: 100,
@@ -123,18 +120,16 @@ function Tool5MidContent({ setInstr }) {
   };
 
   useEffect(() => {
-    const canvasEle = canvas.current;
-    canvasEle.width = 300;
-    canvasEle.height = 200;
-    ctx = canvasEle.getContext("2d");
-  }, []);
-
-  useEffect(() => {
     draw();
   }, []);
 
   // draw rectangle
   const draw = () => {
+    const canvasEle = canvas.current;
+    canvasEle.width = 300;
+    canvasEle.height = 200;
+    ctx = canvasEle.getContext("2d");
+
     ctx.clearRect(
       0,
       0,
