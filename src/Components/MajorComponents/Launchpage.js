@@ -1,17 +1,14 @@
-import { useTranslation } from "react-i18next";
-import { Link, useNavigate } from "react-router-dom";
-import backgroundImg from "../../Img/backg.jpg";
-import "../../styles/styles.css";
+import React, { useEffect, useState } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
-import { useEffect, useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import "../../styles/styles.css";
 import ReactGA from "react-ga4";
-import { Button } from "@mui/material";
-import useWebSocket, { ReadyState } from "react-use-websocket";
-import logconfig from "../../config/dbconfig.js";
-import { SendLogData } from "../../config/wslog.js";
+import useWebSocket from "react-use-websocket";
+import logconfig from "../../config/dbconfig";
+import { SendLogData } from "../../config/wslog";
+import { useTranslation } from "react-i18next";
 
-const LaunchPage = () => {
-  // const { t, i18n } = useTranslation();
+const Launchpage = () => {
   const { t, i18n } = useTranslation();
   const navigate = useNavigate();
   const { sendJsonMessage } = useWebSocket(logconfig.logurl, { share: true });
@@ -46,15 +43,15 @@ const LaunchPage = () => {
       className="flex-column d-flex justify-content-center align-items-center"
       style={{
         height: "100vh",
-        backgroundImage: "url(" + backgroundImg + ")",
-        backgroundRepeat: "no-repeat",
-        backgroundSize: "cover",
+        // backgroundImage: "url(" + backgroundImg + ")",
+        // backgroundRepeat: "no-repeat",
+        // backgroundSize: "cover",
         fontFamily: "Arial",
-        fontSize: "1rem",
       }}
     >
+     
       <div
-        className="col-11 col-md-9 border border-light border-2 "
+        className="col-12 col-md-9 border border-light border-2"
         style={{
           background: "rgba(255, 255, 255, .45)",
           border: "3px solid rgba(255, 255, 255, .5)",
@@ -63,30 +60,34 @@ const LaunchPage = () => {
         }}
       >
         <div
-          className="title text-center d-flex justify-content-center align-items-center fw-bolder mt-3 mb-3"
+          className="title text-center d-flex justify-content-center align-items-center fw-bolder mt-3 "
           style={{ color: "#ac3843" }}
         >
           {t("title")}:&nbsp;A∪(B∩C) = (A∪B)∩(A∪C)
         </div>
 
-        <div className="title1 d-flex justify-content-center align-items-end fw-bolder">
+        <div
+          className="title1 d-flex justify-content-center align-items-end fw-bolder"
+          style={{ marginTop: "1%" }}
+        >
           {t("obj")}:
         </div>
 
         <div className=" d-flex justify-content-center">
-          <div className="col-11 objective text-center fw-normal">
-            {t("obj_content")}
-            <br />
-            A∪(B∩C) = (A∪B)∩(A∪C)
+          <div className="col-12 objective text-center fw-normal">
+            {t("obj_content")}&nbsp;A∪(B∩C) = (A∪B)∩(A∪C).
           </div>
         </div>
 
         <div className="">
-          <div className="title1 d-flex justify-content-center align-items-end fw-bolder text-center mt-3">
+          <div
+            className="title1 d-flex justify-content-center align-items-end fw-bolder text-center"
+            style={{ marginTop: "1%" }}
+          >
             {t("Learning Outcome")}:
           </div>
-          <div className="objective fw-normal d-flex justify-content-center  ">
-            <div className="col-12 col-md-11 d-flex justify-content-center text-start">
+          <div className="objective fw-normal d-flex justify-content-center">
+            <div className="col-lg-11 col-md-11 d-flex justify-content-center">
               <ol>
                 <li>{t("Learning Outcome-1")}.</li>
                 <li>{t("Learning Outcome-2")}.</li>
@@ -95,12 +96,10 @@ const LaunchPage = () => {
           </div>
         </div>
 
-        <div className="d-flex justify-content-center mb-3 mt-5">
-          <Button
-            onClick={handleStartButton}
-            style={{ textDecoration: "none" }}
-          >
+        <div className="d-flex justify-content-center mb-3 mt-3">
+          <Link to="/letusverify" style={{ textDecoration: "none" }}>
             <div
+              onClick={handleStartButton}
               className="btn px-lg-5 px-mb-4 px-sm-3"
               style={{
                 fontWeight: "700",
@@ -111,13 +110,14 @@ const LaunchPage = () => {
                 boxShadow: "0px 7px 4px rgba(0, 0, 0, 0.25)",
               }}
             >
-              {t("start")}
+              Start
             </div>
-          </Button>
+          </Link>
         </div>
       </div>
+      
     </div>
   );
 };
 
-export default LaunchPage;
+export default Launchpage;

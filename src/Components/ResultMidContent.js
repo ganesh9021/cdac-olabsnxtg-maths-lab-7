@@ -21,7 +21,7 @@ const ResultMidContent = () => {
     navigate("");
   };
 
-  const Restart = () => {
+  const handleRestart = () => {
     ReactGA.event({
       action: "L7|set theory-distributive law",
       category: "L7|RESTART button",
@@ -76,17 +76,19 @@ const ResultMidContent = () => {
             </div>
           </div>
         </div>
-        <div className="d-flex justify-content-center align-items-end">
+        {/* <div className="d-flex justify-content-center align-items-end">
           <Button id="btn" autoFocus variant="contained" onClick={Restart}>
             {t("btn-6")}
           </Button>
-        </div>
+        </div> */}
       </div>
       <BackNextBar
         setForward={onNext}
         backvisible="hidden"
         nextvisible="hidden"
-        submitvisible="hidden"
+        submitvisible="visible"
+        buttonname="RESTART"
+        clickSubmit={handleRestart}
       />
     </div>
   );

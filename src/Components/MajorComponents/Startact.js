@@ -92,7 +92,7 @@ const Startact = () => {
         <div>
           {t("obj_content")}
           <br />
-          A∪(B∩C) = (A∪B)∩(A∪C)
+          A∪(B∩C) = (A∪B)∩(A∪C).
         </div>
       </div>
       <div className=" d-flex justify-content-center" style={{ height: "50%" }}>
