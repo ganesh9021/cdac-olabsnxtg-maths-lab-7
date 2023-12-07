@@ -8,18 +8,20 @@ import { motion } from "framer-motion";
 import "bootstrap/dist/css/bootstrap.min.css";
 import theory from "../../Img/theory.png";
 import mcq from "../../Img/mcq.png";
-import help from "../../Img/help.png";
+import procedure from "../../Img/procedure.png";
 import settings from "../../Img/settings.png";
 import InfoPopup from "./InfoPopup";
 import QuizPopupContent from "../QuizPopupContent";
 import { useTranslation } from "react-i18next";
 import ReactGA from "react-ga4";
 import useWebSocket, { ReadyState } from "react-use-websocket";
-import logconfig from "../../config/dbconfig.js";
+import logconfig from "../../config/dbconfig";
 import { SendLogData } from "../../config/wslog.js";
 
 const Rightsidemenu = () => {
-  const { t, i18n } = useTranslation();
+  const { sendJsonMessage } = useWebSocket(logconfig.logurl, { share: true });
+  const [pageName, setPageName] = useState("Headcomp");
+
   const LightTooltip = styled(({ className, ...props }) => (
     <Tooltip {...props} classes={{ popper: className }} />
   ))(({ theme }) => ({
@@ -32,69 +34,138 @@ const Rightsidemenu = () => {
   }));
 
   const [showDialog, setShowDialog] = useState(false);
-  const { sendJsonMessage } = useWebSocket(logconfig.logurl, { share: true });
-  const [pageName, setPageName] = useState("rightsidemenu");
+
   const navigate = useNavigate();
 
   const openDialog = () => {
-    ReactGA.event({
-      action: "L7|set theory-distributive law",
-      category: "L7|quiz button",
-      label: "L7|Quiz instruction pop-up will appear on screen",
-    });
+    setShowDialog(true);
+
     SendLogData(
       sendJsonMessage,
       pageName,
-      "quiz",
+      "Viva voce button",
       "Clicked",
-      "Click on quiz Button"
+      "Cliked on Viva voce",
+      [{ input: "", answer: "", result: "correct" }],
+      [
+        {
+          popuptype: "Instructions for quiz",
+          popuptext: "All Instructions",
+        },
+      ],
+      [{ hint: "" }]
     );
-    setShowDialog(true);
   };
 
   const closeDialog = () => {
     setShowDialog(false);
-    ReactGA.event({
-      action: "L7|set theory-distributive law",
-      category: "L7|CANCEL button of quiz instruction pop-up",
-      label: "L7|close the quiz instruction pop-up",
-    });
     SendLogData(
       sendJsonMessage,
       pageName,
-      "CANCEL",
+      "Cancel button",
       "Clicked",
-      "Click on CANCEL Button",
-      [],
+      "Cliked on Cancel",
+      [{ input: "", answer: "", result: "correct" }],
       [
         {
-          popuptype: "Confirmation box",
-          popuptext: "Quiz instructions",
+          popuptype: "",
+          popuptext: "",
         },
-      ]
+      ],
+      [{ hint: "" }]
     );
   };
 
   const onAgree = () => {
     navigate("/letusverify/quiz");
-    ReactGA.event({
-      action: "L7|set theory-distributive law",
-      category: "L7|OK button of quiz instruction pop-up",
-      label: "L7|start the quiz",
-    });
+
     SendLogData(
       sendJsonMessage,
       pageName,
-      "OK",
+      "ok button",
       "Clicked",
-      "Click on OK Button",
-      [],
+      "Cliked on ok",
+      [{ input: "", answer: "", result: "correct" }],
       [
         {
-          popuptype: "Confirmation box",
-          popuptext: "Quiz instructions",
+          popuptype: "",
+          popuptext: "",
         },
-      ]
+      ],
+      [{ hint: "" }]
+    );
+  };
+  const { t, i18n } = useTranslation();
+
+  const Thhandler = () => {
+    ReactGA.event({
+      action: "L1 | Algebraic identity(a+b)²",
+      category: "L1 | Theory button ",
+      label: "L1 | Cliked on theory",
+    });
+
+    SendLogData(
+      sendJsonMessage,
+      pageName,
+      "Theory button",
+      "Clicked",
+      "Cliked on theory",
+      [{ input: "", answer: "", result: "correct" }],
+      [
+        {
+          popuptype: "Home popup",
+          popuptext: "Are you sure you want to quit?",
+        },
+      ],
+      [{ hint: "" }]
+    );
+  };
+
+  const Vivahandler = () => {
+    ReactGA.event({
+      action: "L1 | Algebraic identity(a+b)²",
+      category: "L1 | Viva voce button ",
+      label: "L1 | Cliked on Viva voce",
+    });
+
+    SendLogData(
+      sendJsonMessage,
+      pageName,
+      "Viva voce button ",
+      "Clicked",
+      "Cliked on Viva voce",
+      [{ input: "", answer: "", result: "correct" }],
+      [
+        {
+          popuptype: "",
+          popuptext: "",
+        },
+      ],
+      [{ hint: "" }]
+    );
+  };
+
+  const procedurehandler = () => {
+    ReactGA.event({
+      action: "OML|Rightsidemenu",
+      category: "OML|procedure button ",
+      label: "OML|Cliked on procedure",
+    });
+
+    SendLogData(
+      sendJsonMessage,
+      pageName,
+      "procedure button ",
+      "Clicked",
+      "Cliked on procedure",
+      [{ input: "", answer: "", result: "correct" }],
+      [
+        {
+          popuptype: "",
+          popuptext: "",
+        },
+      ],
+      [{ hint: "" }]
     );
   };
 
@@ -105,24 +176,35 @@ const Rightsidemenu = () => {
         onAgree={onAgree}
         closeDialog={closeDialog}
         content={<QuizPopupContent />}
-        popuptitle={t("quiz-1")}
+        popuptitle={t("quiz-1")}       
       />
 
       {[false].map((expand) => (
-        <Navbar key={expand} expand={expand} className="mb-3">
-          <Container fluid className="">
-            <Navbar.Brand href="#"></Navbar.Brand>
-            <Navbar.Toggle aria-controls={`offcanvasNavbar-expand-${expand}`} />
+        <Navbar key={expand} expand={expand} >
+          <Container fluid >
+            <Navbar.Brand href="#" className=""></Navbar.Brand>
+
+            <LightTooltip title={t("menu")}  placement="left" arrow>
+              <Navbar.Toggle
+                aria-controls={`offcanvasNavbar-expand-${expand}`}
+                style={{
+                  border: "3px solid white",
+                  backgroundColor: "skyblue",
+                }}
+              />
+            </LightTooltip>
+
             <Navbar.Offcanvas
               id={`offcanvasNavbar-expand-${expand}`}
               aria-labelledby={`offcanvasNavbarLabel-expand-${expand}`}
               placement="end"
-              style={{ width: "125px", height: "200px", background: "#8bb7c5" }}
+              style={{ width: "125px", height: "300px", background: "#8bb7c5" }}
             >
               <div className="" style={{ height: "100%" }}>
                 <div
                   className=" d-flex justify-content-center align-items-center p-3"
-                  style={{ height: "50%" }}
+                  style={{ height: "33%" }}
+                  onClick={Thhandler}
                 >
                   <LightTooltip title={t("Theory")} placement="left" arrow>
                     <Link to="/letusverify/sqtheory">
@@ -144,7 +226,31 @@ const Rightsidemenu = () => {
 
                 <div
                   className=" d-flex justify-content-center align-items-center p-3"
-                  style={{ height: "50%" }}
+                  style={{ height: "33%" }}
+                  onClick={procedurehandler}
+                >
+                  <LightTooltip title={t("procedure")} placement="left" arrow>
+                    <Link to="/letusverify/procedure">
+                      <motion.img
+                        whileHover={{ scale: 1.1 }}
+                        whileTap={{ scale: 0.9 }}
+                        style={{
+                          backgroundRepeat: "no-repeat",
+                          backgroundSize: "cover",
+                          maxHeight: "100%",
+                          maxWidth: "100%",
+                        }}
+                        src={procedure}
+                        alt="Logo"
+                      ></motion.img>
+                    </Link>
+                  </LightTooltip>
+                </div>
+
+                <div
+                  className=" d-flex justify-content-center align-items-center p-3"
+                  style={{ height: "33%" }}
+                  onClick={Vivahandler}
                 >
                   <LightTooltip title={t("Vivavice")} placement="left" arrow>
                     <div onClick={openDialog}>
@@ -164,8 +270,10 @@ const Rightsidemenu = () => {
                     </div>
                   </LightTooltip>
                 </div>
+               
               </div>
             </Navbar.Offcanvas>
+
           </Container>
         </Navbar>
       ))}

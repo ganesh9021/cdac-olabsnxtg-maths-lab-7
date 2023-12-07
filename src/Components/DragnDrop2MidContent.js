@@ -208,7 +208,7 @@ function DragnDrop2MidContent({ setInstr }) {
     // console.log("inside handlemousemove");
     if (!isDown) return;
     const mouseX = parseInt(e.nativeEvent.offsetX - canvas.current.clientLeft);
-    const mouseY = parseInt(e.nativeEvent.offsetY - canvas.current.clientTop);
+    const mouseY = parseInt(e.nativeEvent.offsetY - canvas.current.clientTop); 
     // console.log("mousex, mousey : ", mouseX, mouseY);
     const dx = mouseX - startX;
     const dy = mouseY - startY;

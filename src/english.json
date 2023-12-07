@@ -60,7 +60,7 @@
   "instr-20": "Click on the \"RESTART\" button to perform the activity again.",
   "instr-21": "Click on the \"SET WITH NUMBERS\" button for example of relation with numbers.",
   "instr-22": "Click on the \"NEXT EXAMPLE\" button.",
-  
+
   "theory-1": "Distributive law",
   "theory-2": "Distributive law states that the sum and product remain at the same value even when the order of the elements is altered.",
   "theory-3": "We will see the distributive property of sets using the Venn diagram. Before starting with the distributive property. Let's see some basic concepts of set theory.",
@@ -122,5 +122,22 @@
   "Vivavice": "Viva Voce",
   "help": "Help",
   "restriction_1": "Please click on \"LHS\" button.",
-  "restriction_2": "Please click on \"RHS\" button."
+  "restriction_2": "Please click on \"RHS\" button.",
+  "procedure": "Procedure",
+  "menu": "Menu",
+  "fig" : "Fig",
+  "proc1" : " Click on the “LHS” button to get started with the relations of the Left hand side first.",
+  "proc2" : "Click on the “DRAW UNIVERSAL SET” button to draw the universal set and click on “SET A” button to draw set A.",
+  "proc3" : "Click on the \"SET WITH NUMBER\" button is optional.",
+  "proc4" : "Click on the \"DRAW SET B\" button and then \"DRAW SET C\".",
+  "proc5" : "Drag B towards set C in such a way that B∩C will be created.",
+  "proc6" : "Now drag set A towards B∩C in such a way that their A∪(B∩C) will be created.",
+  "proc7" : "After creating all the relations for LHS click on the RHS button.",
+  "proc8" : "Now click on “RHS” button to start with the relations of RHS.",
+  "proc9" : "Drag set A towards set B in such a way that A∪B will get created.",
+  "proc10" : "Drag set A towards set C to create the A∪C.",
+  "proc11" : "Drag Set C towards A∪B in such a way that relation(A∪B)∩(A∪C) will get created.",
+  "proc12" : "Click on the “RESULT” button.",
+  "proc13" : "Observations",
+  "proc14" : "It has been observed that relation A∪(B∩C) and (A∪B)∩(A∪C) are looking similar so we can say that they are equal. Hence distributive law is verified."
 }

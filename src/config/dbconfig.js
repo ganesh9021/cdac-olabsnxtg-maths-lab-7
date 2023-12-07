@@ -1,5 +1,5 @@
 module.exports = {
-  logurl: "ws://10.212.9.119:8000",
+  logurl: "wss://logapi.olabs.edu.in",
   activityName: "Set theory: A∪(B∩C) = (A∪B)∩(A∪C)",
   subject: "Mathematics",
   activityUniqueName: "CDAC-OlabsNxtG-Maths-Lab-7",

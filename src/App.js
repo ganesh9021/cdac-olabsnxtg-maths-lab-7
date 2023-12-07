@@ -41,6 +41,7 @@ import logconfig from "./config/dbconfig.js";
 import { browserName, browserVersion } from "react-device-detect";
 import { v4 as uuid } from "uuid";
 import axios from "axios";
+import Procedure_main from "./Procedure/Procedure_main.js";
 
 const App = () => {
   const { id } = useParams();
@@ -93,7 +94,7 @@ const App = () => {
   }, []);
 
   useEffect(() => {
-    ReactGA.initialize("G-7NLN93PQEG", {
+    ReactGA.initialize("G-ZLKNSX7SDM", {
       gaOptions: {
         gtag: true,
       },
@@ -178,6 +179,7 @@ const App = () => {
         path="/letusverify/quiz"
         element={<Play lang={firstStore.lang} />}
       />
+      <Route path="/letusverify/procedure" element={<Procedure_main />} />
     </Routes>
   );
 };
